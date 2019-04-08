@@ -475,6 +475,13 @@ Public Sub Main()
     
     Call modGameIni.IniciarCabecera(MiCabecera)
     
+    'Load config file
+    If FileExist(sPathINIT & fConfigInit, vbNormal) Then
+        ClientConfigInit = modGameIni.LeerConfigInit()
+    Else
+        Call MsgBox("Se requiere del archivo de configuración 'Config.Init' en la carpeta INIT del cliente.", vbCritical + vbOKOnly)
+    End If
+    
     Call modGameIni.LoadClientAOSetup
     Call modGameIni.InitGraphicsFile
     
