@@ -1,0 +1,15 @@
+[REFERENCIA126]
+Nombre=(CASTILLO MEDIO 2)
+GrhIndice=5751
+Ancho=0
+Alto=0
+[REFERENCIA325]
+Nombre=(Pido 100)1
+GrhIndice=9082
+Ancho=2
+Alto=2
+[REFERENCIA200]
+Nombre=NUEVO
+GrhIndice=8683
+Ancho=0
+Alto=0

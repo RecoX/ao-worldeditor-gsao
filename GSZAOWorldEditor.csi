@@ -1,0 +1,14 @@
+[History]
+1=#P0#=mb	#P1#=ClickEdit	#P2#=GSZAOWorldEditor/modEdicion/ClickEdit	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126232124	#P7#=0	#P8#=231	.
+2=#P0#=mb	#P1#=RenderScreen	#P2#=GSZAOWorldEditor/modTileEngine/RenderScreen	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126231704	#P7#=0	#P8#=54	.
+3=#P0#=mb	#P1#=Main	#P2#=GSZAOWorldEditor/modGeneral/Main	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126231532	#P7#=0	#P8#=186	.
+4=#P0#=mb	#P1#=Grh_Initialize	#P2#=GSZAOWorldEditor/modGrh/Grh_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126230832	#P7#=0	#P8#=29	.
+5=#P0#=mb	#P1#=Grh_Render	#P2#=GSZAOWorldEditor/modGrh/Grh_Render	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126230727	#P7#=0	#P8#=13	.
+6=#P0#=mb	#P1#=InitTileEngine	#P2#=GSZAOWorldEditor/modTileEngine/InitTileEngine	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126222932	#P7#=0	#P8#=13	.
+7=#P0#=mb	#P1#=DXEngine_Initialize	#P2#=GSZAOWorldEditor/modDXEngine/DXEngine_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126222211	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=ConvertCPtoTP	#P2#=GSZAOWorldEditor/modTileEngine/ConvertCPtoTP	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126222152	#P7#=0	#P8#=0	.
+9=#P0#=mb	#P1#=MainViewPic_DblClick	#P2#=GSZAOWorldEditor/frmMain/MainViewPic_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126221305	#P7#=0	#P8#=1	.
+10=#P0#=mb	#P1#=CheckKeys	#P2#=GSZAOWorldEditor/modGeneral/CheckKeys	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126220908	#P7#=0	#P8#=15	.
+11=#P0#=mb	#P1#=cSeleccionarSuperficie_Click	#P2#=GSZAOWorldEditor/frmMain/cSeleccionarSuperficie_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126204459	#P7#=0	#P8#=1	.
+12=#P0#=mb	#P1#=VistaPreviaDeSup	#P2#=GSZAOWorldEditor/modPaneles/VistaPreviaDeSup	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131126204209	#P7#=0	#P8#=43	.
+13=#P0#=mb	#P1#=DXEngine_TextureToHdcRender	#P2#=GSZAOWorldEditor/modDXEngine/DXEngine_TextureToHdcRender	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131126204142	#P7#=0	#P8#=0	.

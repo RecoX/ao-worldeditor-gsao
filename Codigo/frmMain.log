@@ -1,0 +1,486 @@
+Línea 22: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 352: la clase GSZAOWorldEditor.lvButtons_H del control cAddQuickSup no era una clase de control cargada.
+Línea 417: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 456: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 480: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 504: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 528: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 551: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 575: la clase GSZAOWorldEditor.lvButtons_H del control cmdQuitarFunciones no era una clase de control cargada.
+Línea 664: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarEnTodasLasCapas no era una clase de control cargada.
+Línea 682: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarEnEstaCapa no era una clase de control cargada.
+Línea 700: la clase GSZAOWorldEditor.lvButtons_H del control cSeleccionarSuperficie no era una clase de control cargada.
+Línea 738: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarParticula no era una clase de control cargada.
+Línea 755: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarParticula no era una clase de control cargada.
+Línea 909: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarLuz no era una clase de control cargada.
+Línea 926: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarLuz no era una clase de control cargada.
+Línea 1004: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarTrans no era una clase de control cargada.
+Línea 1022: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarTransOBJ no era una clase de control cargada.
+Línea 1040: la clase GSZAOWorldEditor.lvButtons_H del control cUnionManual no era una clase de control cargada.
+Línea 1058: la clase GSZAOWorldEditor.lvButtons_H del control cUnionAuto no era una clase de control cargada.
+Línea 1076: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarTrans no era una clase de control cargada.
+Línea 1442: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarTrigger no era una clase de control cargada.
+Línea 1460: la clase GSZAOWorldEditor.lvButtons_H del control cVerTriggers no era una clase de control cargada.
+Línea 1478: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarTrigger no era una clase de control cargada.
+Línea 1496: la clase GSZAOWorldEditor.lvButtons_H del control cAgregarFuncalAzar no era una clase de control cargada.
+Línea 1515: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarFunc no era una clase de control cargada.
+Línea 1534: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarFunc no era una clase de control cargada.
+Línea 1553: la clase GSZAOWorldEditor.lvButtons_H del control cVerBloqueos no era una clase de control cargada.
+Línea 1571: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarBloqueo no era una clase de control cargada.
+Línea 1589: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarBloqueo no era una clase de control cargada.
+Línea 1607: la clase GSZAOWorldEditor.lvButtons_H del control cAgregarFuncalAzar no era una clase de control cargada.
+Línea 1626: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarFunc no era una clase de control cargada.
+Línea 1645: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarFunc no era una clase de control cargada.
+Línea 1664: la clase GSZAOWorldEditor.lvButtons_H del control cInsertarFunc no era una clase de control cargada.
+Línea 1683: la clase GSZAOWorldEditor.lvButtons_H del control cQuitarFunc no era una clase de control cargada.
+Línea 1702: la clase GSZAOWorldEditor.lvButtons_H del control cAgregarFuncalAzar no era una clase de control cargada.
+Línea 2167: la clase MSComDlg.CommonDialog del control Dialog no era una clase de control cargada.
+Línea 2183: la clase GSZAOWorldEditor.lvButtons_H del control cmdInformacionDelMapa no era una clase de control cargada.
+Línea 2325: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 2350: la clase GSZAOWorldEditor.lvButtons_H del control SelectPanel no era una clase de control cargada.
+Línea 29: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 30: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 31: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 32: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 33: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 34: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 36: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 37: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 38: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 39: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 40: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 41: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 42: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 43: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 44: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 22: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 358: el nombre de la propiedad _extentx de cAddQuickSup no es válido.
+Línea 359: el nombre de la propiedad _extenty de cAddQuickSup no es válido.
+Línea 360: el nombre de la propiedad caption de cAddQuickSup no es válido.
+Línea 361: el nombre de la propiedad capalign de cAddQuickSup no es válido.
+Línea 362: el nombre de la propiedad backstyle de cAddQuickSup no es válido.
+Línea 364: el nombre de la propiedad cgradient de cAddQuickSup no es válido.
+Línea 365: el nombre de la propiedad mode de cAddQuickSup no es válido.
+Línea 366: el nombre de la propiedad value de cAddQuickSup no es válido.
+Línea 367: el nombre de la propiedad cback de cAddQuickSup no es válido.
+Línea 352: no se pudo establecer la propiedad Font de cAddQuickSup.
+Línea 425: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 426: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 427: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 428: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 429: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 430: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 432: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 433: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 434: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 435: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 436: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 437: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 438: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 439: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 441: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 417: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 463: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 464: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 465: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 466: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 467: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 468: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 470: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 471: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 472: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 473: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 474: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 475: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 476: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 477: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 478: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 456: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 487: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 488: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 489: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 490: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 491: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 492: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 494: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 495: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 496: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 497: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 498: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 499: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 500: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 501: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 502: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 480: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 511: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 512: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 513: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 514: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 515: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 516: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 518: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 519: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 520: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 521: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 522: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 523: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 524: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 525: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 526: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 504: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 535: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 536: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 537: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 538: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 539: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 540: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 542: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 543: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 544: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 545: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 546: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 547: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 548: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 549: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 528: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 558: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 559: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 560: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 561: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 562: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 563: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 565: el nombre de la propiedad cfore de SelectPanel no es válido.
+Línea 566: el nombre de la propiedad cfhover de SelectPanel no es válido.
+Línea 567: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 568: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 569: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 570: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 571: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 572: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 573: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 551: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 582: el nombre de la propiedad _extentx de cmdQuitarFunciones no es válido.
+Línea 583: el nombre de la propiedad _extenty de cmdQuitarFunciones no es válido.
+Línea 584: el nombre de la propiedad caption de cmdQuitarFunciones no es válido.
+Línea 585: el nombre de la propiedad capalign de cmdQuitarFunciones no es válido.
+Línea 586: el nombre de la propiedad backstyle de cmdQuitarFunciones no es válido.
+Línea 588: el nombre de la propiedad cgradient de cmdQuitarFunciones no es válido.
+Línea 589: el nombre de la propiedad mode de cmdQuitarFunciones no es válido.
+Línea 590: el nombre de la propiedad value de cmdQuitarFunciones no es válido.
+Línea 591: el nombre de la propiedad cback de cmdQuitarFunciones no es válido.
+Línea 575: no se pudo establecer la propiedad Font de cmdQuitarFunciones.
+Línea 671: el nombre de la propiedad _extentx de cQuitarEnTodasLasCapas no es válido.
+Línea 672: el nombre de la propiedad _extenty de cQuitarEnTodasLasCapas no es válido.
+Línea 673: el nombre de la propiedad caption de cQuitarEnTodasLasCapas no es válido.
+Línea 674: el nombre de la propiedad capalign de cQuitarEnTodasLasCapas no es válido.
+Línea 675: el nombre de la propiedad backstyle de cQuitarEnTodasLasCapas no es válido.
+Línea 677: el nombre de la propiedad cgradient de cQuitarEnTodasLasCapas no es válido.
+Línea 678: el nombre de la propiedad mode de cQuitarEnTodasLasCapas no es válido.
+Línea 679: el nombre de la propiedad value de cQuitarEnTodasLasCapas no es válido.
+Línea 680: el nombre de la propiedad cback de cQuitarEnTodasLasCapas no es válido.
+Línea 664: no se pudo establecer la propiedad Font de cQuitarEnTodasLasCapas.
+Línea 689: el nombre de la propiedad _extentx de cQuitarEnEstaCapa no es válido.
+Línea 690: el nombre de la propiedad _extenty de cQuitarEnEstaCapa no es válido.
+Línea 691: el nombre de la propiedad caption de cQuitarEnEstaCapa no es válido.
+Línea 692: el nombre de la propiedad capalign de cQuitarEnEstaCapa no es válido.
+Línea 693: el nombre de la propiedad backstyle de cQuitarEnEstaCapa no es válido.
+Línea 695: el nombre de la propiedad cgradient de cQuitarEnEstaCapa no es válido.
+Línea 696: el nombre de la propiedad mode de cQuitarEnEstaCapa no es válido.
+Línea 697: el nombre de la propiedad value de cQuitarEnEstaCapa no es válido.
+Línea 698: el nombre de la propiedad cback de cQuitarEnEstaCapa no es válido.
+Línea 682: no se pudo establecer la propiedad Font de cQuitarEnEstaCapa.
+Línea 707: el nombre de la propiedad _extentx de cSeleccionarSuperficie no es válido.
+Línea 708: el nombre de la propiedad _extenty de cSeleccionarSuperficie no es válido.
+Línea 709: el nombre de la propiedad caption de cSeleccionarSuperficie no es válido.
+Línea 710: el nombre de la propiedad capalign de cSeleccionarSuperficie no es válido.
+Línea 711: el nombre de la propiedad backstyle de cSeleccionarSuperficie no es válido.
+Línea 713: el nombre de la propiedad cgradient de cSeleccionarSuperficie no es válido.
+Línea 714: el nombre de la propiedad mode de cSeleccionarSuperficie no es válido.
+Línea 715: el nombre de la propiedad value de cSeleccionarSuperficie no es válido.
+Línea 716: el nombre de la propiedad cback de cSeleccionarSuperficie no es válido.
+Línea 700: no se pudo establecer la propiedad Font de cSeleccionarSuperficie.
+Línea 744: el nombre de la propiedad _extentx de cInsertarParticula no es válido.
+Línea 745: el nombre de la propiedad _extenty de cInsertarParticula no es válido.
+Línea 746: el nombre de la propiedad caption de cInsertarParticula no es válido.
+Línea 747: el nombre de la propiedad capalign de cInsertarParticula no es válido.
+Línea 748: el nombre de la propiedad backstyle de cInsertarParticula no es válido.
+Línea 750: el nombre de la propiedad cgradient de cInsertarParticula no es válido.
+Línea 751: el nombre de la propiedad mode de cInsertarParticula no es válido.
+Línea 752: el nombre de la propiedad value de cInsertarParticula no es válido.
+Línea 753: el nombre de la propiedad cback de cInsertarParticula no es válido.
+Línea 738: no se pudo establecer la propiedad Font de cInsertarParticula.
+Línea 761: el nombre de la propiedad _extentx de cQuitarParticula no es válido.
+Línea 762: el nombre de la propiedad _extenty de cQuitarParticula no es válido.
+Línea 763: el nombre de la propiedad caption de cQuitarParticula no es válido.
+Línea 764: el nombre de la propiedad capalign de cQuitarParticula no es válido.
+Línea 765: el nombre de la propiedad backstyle de cQuitarParticula no es válido.
+Línea 767: el nombre de la propiedad cgradient de cQuitarParticula no es válido.
+Línea 768: el nombre de la propiedad mode de cQuitarParticula no es válido.
+Línea 769: el nombre de la propiedad value de cQuitarParticula no es válido.
+Línea 770: el nombre de la propiedad cback de cQuitarParticula no es válido.
+Línea 755: no se pudo establecer la propiedad Font de cQuitarParticula.
+Línea 915: el nombre de la propiedad _extentx de cInsertarLuz no es válido.
+Línea 916: el nombre de la propiedad _extenty de cInsertarLuz no es válido.
+Línea 917: el nombre de la propiedad caption de cInsertarLuz no es válido.
+Línea 918: el nombre de la propiedad capalign de cInsertarLuz no es válido.
+Línea 919: el nombre de la propiedad backstyle de cInsertarLuz no es válido.
+Línea 921: el nombre de la propiedad cgradient de cInsertarLuz no es válido.
+Línea 922: el nombre de la propiedad mode de cInsertarLuz no es válido.
+Línea 923: el nombre de la propiedad value de cInsertarLuz no es válido.
+Línea 924: el nombre de la propiedad cback de cInsertarLuz no es válido.
+Línea 909: no se pudo establecer la propiedad Font de cInsertarLuz.
+Línea 932: el nombre de la propiedad _extentx de cQuitarLuz no es válido.
+Línea 933: el nombre de la propiedad _extenty de cQuitarLuz no es válido.
+Línea 934: el nombre de la propiedad caption de cQuitarLuz no es válido.
+Línea 935: el nombre de la propiedad capalign de cQuitarLuz no es válido.
+Línea 936: el nombre de la propiedad backstyle de cQuitarLuz no es válido.
+Línea 938: el nombre de la propiedad cgradient de cQuitarLuz no es válido.
+Línea 939: el nombre de la propiedad mode de cQuitarLuz no es válido.
+Línea 940: el nombre de la propiedad value de cQuitarLuz no es válido.
+Línea 941: el nombre de la propiedad cback de cQuitarLuz no es válido.
+Línea 926: no se pudo establecer la propiedad Font de cQuitarLuz.
+Línea 1011: el nombre de la propiedad _extentx de cInsertarTrans no es válido.
+Línea 1012: el nombre de la propiedad _extenty de cInsertarTrans no es válido.
+Línea 1013: el nombre de la propiedad caption de cInsertarTrans no es válido.
+Línea 1014: el nombre de la propiedad capalign de cInsertarTrans no es válido.
+Línea 1015: el nombre de la propiedad backstyle de cInsertarTrans no es válido.
+Línea 1017: el nombre de la propiedad cgradient de cInsertarTrans no es válido.
+Línea 1018: el nombre de la propiedad mode de cInsertarTrans no es válido.
+Línea 1019: el nombre de la propiedad value de cInsertarTrans no es válido.
+Línea 1020: el nombre de la propiedad cback de cInsertarTrans no es válido.
+Línea 1004: no se pudo establecer la propiedad Font de cInsertarTrans.
+Línea 1029: el nombre de la propiedad _extentx de cInsertarTransOBJ no es válido.
+Línea 1030: el nombre de la propiedad _extenty de cInsertarTransOBJ no es válido.
+Línea 1031: el nombre de la propiedad caption de cInsertarTransOBJ no es válido.
+Línea 1032: el nombre de la propiedad capalign de cInsertarTransOBJ no es válido.
+Línea 1033: el nombre de la propiedad backstyle de cInsertarTransOBJ no es válido.
+Línea 1035: el nombre de la propiedad cgradient de cInsertarTransOBJ no es válido.
+Línea 1036: el nombre de la propiedad mode de cInsertarTransOBJ no es válido.
+Línea 1037: el nombre de la propiedad value de cInsertarTransOBJ no es válido.
+Línea 1038: el nombre de la propiedad cback de cInsertarTransOBJ no es válido.
+Línea 1022: no se pudo establecer la propiedad Font de cInsertarTransOBJ.
+Línea 1047: el nombre de la propiedad _extentx de cUnionManual no es válido.
+Línea 1048: el nombre de la propiedad _extenty de cUnionManual no es válido.
+Línea 1049: el nombre de la propiedad caption de cUnionManual no es válido.
+Línea 1050: el nombre de la propiedad capalign de cUnionManual no es válido.
+Línea 1051: el nombre de la propiedad backstyle de cUnionManual no es válido.
+Línea 1053: el nombre de la propiedad cgradient de cUnionManual no es válido.
+Línea 1054: el nombre de la propiedad mode de cUnionManual no es válido.
+Línea 1055: el nombre de la propiedad value de cUnionManual no es válido.
+Línea 1056: el nombre de la propiedad cback de cUnionManual no es válido.
+Línea 1040: no se pudo establecer la propiedad Font de cUnionManual.
+Línea 1065: el nombre de la propiedad _extentx de cUnionAuto no es válido.
+Línea 1066: el nombre de la propiedad _extenty de cUnionAuto no es válido.
+Línea 1067: el nombre de la propiedad caption de cUnionAuto no es válido.
+Línea 1068: el nombre de la propiedad capalign de cUnionAuto no es válido.
+Línea 1069: el nombre de la propiedad backstyle de cUnionAuto no es válido.
+Línea 1071: el nombre de la propiedad cgradient de cUnionAuto no es válido.
+Línea 1072: el nombre de la propiedad mode de cUnionAuto no es válido.
+Línea 1073: el nombre de la propiedad value de cUnionAuto no es válido.
+Línea 1074: el nombre de la propiedad cback de cUnionAuto no es válido.
+Línea 1058: no se pudo establecer la propiedad Font de cUnionAuto.
+Línea 1083: el nombre de la propiedad _extentx de cQuitarTrans no es válido.
+Línea 1084: el nombre de la propiedad _extenty de cQuitarTrans no es válido.
+Línea 1085: el nombre de la propiedad caption de cQuitarTrans no es válido.
+Línea 1086: el nombre de la propiedad capalign de cQuitarTrans no es válido.
+Línea 1087: el nombre de la propiedad backstyle de cQuitarTrans no es válido.
+Línea 1089: el nombre de la propiedad cgradient de cQuitarTrans no es válido.
+Línea 1090: el nombre de la propiedad mode de cQuitarTrans no es válido.
+Línea 1091: el nombre de la propiedad value de cQuitarTrans no es válido.
+Línea 1092: el nombre de la propiedad cback de cQuitarTrans no es válido.
+Línea 1076: no se pudo establecer la propiedad Font de cQuitarTrans.
+Línea 1449: el nombre de la propiedad _extentx de cQuitarTrigger no es válido.
+Línea 1450: el nombre de la propiedad _extenty de cQuitarTrigger no es válido.
+Línea 1451: el nombre de la propiedad caption de cQuitarTrigger no es válido.
+Línea 1452: el nombre de la propiedad capalign de cQuitarTrigger no es válido.
+Línea 1453: el nombre de la propiedad backstyle de cQuitarTrigger no es válido.
+Línea 1455: el nombre de la propiedad cgradient de cQuitarTrigger no es válido.
+Línea 1456: el nombre de la propiedad mode de cQuitarTrigger no es válido.
+Línea 1457: el nombre de la propiedad value de cQuitarTrigger no es válido.
+Línea 1458: el nombre de la propiedad cback de cQuitarTrigger no es válido.
+Línea 1442: no se pudo establecer la propiedad Font de cQuitarTrigger.
+Línea 1467: el nombre de la propiedad _extentx de cVerTriggers no es válido.
+Línea 1468: el nombre de la propiedad _extenty de cVerTriggers no es válido.
+Línea 1469: el nombre de la propiedad caption de cVerTriggers no es válido.
+Línea 1470: el nombre de la propiedad capalign de cVerTriggers no es válido.
+Línea 1471: el nombre de la propiedad backstyle de cVerTriggers no es válido.
+Línea 1473: el nombre de la propiedad cgradient de cVerTriggers no es válido.
+Línea 1474: el nombre de la propiedad mode de cVerTriggers no es válido.
+Línea 1475: el nombre de la propiedad value de cVerTriggers no es válido.
+Línea 1476: el nombre de la propiedad cback de cVerTriggers no es válido.
+Línea 1460: no se pudo establecer la propiedad Font de cVerTriggers.
+Línea 1485: el nombre de la propiedad _extentx de cInsertarTrigger no es válido.
+Línea 1486: el nombre de la propiedad _extenty de cInsertarTrigger no es válido.
+Línea 1487: el nombre de la propiedad caption de cInsertarTrigger no es válido.
+Línea 1488: el nombre de la propiedad capalign de cInsertarTrigger no es válido.
+Línea 1489: el nombre de la propiedad backstyle de cInsertarTrigger no es válido.
+Línea 1491: el nombre de la propiedad cgradient de cInsertarTrigger no es válido.
+Línea 1492: el nombre de la propiedad mode de cInsertarTrigger no es válido.
+Línea 1493: el nombre de la propiedad value de cInsertarTrigger no es válido.
+Línea 1494: el nombre de la propiedad cback de cInsertarTrigger no es válido.
+Línea 1478: no se pudo establecer la propiedad Font de cInsertarTrigger.
+Línea 1504: el nombre de la propiedad _extentx de cAgregarFuncalAzar no es válido.
+Línea 1505: el nombre de la propiedad _extenty de cAgregarFuncalAzar no es válido.
+Línea 1506: el nombre de la propiedad caption de cAgregarFuncalAzar no es válido.
+Línea 1507: el nombre de la propiedad capalign de cAgregarFuncalAzar no es válido.
+Línea 1508: el nombre de la propiedad backstyle de cAgregarFuncalAzar no es válido.
+Línea 1510: el nombre de la propiedad cgradient de cAgregarFuncalAzar no es válido.
+Línea 1511: el nombre de la propiedad mode de cAgregarFuncalAzar no es válido.
+Línea 1512: el nombre de la propiedad value de cAgregarFuncalAzar no es válido.
+Línea 1513: el nombre de la propiedad cback de cAgregarFuncalAzar no es válido.
+Línea 1496: no se pudo establecer la propiedad Font de cAgregarFuncalAzar.
+Línea 1523: el nombre de la propiedad _extentx de cQuitarFunc no es válido.
+Línea 1524: el nombre de la propiedad _extenty de cQuitarFunc no es válido.
+Línea 1525: el nombre de la propiedad caption de cQuitarFunc no es válido.
+Línea 1526: el nombre de la propiedad capalign de cQuitarFunc no es válido.
+Línea 1527: el nombre de la propiedad backstyle de cQuitarFunc no es válido.
+Línea 1529: el nombre de la propiedad cgradient de cQuitarFunc no es válido.
+Línea 1530: el nombre de la propiedad mode de cQuitarFunc no es válido.
+Línea 1531: el nombre de la propiedad value de cQuitarFunc no es válido.
+Línea 1532: el nombre de la propiedad cback de cQuitarFunc no es válido.
+Línea 1515: no se pudo establecer la propiedad Font de cQuitarFunc.
+Línea 1542: el nombre de la propiedad _extentx de cInsertarFunc no es válido.
+Línea 1543: el nombre de la propiedad _extenty de cInsertarFunc no es válido.
+Línea 1544: el nombre de la propiedad caption de cInsertarFunc no es válido.
+Línea 1545: el nombre de la propiedad capalign de cInsertarFunc no es válido.
+Línea 1546: el nombre de la propiedad backstyle de cInsertarFunc no es válido.
+Línea 1548: el nombre de la propiedad cgradient de cInsertarFunc no es válido.
+Línea 1549: el nombre de la propiedad mode de cInsertarFunc no es válido.
+Línea 1550: el nombre de la propiedad value de cInsertarFunc no es válido.
+Línea 1551: el nombre de la propiedad cback de cInsertarFunc no es válido.
+Línea 1534: no se pudo establecer la propiedad Font de cInsertarFunc.
+Línea 1560: el nombre de la propiedad _extentx de cVerBloqueos no es válido.
+Línea 1561: el nombre de la propiedad _extenty de cVerBloqueos no es válido.
+Línea 1562: el nombre de la propiedad caption de cVerBloqueos no es válido.
+Línea 1563: el nombre de la propiedad capalign de cVerBloqueos no es válido.
+Línea 1564: el nombre de la propiedad backstyle de cVerBloqueos no es válido.
+Línea 1566: el nombre de la propiedad cgradient de cVerBloqueos no es válido.
+Línea 1567: el nombre de la propiedad mode de cVerBloqueos no es válido.
+Línea 1568: el nombre de la propiedad value de cVerBloqueos no es válido.
+Línea 1569: el nombre de la propiedad cback de cVerBloqueos no es válido.
+Línea 1553: no se pudo establecer la propiedad Font de cVerBloqueos.
+Línea 1578: el nombre de la propiedad _extentx de cInsertarBloqueo no es válido.
+Línea 1579: el nombre de la propiedad _extenty de cInsertarBloqueo no es válido.
+Línea 1580: el nombre de la propiedad caption de cInsertarBloqueo no es válido.
+Línea 1581: el nombre de la propiedad capalign de cInsertarBloqueo no es válido.
+Línea 1582: el nombre de la propiedad backstyle de cInsertarBloqueo no es válido.
+Línea 1584: el nombre de la propiedad cgradient de cInsertarBloqueo no es válido.
+Línea 1585: el nombre de la propiedad mode de cInsertarBloqueo no es válido.
+Línea 1586: el nombre de la propiedad value de cInsertarBloqueo no es válido.
+Línea 1587: el nombre de la propiedad cback de cInsertarBloqueo no es válido.
+Línea 1571: no se pudo establecer la propiedad Font de cInsertarBloqueo.
+Línea 1596: el nombre de la propiedad _extentx de cQuitarBloqueo no es válido.
+Línea 1597: el nombre de la propiedad _extenty de cQuitarBloqueo no es válido.
+Línea 1598: el nombre de la propiedad caption de cQuitarBloqueo no es válido.
+Línea 1599: el nombre de la propiedad capalign de cQuitarBloqueo no es válido.
+Línea 1600: el nombre de la propiedad backstyle de cQuitarBloqueo no es válido.
+Línea 1602: el nombre de la propiedad cgradient de cQuitarBloqueo no es válido.
+Línea 1603: el nombre de la propiedad mode de cQuitarBloqueo no es válido.
+Línea 1604: el nombre de la propiedad value de cQuitarBloqueo no es válido.
+Línea 1605: el nombre de la propiedad cback de cQuitarBloqueo no es válido.
+Línea 1589: no se pudo establecer la propiedad Font de cQuitarBloqueo.
+Línea 1615: el nombre de la propiedad _extentx de cAgregarFuncalAzar no es válido.
+Línea 1616: el nombre de la propiedad _extenty de cAgregarFuncalAzar no es válido.
+Línea 1617: el nombre de la propiedad caption de cAgregarFuncalAzar no es válido.
+Línea 1618: el nombre de la propiedad capalign de cAgregarFuncalAzar no es válido.
+Línea 1619: el nombre de la propiedad backstyle de cAgregarFuncalAzar no es válido.
+Línea 1621: el nombre de la propiedad cgradient de cAgregarFuncalAzar no es válido.
+Línea 1622: el nombre de la propiedad mode de cAgregarFuncalAzar no es válido.
+Línea 1623: el nombre de la propiedad value de cAgregarFuncalAzar no es válido.
+Línea 1624: el nombre de la propiedad cback de cAgregarFuncalAzar no es válido.
+Línea 1607: no se pudo establecer la propiedad Font de cAgregarFuncalAzar.
+Línea 1634: el nombre de la propiedad _extentx de cQuitarFunc no es válido.
+Línea 1635: el nombre de la propiedad _extenty de cQuitarFunc no es válido.
+Línea 1636: el nombre de la propiedad caption de cQuitarFunc no es válido.
+Línea 1637: el nombre de la propiedad capalign de cQuitarFunc no es válido.
+Línea 1638: el nombre de la propiedad backstyle de cQuitarFunc no es válido.
+Línea 1640: el nombre de la propiedad cgradient de cQuitarFunc no es válido.
+Línea 1641: el nombre de la propiedad mode de cQuitarFunc no es válido.
+Línea 1642: el nombre de la propiedad value de cQuitarFunc no es válido.
+Línea 1643: el nombre de la propiedad cback de cQuitarFunc no es válido.
+Línea 1626: no se pudo establecer la propiedad Font de cQuitarFunc.
+Línea 1653: el nombre de la propiedad _extentx de cInsertarFunc no es válido.
+Línea 1654: el nombre de la propiedad _extenty de cInsertarFunc no es válido.
+Línea 1655: el nombre de la propiedad caption de cInsertarFunc no es válido.
+Línea 1656: el nombre de la propiedad capalign de cInsertarFunc no es válido.
+Línea 1657: el nombre de la propiedad backstyle de cInsertarFunc no es válido.
+Línea 1659: el nombre de la propiedad cgradient de cInsertarFunc no es válido.
+Línea 1660: el nombre de la propiedad mode de cInsertarFunc no es válido.
+Línea 1661: el nombre de la propiedad value de cInsertarFunc no es válido.
+Línea 1662: el nombre de la propiedad cback de cInsertarFunc no es válido.
+Línea 1645: no se pudo establecer la propiedad Font de cInsertarFunc.
+Línea 1672: el nombre de la propiedad _extentx de cInsertarFunc no es válido.
+Línea 1673: el nombre de la propiedad _extenty de cInsertarFunc no es válido.
+Línea 1674: el nombre de la propiedad caption de cInsertarFunc no es válido.
+Línea 1675: el nombre de la propiedad capalign de cInsertarFunc no es válido.
+Línea 1676: el nombre de la propiedad backstyle de cInsertarFunc no es válido.
+Línea 1678: el nombre de la propiedad cgradient de cInsertarFunc no es válido.
+Línea 1679: el nombre de la propiedad mode de cInsertarFunc no es válido.
+Línea 1680: el nombre de la propiedad value de cInsertarFunc no es válido.
+Línea 1681: el nombre de la propiedad cback de cInsertarFunc no es válido.
+Línea 1664: no se pudo establecer la propiedad Font de cInsertarFunc.
+Línea 1691: el nombre de la propiedad _extentx de cQuitarFunc no es válido.
+Línea 1692: el nombre de la propiedad _extenty de cQuitarFunc no es válido.
+Línea 1693: el nombre de la propiedad caption de cQuitarFunc no es válido.
+Línea 1694: el nombre de la propiedad capalign de cQuitarFunc no es válido.
+Línea 1695: el nombre de la propiedad backstyle de cQuitarFunc no es válido.
+Línea 1697: el nombre de la propiedad cgradient de cQuitarFunc no es válido.
+Línea 1698: el nombre de la propiedad mode de cQuitarFunc no es válido.
+Línea 1699: el nombre de la propiedad value de cQuitarFunc no es válido.
+Línea 1700: el nombre de la propiedad cback de cQuitarFunc no es válido.
+Línea 1683: no se pudo establecer la propiedad Font de cQuitarFunc.
+Línea 1710: el nombre de la propiedad _extentx de cAgregarFuncalAzar no es válido.
+Línea 1711: el nombre de la propiedad _extenty de cAgregarFuncalAzar no es válido.
+Línea 1712: el nombre de la propiedad caption de cAgregarFuncalAzar no es válido.
+Línea 1713: el nombre de la propiedad capalign de cAgregarFuncalAzar no es válido.
+Línea 1714: el nombre de la propiedad backstyle de cAgregarFuncalAzar no es válido.
+Línea 1716: el nombre de la propiedad cgradient de cAgregarFuncalAzar no es válido.
+Línea 1717: el nombre de la propiedad mode de cAgregarFuncalAzar no es válido.
+Línea 1718: el nombre de la propiedad value de cAgregarFuncalAzar no es válido.
+Línea 1719: el nombre de la propiedad cback de cAgregarFuncalAzar no es válido.
+Línea 1702: no se pudo establecer la propiedad Font de cAgregarFuncalAzar.
+Línea 2170: el nombre de la propiedad _ExtentX de Dialog no es válido.
+Línea 2171: el nombre de la propiedad _ExtentY de Dialog no es válido.
+Línea 2172: el nombre de la propiedad _Version de Dialog no es válido.
+Línea 2189: el nombre de la propiedad _extentx de cmdInformacionDelMapa no es válido.
+Línea 2190: el nombre de la propiedad _extenty de cmdInformacionDelMapa no es válido.
+Línea 2191: el nombre de la propiedad caption de cmdInformacionDelMapa no es válido.
+Línea 2192: el nombre de la propiedad capalign de cmdInformacionDelMapa no es válido.
+Línea 2193: el nombre de la propiedad backstyle de cmdInformacionDelMapa no es válido.
+Línea 2195: el nombre de la propiedad cgradient de cmdInformacionDelMapa no es válido.
+Línea 2196: el nombre de la propiedad mode de cmdInformacionDelMapa no es válido.
+Línea 2197: el nombre de la propiedad value de cmdInformacionDelMapa no es válido.
+Línea 2198: el nombre de la propiedad cback de cmdInformacionDelMapa no es válido.
+Línea 2183: no se pudo establecer la propiedad Font de cmdInformacionDelMapa.
+Línea 2333: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 2334: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 2335: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 2336: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 2337: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 2338: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 2340: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 2341: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 2342: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 2343: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 2344: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 2345: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 2346: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 2347: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 2348: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 2325: no se pudo establecer la propiedad Font de SelectPanel.
+Línea 2358: el nombre de la propiedad _extentx de SelectPanel no es válido.
+Línea 2359: el nombre de la propiedad _extenty de SelectPanel no es válido.
+Línea 2360: el nombre de la propiedad caption de SelectPanel no es válido.
+Línea 2361: el nombre de la propiedad capalign de SelectPanel no es válido.
+Línea 2362: el nombre de la propiedad backstyle de SelectPanel no es válido.
+Línea 2363: el nombre de la propiedad shape de SelectPanel no es válido.
+Línea 2365: el nombre de la propiedad lockhover de SelectPanel no es válido.
+Línea 2366: el nombre de la propiedad cgradient de SelectPanel no es válido.
+Línea 2367: el nombre de la propiedad mode de SelectPanel no es válido.
+Línea 2368: el nombre de la propiedad value de SelectPanel no es válido.
+Línea 2369: el nombre de la propiedad customclick de SelectPanel no es válido.
+Línea 2370: el nombre de la propiedad imgalign de SelectPanel no es válido.
+Línea 2371: el nombre de la propiedad image de SelectPanel no es válido.
+Línea 2372: el nombre de la propiedad imgsize de SelectPanel no es válido.
+Línea 2374: el nombre de la propiedad cback de SelectPanel no es válido.
+Línea 2350: no se pudo establecer la propiedad Font de SelectPanel.
