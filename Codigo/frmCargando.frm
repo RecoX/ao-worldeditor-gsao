@@ -17,13 +17,14 @@ Begin VB.Form frmCargando
    Begin VB.PictureBox Picture1 
       AutoSize        =   -1  'True
       BackColor       =   &H000000FF&
-      Height          =   1920
+      Height          =   1860
       Left            =   0
-      ScaleHeight     =   1860
-      ScaleWidth      =   6060
+      Picture         =   "frmCargando.frx":628A
+      ScaleHeight     =   1800
+      ScaleWidth      =   6000
       TabIndex        =   0
       Top             =   0
-      Width           =   6120
+      Width           =   6060
       Begin VB.Label verX 
          Alignment       =   2  'Center
          AutoSize        =   -1  'True
@@ -63,7 +64,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P6 
       Height          =   480
       Left            =   5000
-      Picture         =   "frmCargando.frx":628A
+      Picture         =   "frmCargando.frx":11130
       ToolTipText     =   "Función de Trigger"
       Top             =   2280
       Visible         =   0   'False
@@ -204,7 +205,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P5 
       Height          =   480
       Left            =   3960
-      Picture         =   "frmCargando.frx":6ECC
+      Picture         =   "frmCargando.frx":11D72
       ToolTipText     =   "Objetos"
       Top             =   2280
       Visible         =   0   'False
@@ -213,7 +214,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P1 
       Height          =   480
       Left            =   120
-      Picture         =   "frmCargando.frx":7710
+      Picture         =   "frmCargando.frx":125B6
       ToolTipText     =   "Base de Datos"
       Top             =   2280
       Visible         =   0   'False
@@ -222,7 +223,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P3 
       Height          =   480
       Left            =   1920
-      Picture         =   "frmCargando.frx":7F54
+      Picture         =   "frmCargando.frx":12DFA
       ToolTipText     =   "Cabezas"
       Top             =   2280
       Visible         =   0   'False
@@ -231,7 +232,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P4 
       Height          =   480
       Left            =   2880
-      Picture         =   "frmCargando.frx":8798
+      Picture         =   "frmCargando.frx":1363E
       ToolTipText     =   "NPC's"
       Top             =   2280
       Visible         =   0   'False
@@ -240,7 +241,7 @@ Begin VB.Form frmCargando
    Begin VB.Image P2 
       Height          =   480
       Left            =   960
-      Picture         =   "frmCargando.frx":93DA
+      Picture         =   "frmCargando.frx":14280
       ToolTipText     =   "Cuerpos"
       Top             =   2280
       Visible         =   0   'False

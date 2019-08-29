@@ -2,24 +2,24 @@ VERSION 5.00
 Begin VB.Form frmAbout 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Acerca de WoldEditor"
-   ClientHeight    =   4350
+   ClientHeight    =   4470
    ClientLeft      =   2340
    ClientTop       =   1935
-   ClientWidth     =   4365
+   ClientWidth     =   4665
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    Picture         =   "frmAbout.frx":628A
-   ScaleHeight     =   3002.447
+   ScaleHeight     =   3085.273
    ScaleMode       =   0  'User
-   ScaleWidth      =   4098.96
+   ScaleWidth      =   4380.675
    StartUpPosition =   2  'CenterScreen
-   Begin WorldEditor.lvButtons_H cmdOK 
+   Begin GSZAOWorldEditor.lvButtons_H cmdOK 
       Height          =   375
-      Left            =   2880
+      Left            =   1560
       TabIndex        =   4
-      Top             =   3840
+      Top             =   4080
       Width           =   1335
       _ExtentX        =   2355
       _ExtentY        =   661
@@ -40,6 +40,26 @@ Begin VB.Form frmAbout
       Value           =   0   'False
       cBack           =   -2147483633
    End
+   Begin VB.Label Label1 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "ReyarB"
+      BeginProperty Font 
+         Name            =   "Morpheus"
+         Size            =   20.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FF0000&
+      Height          =   540
+      Left            =   1920
+      TabIndex        =   8
+      Top             =   600
+      Width           =   1320
+   End
    Begin VB.Label lblCred 
       Alignment       =   2  'Center
       BackColor       =   &H00000000&
@@ -58,7 +78,7 @@ Begin VB.Form frmAbout
       Index           =   1
       Left            =   720
       TabIndex        =   7
-      Top             =   1320
+      Top             =   1440
       Width           =   3075
    End
    Begin VB.Label lblTitle 
@@ -66,7 +86,7 @@ Begin VB.Form frmAbout
       BackStyle       =   0  'Transparent
       Caption         =   "WorldEditor"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Morpheus"
          Size            =   26.25
          Charset         =   0
          Weight          =   700
@@ -74,12 +94,12 @@ Begin VB.Form frmAbout
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   615
-      Left            =   1200
+      ForeColor       =   &H000000FF&
+      Height          =   705
+      Left            =   720
       TabIndex        =   6
       Top             =   0
-      Width           =   2970
+      Width           =   3090
    End
    Begin VB.Label lblVersion 
       AutoSize        =   -1  'True
@@ -96,9 +116,9 @@ Begin VB.Form frmAbout
       EndProperty
       ForeColor       =   &H00E0E0E0&
       Height          =   270
-      Left            =   1560
+      Left            =   840
       TabIndex        =   5
-      Top             =   480
+      Top             =   840
       Width           =   810
    End
    Begin VB.Label lblCred 
@@ -170,8 +190,8 @@ Begin VB.Form frmAbout
       Index           =   1
       X1              =   112.686
       X2              =   3944.016
-      Y1              =   2567.61
-      Y2              =   2567.61
+      Y1              =   2733.262
+      Y2              =   2733.262
    End
    Begin VB.Line Line1 
       BorderColor     =   &H00FFFFFF&
@@ -179,8 +199,8 @@ Begin VB.Form frmAbout
       Index           =   0
       X1              =   112.686
       X2              =   3944.016
-      Y1              =   2567.61
-      Y2              =   2567.61
+      Y1              =   2733.262
+      Y2              =   2733.262
    End
    Begin VB.Label lblCred 
       Alignment       =   2  'Center
@@ -200,7 +220,7 @@ Begin VB.Form frmAbout
       Index           =   2
       Left            =   720
       TabIndex        =   0
-      Top             =   1080
+      Top             =   1200
       Width           =   3075
    End
    Begin VB.Shape Shape1 
@@ -210,10 +230,10 @@ Begin VB.Form frmAbout
       DrawMode        =   9  'Not Mask Pen
       FillColor       =   &H00C0C0FF&
       FillStyle       =   0  'Solid
-      Height          =   2655
+      Height          =   2775
       Left            =   120
       Shape           =   4  'Rounded Rectangle
-      Top             =   960
+      Top             =   1080
       Width           =   4095
    End
 End

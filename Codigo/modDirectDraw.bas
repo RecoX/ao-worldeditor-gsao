@@ -179,6 +179,9 @@ Else
     End If
 End If
 
+CX = CX - 1
+CY = CY - 1
+
 tX = UserPos.X + CX
 tY = UserPos.Y + CY
 
@@ -385,12 +388,15 @@ End Sub
 Public Sub PegarSeleccion() '(mx As Integer, my As Integer)
 '*************************************************
 'Author: Loopzer
-'Last modified: 21/11/07
+'Last modified: 21/10/2012 - ^[GS]^
 '*************************************************
+
+On Error GoTo Fallo
+
     'podria usar copy mem , pero por las dudas no XD
     Static UltimoX As Integer
     Static UltimoY As Integer
-    If UltimoX = SobreX And UltimoY = SobreY Then Exit Sub
+    'If UltimoX = SobreX And UltimoY = SobreY Then Exit Sub
     UltimoX = SobreX
     UltimoY = SobreY
     Dim X As Integer
@@ -412,12 +418,23 @@ Public Sub PegarSeleccion() '(mx As Integer, my As Integer)
         Next
     Next
     Seleccionando = False
+    Call DrawMiniMap(True)
+    
+    Exit Sub
+
+Fallo:
+    MsgBox "PegarSeleccion::Error " & Err.Number & " - " & Err.Description
+    Call LogError("PegarSeleccion::Error " & Err.Number & " - " & Err.Description)
+    
 End Sub
 Public Sub AccionSeleccion()
 '*************************************************
 'Author: Loopzer
-'Last modified: 21/11/07
+'Last modified: 01/04/2013 - ^[GS]^
 '*************************************************
+
+On Error GoTo Fallo
+
     Dim X As Integer
     Dim Y As Integer
     SeleccionAncho = Abs(SeleccionIX - SeleccionFX) + 1
@@ -426,6 +443,7 @@ Public Sub AccionSeleccion()
     DeSeleccionAlto = SeleccionAlto
     DeSeleccionOX = SeleccionIX
     DeSeleccionOY = SeleccionIY
+
     ReDim DeSeleccionMap(DeSeleccionAncho, DeSeleccionAlto) As MapBlock
     
     For X = 0 To SeleccionAncho - 1
@@ -439,13 +457,24 @@ Public Sub AccionSeleccion()
         Next
     Next
     Seleccionando = False
+    Call DrawMiniMap(True)
+    
+    Exit Sub
+
+Fallo:
+    MsgBox "AccionSeleccion::Error " & Err.Number & " - " & Err.Description
+    Call LogError("AccionSeleccion::Error " & Err.Number & " - " & Err.Description)
+    
 End Sub
 
 Public Sub BlockearSeleccion()
 '*************************************************
 'Author: Loopzer
-'Last modified: 21/11/07
+'Last modified: 01/04/2013 - ^[GS]^
 '*************************************************
+
+On Error GoTo Fallo
+
     Dim X As Integer
     Dim Y As Integer
     SeleccionAncho = Abs(SeleccionIX - SeleccionFX) + 1
@@ -471,12 +500,21 @@ Public Sub BlockearSeleccion()
         Next
     Next
     Seleccionando = False
+    
+    Exit Sub
+
+Fallo:
+    MsgBox "BlockearSeleccion::Error " & Err.Number & " - " & Err.Description
+    Call LogError("BlockearSeleccion::Error " & Err.Number & " - " & Err.Description)
+    
 End Sub
 Public Sub CortarSeleccion()
 '*************************************************
 'Author: Loopzer
-'Last modified: 21/11/07
+'Last modified: 01/04/2013 - ^[GS]^
 '*************************************************
+On Error GoTo Fallo
+
     CopiarSeleccion
     Dim X As Integer
     Dim Y As Integer
@@ -498,12 +536,23 @@ Public Sub CortarSeleccion()
         Next
     Next
     Seleccionando = False
+    Call DrawMiniMap(True)
+    
+    Exit Sub
+
+Fallo:
+    MsgBox "CortarSeleccion::Error " & Err.Number & " - " & Err.Description
+    Call LogError("CortarSeleccion::Error " & Err.Number & " - " & Err.Description)
+
 End Sub
 Public Sub CopiarSeleccion()
 '*************************************************
 'Author: Loopzer
 'Last modified: 21/11/07
 '*************************************************
+
+On Error GoTo Fallo
+
     'podria usar copy mem , pero por las dudas no XD
     Dim X As Integer
     Dim Y As Integer
@@ -516,33 +565,41 @@ Public Sub CopiarSeleccion()
             SeleccionMap(X, Y) = MapData(X + SeleccionIX, Y + SeleccionIY)
         Next
     Next
+    
+    Exit Sub
+
+Fallo:
+    MsgBox "CopiarSeleccion::Error " & Err.Number & " - " & Err.Description
+    Call LogError("CopiarSeleccion::Error " & Err.Number & " - " & Err.Description)
+    
 End Sub
+
+
 Public Sub GenerarVista()
 '*************************************************
 'Author: Loopzer
-'Last modified: 21/11/07
+'Last modified: 01/04/2013 - ^[GS]^
 '*************************************************
+    Dim i As Byte
    ' hacer una llamada a un seter o geter , es mas lento q una variable
    ' con esto hacemos q no este preguntando a el objeto cadavez
    ' q dibuja , Render mas rapido ;)
-    VerBlockeados = frmMain.cVerBloqueos.value
-    VerTriggers = frmMain.cVerTriggers.value
-    VerCapa1 = frmMain.mnuVerCapa1.Checked
-    VerCapa2 = frmMain.mnuVerCapa2.Checked
-    VerCapa3 = frmMain.mnuVerCapa3.Checked
-    VerCapa4 = frmMain.mnuVerCapa4.Checked
-    VerTranslados = frmMain.mnuVerTranslados.Checked
-    VerObjetos = frmMain.mnuVerObjetos.Checked
-    VerNpcs = frmMain.mnuVerNPCs.Checked
-    
+    bVerBloqueos = frmMain.cVerBloqueos.Value
+    For i = 1 To 4
+        bVerCapa(i) = frmMain.mnuVerCapa(i).Checked
+    Next
+    bVerTriggers = frmMain.mnuVerTriggers.Checked
+    bVerTraslados = frmMain.mnuVerTraslados.Checked
+    bVerObjetos = frmMain.mnuVerObjetos.Checked
+    bVerNpcs = frmMain.mnuVerNPCs.Checked
+    bClickExtend = frmMain.mnuClickExt.Checked
 End Sub
 ' [/Loopzer]
+
 Public Sub RenderScreen(TileX As Integer, TileY As Integer, PixelOffsetX As Integer, PixelOffsetY As Integer)
 '*************************************************
 'Author: Unkwown
-'Last modified: 31/05/06 by GS
-'Last modified: 21/11/07 By Loopzer
-'Last modifier: 24/11/08 by GS
+'Last modified: 21/10/2012 - ^[GS]^
 '*************************************************
 
 On Error Resume Next
@@ -576,14 +633,15 @@ Map_LightsRender
 MinY = (TileY - (WindowTileHeight \ 2)) - TileBufferSize
 MaxY = (TileY + (WindowTileHeight \ 2)) + TileBufferSize
 MinX = (TileX - (WindowTileWidth \ 2)) - TileBufferSize
-MaxX = (TileX + (WindowTileWidth \ 2)) + TileBufferSize
+MaxX = (TileX + (WindowTileWidth \ 2)) + TileBufferSize + 2
 ' 31/05/2006 - GS, control de Capas
 If Val(frmMain.cCapas.Text) >= 1 And (frmMain.cCapas.Text) <= 4 Then
     bCapa = Val(frmMain.cCapas.Text)
 Else
     bCapa = 1
 End If
-GenerarVista 'Loopzer
+Call GenerarVista 'Loopzer
+
 ScreenY = -8
 For Y = (MinY) To (MaxY)
     ScreenX = -8
@@ -595,13 +653,13 @@ For Y = (MinY) To (MaxY)
             If SobreX = X And SobreY = Y Then
                 ' Pone Grh !
                 Sobre = -1
-                If frmMain.cSeleccionarSuperficie.value = True Then
+                If frmMain.cSeleccionarSuperficie.Value = True Then
                     Sobre = MapData(X, Y).Graphic(bCapa).grh_index
-                    If frmConfigSup.MOSAICO.value = vbChecked Then
+                    If frmConfigSup.MOSAICO.Value = vbChecked Then
                         Dim aux As Integer
                         Dim dy As Integer
                         Dim dX As Integer
-                        If frmConfigSup.DespMosaic.value = vbChecked Then
+                        If frmConfigSup.DespMosaic.Value = vbChecked Then
                             dy = Val(frmConfigSup.DMLargo.Text)
                             dX = Val(frmConfigSup.DMAncho.Text)
                         Else
@@ -633,171 +691,174 @@ For Y = (MinY) To (MaxY)
             Else
                 Sobre = -1
             End If
-            If VerCapa1 Then
+            If bVerCapa(1) Then
                 With MapData(X, Y).Graphic(1)
 
-    Dim VertexArray(0 To 3) As TLVERTEX
-    Dim tex As Direct3DTexture8
-    Dim SrcWidth As Integer
-    Dim Width As Integer
-    Dim SrcHeight As Integer
-    Dim Height As Integer
-    Dim SrcBitmapWidth As Long
-    Dim SrcBitmapHeight As Long
-    Dim xb As Integer
-    Dim yb As Integer
-    'Dim iGrhIndex As Integer
-    Dim srdesc As D3DSURFACE_DESC
-    
-    'Ready the texture
-    'If grhindex = 0 Then Exit Sub
-    If MapData(X, Y).Graphic(1).grh_index Then
-    xb = (ScreenX - 1) * 32 + PixelOffsetX
-    yb = (ScreenY - 1) * 32 + PixelOffsetY
-   
-    If MapData(X, Y).Graphic(1).Started = 1 Then
-       
-        MapData(X, Y).Graphic(1).frame_counter = MapData(X, Y).Graphic(1).frame_counter + ((timer_elapsed_time * 0.1) * Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count / MapData(X, Y).Graphic(1).frame_speed)
-            If MapData(X, Y).Graphic(1).frame_counter > Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count Then
-                MapData(X, Y).Graphic(1).frame_counter = (MapData(X, Y).Graphic(1).frame_counter Mod Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count) + 1
-            End If
-           
-    End If
-
-If MapData(X, Y).Graphic(1).frame_counter = 0 Then MapData(X, Y).Graphic(1).frame_counter = 1
-If MapData(X, Y).Graphic(1).grh_index <= 0 Then Exit Sub
- 
-iGrhIndex = Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_list(MapData(X, Y).Graphic(1).frame_counter)
-
-    With Grh_list(iGrhIndex)
-    
-    Set tex = DXPool.GetTexture(.texture_index)
-    'Call DXPool.Texture_Dimension_Get(.texture_index, texture_width, texture_height)
-    tex.GetLevelDesc 0, srdesc
-    
-    'If .src_x = 0 And SrcHeight = 0 And Width = 0 And Height = 0 Then
-        SrcWidth = 32 'd3dtextures.texwidth
-        Width = 32 'd3dtextures.texwidth
-       
-        Height = 32 'd3dtextures.texheight
-        SrcHeight = 32 'd3dtextures.texheight
-        SrcBitmapWidth = srdesc.Width
-        SrcBitmapHeight = srdesc.Height
-    'Set the RHWs (must always be 1)
-   
-    VertexArray(0).rhw = 1
-    VertexArray(1).rhw = 1
-    VertexArray(2).rhw = 1
-    VertexArray(3).rhw = 1
-        
-        'Find the left side of the rectangle
-        VertexArray(0).X = xb
-        VertexArray(0).tu = (.Src_X / SrcBitmapWidth)
- 
-        'Find the top side of the rectangle
-        VertexArray(0).Y = yb
-        VertexArray(0).tv = (.Src_Y / SrcBitmapHeight)
-   
-        'Find the right side of the rectangle
-        VertexArray(1).X = xb + Width
-        VertexArray(1).tu = (.Src_X + SrcWidth) / SrcBitmapWidth
- 
-        'These values will only equal each other when not a shadow
-        VertexArray(2).X = VertexArray(0).X
-        VertexArray(3).X = VertexArray(1).X
- 
-    'Find the bottom of the rectangle
-    VertexArray(2).Y = yb + Height
-    VertexArray(2).tv = (.Src_Y + SrcHeight) / SrcBitmapHeight
- 
-    'Because this is a perfect rectangle, all of the values below will equal one of the values we already got
-    VertexArray(1).Y = VertexArray(0).Y
-    VertexArray(1).tv = VertexArray(0).tv
-    VertexArray(2).tu = VertexArray(0).tu
-    VertexArray(3).Y = VertexArray(2).Y
-    VertexArray(3).tu = VertexArray(1).tu
-    VertexArray(3).tv = VertexArray(2).tv
-   
-    VertexArray(0).Color = MapData(X, Y).light_value(0)
-    VertexArray(1).Color = MapData(X, Y).light_value(1)
-    VertexArray(2).Color = MapData(X, Y).light_value(2)
-    VertexArray(3).Color = MapData(X, Y).light_value(3)
-    
-    VertexArray(0).Y = VertexArray(0).Y - MapData(X, Y).AlturaPoligonos(0)
-    VertexArray(1).Y = VertexArray(1).Y - MapData(X, Y).AlturaPoligonos(1)
-    VertexArray(2).Y = VertexArray(2).Y - MapData(X, Y).AlturaPoligonos(2)
-    VertexArray(3).Y = VertexArray(3).Y - MapData(X, Y).AlturaPoligonos(3)
-    
-    If HayAgua(X, Y) Then
-
-    Dim ignorarpoligonossuperiores As Byte
-    Dim ignorarpoligonosinferiores As Byte
-    ignorarpoligonosinferiores = 0
-    ignorarpoligonossuperiores = 0
-    If HayAgua(X, Y - 1) = False Then ignorarpoligonossuperiores = 1
-    If HayAgua(X, Y + 1) = False Then ignorarpoligonosinferiores = 1
-   
-        If X Mod 2 = 0 Then
-       
-            If Y Mod 2 = 0 Then
-                If ignorarpoligonossuperiores <> 1 Then
-                    VertexArray(0).Y = VertexArray(0).Y - Val(ma(0))
-                    VertexArray(1).Y = VertexArray(1).Y + Val(ma(0))
-                End If
-                If ignorarpoligonosinferiores <> 1 Then
-                    VertexArray(2).Y = VertexArray(2).Y + Val(ma(1))
-                    VertexArray(3).Y = VertexArray(3).Y - Val(ma(1))
-                End If
-               
-            Else
-                If ignorarpoligonossuperiores <> 1 Then
-                    VertexArray(0).Y = VertexArray(0).Y + Val(ma(1))
-                    VertexArray(1).Y = VertexArray(1).Y - Val(ma(1))
-                End If
-                If ignorarpoligonosinferiores <> 1 Then
-                    VertexArray(2).Y = VertexArray(2).Y - Val(ma(0))
-                    VertexArray(3).Y = VertexArray(3).Y + Val(ma(0))
-                End If
-               
-            End If
-           
-        ElseIf X Mod 2 = 1 Then
-       
-            If Y Mod 2 = 0 Then
-                If ignorarpoligonossuperiores <> 1 Then
-                    VertexArray(0).Y = VertexArray(0).Y + Val(ma(0))
-                    VertexArray(1).Y = VertexArray(1).Y - Val(ma(0))
-                End If
-                If ignorarpoligonosinferiores <> 1 Then
-                    VertexArray(2).Y = VertexArray(2).Y - Val(ma(1))
-                    VertexArray(3).Y = VertexArray(3).Y + Val(ma(1))
-                End If
-               
-             Else
-                If ignorarpoligonossuperiores <> 1 Then
-                    VertexArray(0).Y = VertexArray(0).Y - Val(ma(1))
-                    VertexArray(1).Y = VertexArray(1).Y + Val(ma(1))
-                End If
-               
-                If ignorarpoligonosinferiores <> 1 Then
-                    VertexArray(2).Y = VertexArray(2).Y + Val(ma(0))
-                    VertexArray(3).Y = VertexArray(3).Y - Val(ma(0))
-                End If
-            End If
-        End If
-    End If
-    
-    ddevice.SetTexture 0, tex
-
-    ddevice.SetRenderState D3DRS_TEXTUREFACTOR, D3DColorARGB(255, 0, 0, 0) 'wiii
-    ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexArray(0), Len(VertexArray(0))
-    End With
-    End If
+                    Dim VertexArray(0 To 3) As TLVERTEX
+                    Dim tex As Direct3DTexture8
+                    Dim srcwidth As Integer
+                    Dim Width As Integer
+                    Dim srcheight As Integer
+                    Dim Height As Integer
+                    Dim SrcBitmapWidth As Long
+                    Dim SrcBitmapHeight As Long
+                    Dim xb As Integer
+                    Dim yb As Integer
+                    'Dim iGrhIndex As Integer
+                    Dim srdesc As D3DSURFACE_DESC
+                    
+                    'Ready the texture
+                    'If grhindex = 0 Then Exit Sub
+                    If MapData(X, Y).Graphic(1).grh_index Then
+                    xb = (ScreenX - 1) * 32 + PixelOffsetX
+                    yb = (ScreenY - 1) * 32 + PixelOffsetY
+                   
+                    If MapData(X, Y).Graphic(1).Started = 1 Then
+                       
+                        MapData(X, Y).Graphic(1).frame_counter = MapData(X, Y).Graphic(1).frame_counter + ((timer_elapsed_time * 0.1) * Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count / MapData(X, Y).Graphic(1).frame_speed)
+                            If MapData(X, Y).Graphic(1).frame_counter > Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count Then
+                                MapData(X, Y).Graphic(1).frame_counter = (MapData(X, Y).Graphic(1).frame_counter Mod Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count) + 1
+                            End If
+                           
+                    End If
+                
+                    If MapData(X, Y).Graphic(1).frame_counter = 0 Then MapData(X, Y).Graphic(1).frame_counter = 1
+                    If MapData(X, Y).Graphic(1).grh_index <= 0 Or MapData(X, Y).Graphic(1).grh_index > UBound(Grh_list) Then MapData(X, Y).Graphic(1).grh_index = 1 ' GSZAO - Evitamos bugs extraños
+                 
+                    iGrhIndex = Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_list(MapData(X, Y).Graphic(1).frame_counter)
+                
+                    With Grh_list(iGrhIndex)
+                    
+                        Set tex = DXPool.GetTexture(.texture_index)
+                        'Call DXPool.Texture_Dimension_Get(.texture_index, texture_width, texture_height)
+                        tex.GetLevelDesc 0, srdesc
+                        
+                        'If .src_x = 0 And SrcHeight = 0 And Width = 0 And Height = 0 Then
+                            srcwidth = 32 'd3dtextures.texwidth
+                            Width = 32 'd3dtextures.texwidth
+                           
+                            Height = 32 'd3dtextures.texheight
+                            srcheight = 32 'd3dtextures.texheight
+                            SrcBitmapWidth = srdesc.Width
+                            SrcBitmapHeight = srdesc.Height
+                             'Set the RHWs (must always be 1)
+                            
+                             VertexArray(0).rhw = 1
+                             VertexArray(1).rhw = 1
+                             VertexArray(2).rhw = 1
+                             VertexArray(3).rhw = 1
+                            
+                            'Find the left side of the rectangle
+                            VertexArray(0).X = xb
+                            VertexArray(0).tu = (.Src_X / SrcBitmapWidth)
+                     
+                            'Find the top side of the rectangle
+                            VertexArray(0).Y = yb
+                            VertexArray(0).tv = (.Src_Y / SrcBitmapHeight)
+                       
+                            'Find the right side of the rectangle
+                            VertexArray(1).X = xb + Width
+                            VertexArray(1).tu = (.Src_X + srcwidth) / SrcBitmapWidth
+                     
+                            'These values will only equal each other when not a shadow
+                            VertexArray(2).X = VertexArray(0).X
+                            VertexArray(3).X = VertexArray(1).X
+                     
+                            'Find the bottom of the rectangle
+                            VertexArray(2).Y = yb + Height
+                            VertexArray(2).tv = (.Src_Y + srcheight) / SrcBitmapHeight
+                     
+                             'Because this is a perfect rectangle, all of the values below will equal one of the values we already got
+                             VertexArray(1).Y = VertexArray(0).Y
+                             VertexArray(1).tv = VertexArray(0).tv
+                             VertexArray(2).tu = VertexArray(0).tu
+                             VertexArray(3).Y = VertexArray(2).Y
+                             VertexArray(3).tu = VertexArray(1).tu
+                             VertexArray(3).tv = VertexArray(2).tv
+                            
+                             VertexArray(0).Color = MapData(X, Y).light_value(0)
+                             VertexArray(1).Color = MapData(X, Y).light_value(1)
+                             VertexArray(2).Color = MapData(X, Y).light_value(2)
+                             VertexArray(3).Color = MapData(X, Y).light_value(3)
+                             
+                             VertexArray(0).Y = VertexArray(0).Y - MapData(X, Y).AlturaPoligonos(0)
+                             VertexArray(1).Y = VertexArray(1).Y - MapData(X, Y).AlturaPoligonos(1)
+                             VertexArray(2).Y = VertexArray(2).Y - MapData(X, Y).AlturaPoligonos(2)
+                             VertexArray(3).Y = VertexArray(3).Y - MapData(X, Y).AlturaPoligonos(3)
+                        
+                        If HayAgua(X, Y) Then
+                    
+                            If bAgua3D = True Then
+                                 Dim ignorarpoligonossuperiores As Byte
+                                 Dim ignorarpoligonosinferiores As Byte
+                                 ignorarpoligonosinferiores = 0
+                                 ignorarpoligonossuperiores = 0
+                                 If HayAgua(X, Y - 1) = False Then ignorarpoligonossuperiores = 1
+                                 If HayAgua(X, Y + 1) = False Then ignorarpoligonosinferiores = 1
+                            
+                                 If X Mod 2 = 0 Then
+                                
+                                     If Y Mod 2 = 0 Then
+                                         If ignorarpoligonossuperiores <> 1 Then
+                                             VertexArray(0).Y = VertexArray(0).Y - Val(ma(0))
+                                             VertexArray(1).Y = VertexArray(1).Y + Val(ma(0))
+                                         End If
+                                         If ignorarpoligonosinferiores <> 1 Then
+                                             VertexArray(2).Y = VertexArray(2).Y + Val(ma(1))
+                                             VertexArray(3).Y = VertexArray(3).Y - Val(ma(1))
+                                         End If
+                                        
+                                     Else
+                                         If ignorarpoligonossuperiores <> 1 Then
+                                             VertexArray(0).Y = VertexArray(0).Y + Val(ma(1))
+                                             VertexArray(1).Y = VertexArray(1).Y - Val(ma(1))
+                                         End If
+                                         If ignorarpoligonosinferiores <> 1 Then
+                                             VertexArray(2).Y = VertexArray(2).Y - Val(ma(0))
+                                             VertexArray(3).Y = VertexArray(3).Y + Val(ma(0))
+                                         End If
+                                        
+                                     End If
+                                    
+                                 ElseIf X Mod 2 = 1 Then
+                                
+                                     If Y Mod 2 = 0 Then
+                                         If ignorarpoligonossuperiores <> 1 Then
+                                             VertexArray(0).Y = VertexArray(0).Y + Val(ma(0))
+                                             VertexArray(1).Y = VertexArray(1).Y - Val(ma(0))
+                                         End If
+                                         If ignorarpoligonosinferiores <> 1 Then
+                                             VertexArray(2).Y = VertexArray(2).Y - Val(ma(1))
+                                             VertexArray(3).Y = VertexArray(3).Y + Val(ma(1))
+                                         End If
+                                        
+                                      Else
+                                         If ignorarpoligonossuperiores <> 1 Then
+                                             VertexArray(0).Y = VertexArray(0).Y - Val(ma(1))
+                                             VertexArray(1).Y = VertexArray(1).Y + Val(ma(1))
+                                         End If
+                                        
+                                         If ignorarpoligonosinferiores <> 1 Then
+                                             VertexArray(2).Y = VertexArray(2).Y + Val(ma(0))
+                                             VertexArray(3).Y = VertexArray(3).Y - Val(ma(0))
+                                         End If
+                                     End If
+                                 End If
+                             End If
+                        End If ' no es 3D
+                        
+                        ddevice.SetTexture 0, tex
+                    
+                        ddevice.SetRenderState D3DRS_TEXTUREFACTOR, D3DColorARGB(255, 0, 0, 0) 'wiii
+                        ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexArray(0), Len(VertexArray(0))
+                    End With
+                    
+                    End If
 
                 End With
             End If
             'Layer 2 **********************************
-            If MapData(X, Y).Graphic(2).grh_index <> 0 And VerCapa2 Then
+            If MapData(X, Y).Graphic(2).grh_index <> 0 And bVerCapa(2) Then
                 modGrh.Grh_Render MapData(X, Y).Graphic(2), ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, MapData(X, Y).light_value, True
             End If
             
@@ -823,12 +884,12 @@ For Y = (MinY) To (MaxY)   '- 8+ 8
             iPPx = ((32 * ScreenX) - 32) + PixelOffsetX
             iPPy = ((32 * ScreenY) - 32) + PixelOffsetY
              'Object Layer **********************************
-             If MapData(X, Y).OBJInfo.objindex <> 0 And VerObjetos Then
+             If MapData(X, Y).OBJInfo.objindex <> 0 And bVerObjetos Then
                 modGrh.Grh_Render MapData(X, Y).ObjGrh, iPPx, iPPy, MapData(X, Y).light_value, True
              End If
             
                   'Char layer **********************************
-                 If MapData(X, Y).CharIndex <> 0 And VerNpcs Then
+                 If MapData(X, Y).CharIndex <> 0 And bVerNpcs Then
                  
                      TempChar = CharList(MapData(X, Y).CharIndex)
                  
@@ -845,7 +906,7 @@ For Y = (MinY) To (MaxY)   '- 8+ 8
                    End If
                  End If
              'Layer 3 *****************************************
-             If MapData(X, Y).Graphic(3).grh_index <> 0 And VerCapa3 Then
+             If MapData(X, Y).Graphic(3).grh_index <> 0 And bVerCapa(3) Then
                 'Draw
                 modGrh.Grh_Render MapData(X, Y).Graphic(3), ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, MapData(X, Y).light_value, True
              End If
@@ -869,11 +930,11 @@ For Y = (MinY) To (MaxY)
             iPPx = ((32 * ScreenX) - 32) + PixelOffsetX
             iPPy = ((32 * ScreenY) - 32) + PixelOffsetY
             If MapData(X, Y).Graphic(4).grh_index <> 0 _
-            And (frmMain.mnuVerCapa4.Checked = True) Then
+            And (bVerCapa(4) = True) Then
                 'Draw
                 modGrh.Grh_Render MapData(X, Y).Graphic(4), iPPx, iPPy, MapData(X, Y).light_value, True
             End If
-            If MapData(X, Y).TileExit.Map <> 0 And VerTranslados Then
+            If MapData(X, Y).TileExit.Map <> 0 And bVerTraslados Then
                 Grh.grh_index = 3
                 Grh.frame_counter = 1
                 Grh.Started = 0
@@ -888,19 +949,44 @@ For Y = (MinY) To (MaxY)
             End If
             
             'Show blocked tiles
-            If VerBlockeados And MapData(X, Y).Blocked = 1 Then
+            If bVerBloqueos And MapData(X, Y).Blocked = 1 Then
                 Grh.grh_index = 4
                 Grh.frame_counter = 1
                 Grh.Started = 0
                 modGrh.Grh_Render Grh, iPPx, iPPy, MapData(X, Y).light_value, True
             End If
-            If VerGrilla Then
+            If bVerGrilla Then
                 'Grilla 24/11/2008 by GS
                 modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 1, 32, RGB(255, 255, 255)
                 modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 32, 1, RGB(255, 255, 255)
             End If
-            If VerTriggers Then
-                Call DrawText(PixelPos(ScreenX), PixelPos(ScreenY), Str(MapData(X, Y).Trigger), vbRed)
+            If bVerTriggers Then
+                If MapData(X, Y).Trigger <> 0 Then
+                    Dim lColor As Long
+                    Select Case MapData(X, Y).Trigger
+                         Case 1
+                             lColor = D3DColorXRGB(255, 0, 0)
+                         Case 2
+                             lColor = D3DColorXRGB(0, 255, 0)
+                         Case 3
+                             lColor = D3DColorXRGB(0, 0, 255)
+                         Case 4
+                             lColor = D3DColorXRGB(0, 255, 255)
+                         Case 5
+                             lColor = D3DColorXRGB(255, 64, 0)
+                         Case 6
+                             lColor = D3DColorXRGB(255, 128, 255)
+                         Case Else
+                             lColor = D3DColorXRGB(255, 255, 0)
+                     End Select
+                    
+                    modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 1, 1, lColor
+                    modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 1, 32, lColor
+                    modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 32, 1, lColor
+                    modDXEngine.DXEngine_DrawBox ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, 32, 32, lColor
+                End If
+                ' No se dibuja sin fuente...
+                'Call DrawText(PixelPos(ScreenX + 32), PixelPos(ScreenY + 32), str(MapData(X, Y).Trigger), D3DColorXRGB(0, 255, 0))
             End If
             If Seleccionando Then
                 'If ScreenX >= SeleccionIX And ScreenX <= SeleccionFX And ScreenY >= SeleccionIY And ScreenY <= SeleccionFY Then
@@ -916,18 +1002,19 @@ For Y = (MinY) To (MaxY)
     Next X
     ScreenY = ScreenY + 1
 Next Y
-
+'Call DXEngine_StatsRender ' test
 End Sub
 
 
 
-Public Sub DrawText(lngXPos As Integer, lngYPos As Integer, strText As String, lngColor As Long)
+Public Sub DrawText(lngXPos As Integer, lngYPos As Integer, strText As String, Optional lngColor As Long = 0)
 '*************************************************
 'Author: Unkwown
-'Last modified: 26/05/06
+'Last modified: 25/08/2012 - ^[GS]^
 '*************************************************
     If LenB(strText) <> 0 Then
-        Call modDXEngine.DXEngine_TextRender(1, strText, lngXPos, lngYPos, D3DColorXRGB(255, 255, 255))
+        If lngColor = 0 Then lngColor = D3DColorXRGB(255, 255, 255)
+        Call modDXEngine.DXEngine_TextRender(1, strText, lngXPos, lngYPos, lngColor)
     End If
 End Sub
 
@@ -1105,7 +1192,7 @@ Private Function Map_LightsClear()
     Dim AmbientColor As D3DCOLORVALUE
     Dim Color As Long
     
-    Meteo.Get_AmbientLight AmbientColor
+    Ambient.Get_AmbientLight AmbientColor
     Color = D3DColorXRGB(AmbientColor.R, AmbientColor.G, AmbientColor.B)
     
     For X = 1 To 100
@@ -1153,7 +1240,7 @@ Private Sub Map_LightRender(ByVal light_index As Integer)
     Dim YCoord As Integer
         
         LightColor = Lights(light_index).RGBCOLOR
-        Meteo.Get_AmbientLight AmbientColor
+        Ambient.Get_AmbientLight AmbientColor
         
         If Not Lights(light_index).Active = True Then Exit Sub
         
@@ -1289,3 +1376,141 @@ Function HayAgua(ByVal X As Integer, ByVal Y As Integer) As Boolean
                 
 End Function
 
+' VISTO EN http://www.gs-zone.org/sacar_una_screenshot_de_pantalla_directx8_tlvk.html
+'**************************************
+' Name: Take Screenshot (DirectX 8)
+' Description:This small function call takes a screenshot of DirectX's front buffer and saves it in the given path. The given path is the path where you want all the screenshots kept. This is so that you can simply call the function and it will automatically number the file for you.
+' By: Rob Loach
+'
+' Inputs:'Direct3DDevice - The Direct3DDevice8 that you are using.
+' D3DX - The D3DX8 that you are using.
+' FilePath - The path of which you want all screenshots saved.
+' ScreenWidth - The X resolution.
+' ScreenHeight - The Y resolution.
+'
+' Returns:True or False depending on if it worked.
+'
+' Assumes:Assumes basic surface knowledge of DirectX.
+'
+'This code is copyrighted and has' limited warranties.Please see http://www.Planet-Source-Code.com/vb/sc ... gWId=1'for details.'**************************************
+ 
+Public Function TakeScreenShot(Direct3DDevice As Direct3DDevice8, d3dx As D3DX8, ByVal ScreenHeight As Long, ByVal ScreenWidth As Long, Optional ByVal FilePath As String) As Boolean
+ ' This function takes a screenshot of DirectX's front buffer.
+ ' Returns true or false depending on if it worked.
+ ' By: Rob Loach
+ 
+ ' Declare variables
+ Dim ScreenShot As Direct3DSurface8 ' The pointer to our new screen buffer which will be saved to a file
+ Dim FileName As String ' The file name of the screen shot
+ Dim X As Long ' The loop holder
+ Dim PalEntry As PALETTEENTRY ' The pallette entry used to save the BMP
+ Dim SourceRect As RECT ' The source rectangle used when saving the BMP
+ 
+ ' See if the path exists
+ If Len(FilePath) = 0 Then FilePath = App.Path
+ If Right$(FilePath, 1) <> "\" Then FilePath = FilePath & "\"
+ If Len(Dir(FilePath, vbDirectory)) = 0 Then Exit Function
+ 
+ ' Find a file path that doesn't exist
+ Do
+ X = X + 1
+ FileName = FilePath & "screen" & Format(X, "0000") & ".bmp"
+ Loop Until Len(Dir(FileName)) = 0
+ 
+ ' 1. Create the image surface
+ Set ScreenShot = Direct3DDevice.CreateImageSurface(ScreenWidth, ScreenHeight, D3DFMT_A8R8G8B8)
+ If ScreenShot Is Nothing Then Exit Function ' Check if there was an error
+ 
+ ' 2. Put the front buffer into the screen shot surface
+ 'Direct3DDevice.GetFrontBuffer ScreenShot
+ Direct3DDevice.GetFrontBuffer ScreenShot
+ 
+ ' 3. Save the whole screen as a BMP
+ SourceRect.Right = ScreenWidth
+ SourceRect.Bottom = ScreenHeight
+ d3dx.SaveSurfaceToFile FileName, D3DXIFF_BMP, ScreenShot, PalEntry, SourceRect
+ 
+ ' Delete allocated memory and return the result
+ Set ScreenShot = Nothing
+ TakeScreenShot = True
+ 
+End Function
+
+Public Function LoadQuickSurface(ByVal iQuick As Integer)
+    
+    If iQuick >= 0 And iQuick <= 26 Then
+    
+        Dim grh_index As Long
+        grh_index = frmMain.QuickSup(iQuick).Tag
+        
+        If grh_index <= UBound(Grh_list) And grh_index <> 0 Then
+        
+            Dim file_index As Long
+            Dim file_path As String
+            Dim Src_X As Long
+            Dim Src_Y As Long
+            Dim src_width As Long
+            Dim src_height As Long
+            Dim hdcsrc As Long
+            Dim desthdc As Long
+            
+            If Grh_list(grh_index).frame_count <> 1 Then
+                grh_index = Grh_list(grh_index).frame_list(1)
+            End If
+    
+            file_index = Grh_list(grh_index).texture_index
+    
+            file_path = DirGraficos & file_index & ".bmp"
+            If FileExist(file_path, vbArchive) Then ' GSZAO
+                If frmMain.picTemp.Tag <> file_path Then
+                    frmMain.picTemp.Picture = LoadPicture(file_path)
+                    frmMain.picTemp.Tag = file_path
+                End If
+            Else
+                file_path = DirGraficos & file_index & ".png"
+                If FileExist(file_path, vbArchive) Then
+                    If frmMain.picTemp.Tag <> file_path Then
+                        Call modPngGDI.PngPictureLoad(file_path, frmMain.picTemp, False)
+                        frmMain.picTemp.Tag = file_path
+                    End If
+                End If
+            End If
+            
+            Src_X = Grh_list(grh_index).Src_X
+            Src_Y = Grh_list(grh_index).Src_Y
+            src_width = Grh_list(grh_index).src_width
+            src_height = Grh_list(grh_index).src_height
+        
+            frmMain.QuickSup(iQuick).Cls
+            
+            hdcsrc = CreateCompatibleDC(desthdc)
+            desthdc = frmMain.QuickSup(iQuick).hDC
+            
+            SelectObject hdcsrc, frmMain.picTemp.Picture
+            
+            'If transparent = False Then
+            '    BitBlt desthdc, 0, 0, frmMain.QuickSup(iQuick).Width, frmMain.QuickSup(iQuick).Height, hdcsrc, Src_X, Src_Y, SRCCOPY
+            'Else
+                TransparentBlt desthdc, 0, 0, frmMain.QuickSup(iQuick).ScaleWidth, frmMain.QuickSup(iQuick).ScaleHeight, hdcsrc, Src_X, Src_Y, src_width, src_height, COLOR_KEY
+            'End If
+                
+            DeleteDC hdcsrc
+        
+            'hdcsrc = CreateCompatibleDC(frmMain.QuickSup(iQuick).hDC)
+            
+            'SelectObject hdcsrc, frmMain.picTemp.Picture
+            
+            'If transparent = False Then
+            '    BitBlt frmMain.QuickSup(iQuick).hDC, 0, 0, frmMain.QuickSup(iQuick).Width, frmMain.QuickSup(iQuick).Height, hdcsrc, Src_X, Src_Y, vbSrcCopy
+            'Else
+            '    TransparentBlt LoadPictureGrh, screen_x, screen_Y, src_width, src_height, hdcsrc, Src_X, Src_Y, src_width, src_height, COLOR_KEY
+            'End If
+                
+            'DeleteDC hdcsrc
+            
+            frmMain.QuickSup(iQuick).Picture = frmMain.picTemp.Picture
+            
+            'Set LoadPictureGrh = frmMain.picTemp.Picture
+        End If
+    End If
+End Function
