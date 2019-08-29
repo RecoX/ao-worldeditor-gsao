@@ -29,7 +29,7 @@ Begin VB.Form frmGRHaBMP
       Top             =   240
       Width           =   1575
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
+   Begin WorldEditor.lvButtons_H cmdCerrar 
       Height          =   495
       Left            =   1440
       TabIndex        =   2
@@ -146,9 +146,9 @@ Private Sub txtGRH_Change()
 'Last modified: 01/11/08
 '*************************************************
 If txtGRH.Text <> "" And IsNumeric(txtGRH.Text) = True Then
-    If txtGRH.Text > grh_count Then Exit Sub
+    If txtGRH.Text > MaxGrhs Then Exit Sub
     If txtGRH.Text < 1 Then Exit Sub
-    lblBMP.Caption = Grh_list(txtGRH.Text).texture_index
+    lblBMP.Caption = grh_list(txtGRH.Text).texture_index
 End If
 End Sub
 

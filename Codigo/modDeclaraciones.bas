@@ -29,7 +29,7 @@ Attribute VB_Name = "modDeclaraciones"
 
 Option Explicit
 
-Public Ambient As New clsAmbient
+Public Meteo As New clsMeteo
 Public Audio As New clsAudio
 
 Public Const MSGMod As String = "Este mapa há sido modificado." & vbCrLf & "Si no lo guardas perderas todos los cambios ¿Deseas guardarlo?"
@@ -56,23 +56,30 @@ Public DeSeleccionAncho As Integer
 Public DeSeleccionAlto As Integer
 Public DeSeleccionando As Boolean
 Public DeSeleccionMap() As MapBlock
+
+Public VerBlockeados As Boolean
+Public VerTriggers As Boolean
+Public VerGrilla As Boolean ' grilla
+Public VerCapa1 As Boolean
+Public VerCapa2 As Boolean
+Public VerCapa3 As Boolean
+Public VerCapa4 As Boolean
+Public VerTranslados As Boolean
+Public VerObjetos As Boolean
+Public VerNpcs As Boolean
 '[/Loopzer]
 
 ' Objeto de Translado
 Public Cfg_TrOBJ As Integer
 
-' Opciones
-Public bVerCapa(1 To 4) As Boolean
-Public bVerTraslados As Boolean
-Public bVerTriggers As Boolean
-Public bVerBloqueos As Boolean
-Public bVerNpcs As Boolean
-Public bVerObjetos As Boolean
-Public bVerGrilla As Boolean
-Public bClickExtend As Boolean
+'Path
+Public inipath As String
+Public DirGraficos As String
+Public DirMidi As String
+Public DirIndex As String
+Public DirDats As String
+Public dirwavs As String
 
-Public bAgua3D As Boolean
-Public GraphicsFile As String 'Que graficos.ind usamos
 Public bAutoGuardarMapa As Byte
 Public bAutoGuardarMapaCount As Byte
 Public HotKeysAllow As Boolean  ' Control Automatico de HotKeys
@@ -111,7 +118,7 @@ Public MiRadarY As Integer
 Public bRefreshRadar As Boolean
 
 Type SupData
-    Name As String
+    name As String
     Grh As Integer
     Width As Byte
     Height As Byte
@@ -122,18 +129,17 @@ Public MaxSup As Integer
 Public SupData() As SupData
 
 Public Type NpcData
-    Name As String
+    name As String
     Body As Integer
     Head As Integer
     Heading As Byte
-    Hostile As Boolean
 End Type
 Public NumNPCs As Long
 'Public NumNPCsHOST As Integer
 Public NpcData() As NpcData
 
 Public Type ObjData
-    Name As String 'Nombre del obj
+    name As String 'Nombre del obj
     ObjType As Integer 'Tipo enum que determina cuales son las caract del obj
     grh_index As Integer ' Indice del grafico que representa el obj
     GrhSecundario As Integer
@@ -146,13 +152,6 @@ End Type
 Public NumOBJs As Integer
 Public ObjData() As ObjData
 
-Public Type tTriggerData
-    Id As Integer
-    Name As String
-    Desc As String
-End Type
-Public TriggerData() As tTriggerData ' GSZAO
-
 Public Conexion As New Connection
 Public prgRun As Boolean
 Public CurrentGrh As Grh
@@ -161,6 +160,23 @@ Public MapaCargado As Boolean
 Public cFPS As Long
 Public dTiempoGT As Double
 Public dLastWalk As Double
+
+'Hold info about each map
+Public Type MapInfo
+    Music As String
+    name As String
+    MapVersion As Integer
+    PK As Boolean
+    MagiaSinEfecto As Byte
+    InviSinEfecto As Byte
+    ResuSinEfecto As Byte
+    NoEncriptarMP As Byte
+    Terreno As String
+    Zona As String
+    Restringir As String
+    BackUp As Byte
+    Changed As Byte ' flag for WorldEditor
+End Type
 
 '********** CONSTANTS ***********
 'Heading Constants
@@ -191,7 +207,7 @@ End Type
 
 ' Cuerpos body.dat
 Public Type tIndiceCuerpo
-    Body(1 To 4) As Long ' GSZAO
+    Body(1 To 4) As Integer
     HeadOffsetX As Integer
     HeadOffsetY As Integer
 End Type
@@ -205,7 +221,7 @@ Public BodyData() As tBodyData
 Public NumBodies As Integer
 'Lista de cabezas
 Public Type tIndiceCabeza
-    Head(1 To 4) As Long ' GSZAO
+    Head(1 To 4) As Integer
 End Type
 'Heads list
 Public Type tHeadData
@@ -240,7 +256,7 @@ Public Type Light
     X As Integer
     Y As Integer
     Active As Boolean 'Do we ignore this light?
-    Id As Long
+    id As Long
     map_x As Long 'Coordinates
     map_y As Long
     Color As Long 'Start colour
@@ -361,32 +377,9 @@ Public WalkMode As Boolean
 Public NumMaps As Integer 'Number of maps
 Public Numheads As Integer
 Public NumGrhFiles As Integer 'Number of bmps
+Public MaxGrhs As Integer 'Number of Grhs
 Global NumChars As Integer
 Global LastChar As Integer
-
-'Hold info about each map
-Public Type MapInfo
-    Music As String
-    Name As String
-    MapVersion As Integer
-    PK As Boolean
-    MagiaSinEfecto As Byte
-    InviSinEfecto As Byte
-    ResuSinEfecto As Byte
-    NoEncriptarMP As Byte
-    Terreno As String
-    Zona As String
-    Restringir As String
-    BackUp As Byte
-    Changed As Byte ' flag for WorldEditor
-    
-    ' nuevos
-    StartPos As WorldPos
-    OnDeathGoTo As WorldPos     ' 0.13.3
-    OcultarSinEfecto As Byte
-    InvocarSinEfecto As Byte
-    RoboNpcsPermitido As Byte
-End Type
 
 '********** Direct X ***********
 Public MainViewWidth As Integer
@@ -397,13 +390,9 @@ Public MainViewHeight As Integer
 Public Const PATH_GRAPHICS As String = "Graficos"
 Public Const PATH_INIT As String = "Init"
 
-Public Const MAX_COMPUTERNAME_LENGTH As Long = 31
-Public Declare Function GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
-
 'Good old BitBlt
 Public Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long) As Long
-Public Declare Function SetPixel Lib "gdi32" (ByVal hDC As Long, ByVal X As Long, ByVal Y As Long, ByVal crColor As Long) As Long
-Public Declare Function GetPixel Lib "gdi32" (ByVal hDC As Long, ByVal X As Long, ByVal Y As Long) As Long
+Public Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal X As Long, ByVal Y As Long, ByVal crColor As Long) As Long
 
 'Sound stuff
 Public Declare Function mciSendString Lib "winmm.dll" Alias "mciSendStringA" (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uRetrunLength As Long, ByVal hwndCallback As Long) As Long

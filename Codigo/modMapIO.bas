@@ -64,15 +64,17 @@ End Function
 ' @param FileType Especifica el tipo de archivo/directorio
 ' @return   Nos devuelve verdadero o falso
 
-Public Function FileExist(ByRef File As String, ByVal FileType As VbFileAttribute) As Boolean
+Public Function General_File_Exist(ByVal file As String, ByVal FileType As VbFileAttribute) As Boolean
 '*************************************************
 'Author: Unkwown
-'Last modified: 04/08/2012 - ^[GS]^
+'Last modified: 26/05/06
 '*************************************************
-If Left$(File, 1) = "." Then
-    File = App.Path & "\" & File
+If LenB(Dir(file, FileType)) = 0 Then
+    General_File_Exist = False
+Else
+    General_File_Exist = True
 End If
-FileExist = (LenB(Dir$(File, FileType)) > 0)
+
 End Function
 
 ''
@@ -98,7 +100,7 @@ End Sub
 Public Sub GuardarMapa(Optional Path As String)
 '*************************************************
 'Author: ^[GS]^
-'Last modified: 11/09/2012
+'Last modified: 01/11/08
 '*************************************************
 
 frmMain.Dialog.CancelError = True
@@ -110,7 +112,7 @@ If LenB(Path) = 0 Then
     If LenB(Path) = 0 Then Exit Sub
 End If
 
-Call MapaGSZAO_Guardar(Path)
+Call MapaV2_Guardar(Path)
 
 ErrHandler:
 End Sub
@@ -165,7 +167,7 @@ For loopc = 1 To LastChar
 Next loopc
 
 MapInfo.MapVersion = 0
-MapInfo.Name = "Nuevo Mapa"
+MapInfo.name = "Nuevo Mapa"
 MapInfo.Music = 0
 MapInfo.PK = True
 MapInfo.MagiaSinEfecto = 0
@@ -211,7 +213,7 @@ Dim R As Byte
 Dim G As Byte
 Dim B As Byte
 
-If FileExist(SaveAs, vbNormal) = True Then
+If General_File_Exist(SaveAs, vbNormal) = True Then
     If MsgBox("¿Desea sobrescribir " & SaveAs & "?", vbCritical + vbYesNo) = vbNo Then
         Exit Sub
     Else
@@ -221,17 +223,9 @@ End If
 
 frmMain.MousePointer = 11
 
-' Borramos el viejo minimapa
-If FileExist(Left$(SaveAs, Len(SaveAs) - 4) & ".bmp", vbNormal) = True Then
-    Kill Left$(SaveAs, Len(SaveAs) - 4) & ".bmp"
-End If
-' Guardamos el nuevo minimapa
-Call DrawMiniMap(False) ' sin NPCs
-SavePicture frmMain.pMiniMap.Image, Left$(SaveAs, Len(SaveAs) - 4) & ".bmp"
-
 ' y borramos el .inf tambien
-If FileExist(Left$(SaveAs, Len(SaveAs) - 4) & ".inf", vbNormal) = True Then
-    Kill Left$(SaveAs, Len(SaveAs) - 4) & ".inf"
+If General_File_Exist(left$(SaveAs, Len(SaveAs) - 4) & ".inf", vbNormal) = True Then
+    Kill left$(SaveAs, Len(SaveAs) - 4) & ".inf"
 End If
 
 'Open .map file
@@ -239,7 +233,7 @@ FreeFileMap = FreeFile
 Open SaveAs For Binary As FreeFileMap
 Seek FreeFileMap, 1
 
-SaveAs = Left$(SaveAs, Len(SaveAs) - 4)
+SaveAs = left$(SaveAs, Len(SaveAs) - 4)
 SaveAs = SaveAs & ".inf"
 
 'Open .inf file
@@ -364,7 +358,7 @@ Seek FreeFileInf, 1
 Call Pestañas(SaveAs)
 
 'write .dat file
-SaveAs = Left$(SaveAs, Len(SaveAs) - 4) & ".dat"
+SaveAs = left$(SaveAs, Len(SaveAs) - 4) & ".dat"
 MapInfo_Guardar SaveAs
 
 'Change mouse icon
@@ -394,11 +388,11 @@ On Error GoTo ErrorSave
     Dim FreeFileInf As Long
     Dim loopc As Long
     Dim TempInt As Integer
-    Dim t As String
+    Dim T As String
     Dim Y As Long
     Dim X As Long
     
-    If FileExist(SaveAs, vbNormal) = True Then
+    If General_File_Exist(SaveAs, vbNormal) = True Then
         If MsgBox("¿Desea sobrescribir " & SaveAs & "?", vbCritical + vbYesNo) = vbNo Then
             Exit Sub
         Else
@@ -408,9 +402,9 @@ On Error GoTo ErrorSave
     
     'Change mouse icon
     frmMain.MousePointer = 11
-    t = SaveAs
-    If FileExist(Left(SaveAs, Len(SaveAs) - 4) & ".inf", vbNormal) = True Then
-        Kill Left(SaveAs, Len(SaveAs) - 4) & ".inf"
+    T = SaveAs
+    If General_File_Exist(left(SaveAs, Len(SaveAs) - 4) & ".inf", vbNormal) = True Then
+        Kill left(SaveAs, Len(SaveAs) - 4) & ".inf"
     End If
     
     'Open .map file
@@ -419,7 +413,7 @@ On Error GoTo ErrorSave
     Seek FreeFileMap, 1
     
     
-    SaveAs = Left(SaveAs, Len(SaveAs) - 4)
+    SaveAs = left(SaveAs, Len(SaveAs) - 4)
     SaveAs = SaveAs & ".inf"
     'Open .inf file
     FreeFileInf = FreeFile
@@ -489,13 +483,13 @@ On Error GoTo ErrorSave
     'Close .inf file
     Close FreeFileInf
     FreeFileMap = FreeFile
-    Open t & "2" For Binary Access Write As FreeFileMap
+    Open T & "2" For Binary Access Write As FreeFileMap
         Put FreeFileMap, , MapData
     Close FreeFileMap
     Call Pestañas(SaveAs)
     
     'write .dat file
-    SaveAs = Left(SaveAs, Len(SaveAs) - 4) & ".dat"
+    SaveAs = left(SaveAs, Len(SaveAs) - 4) & ".dat"
     MapInfo_Guardar SaveAs
     
     'Change mouse icon
@@ -542,7 +536,7 @@ On Error Resume Next
     Seek FreeFileMap, 1
     
     If Not SoloMap Then
-        Map = Left$(Map, Len(Map) - 4)
+        Map = left$(Map, Len(Map) - 4)
         Map = Map & ".inf"
         
         FreeFileInf = FreeFile
@@ -688,7 +682,7 @@ On Error Resume Next
         
         bRefreshRadar = True ' Radar
         
-        Map = Left$(Map, Len(Map) - 4) & ".dat"
+        Map = left$(Map, Len(Map) - 4) & ".dat"
         
         MapInfo_Cargar Map
         frmMain.lblMapVersion.Caption = MapInfo.MapVersion
@@ -736,7 +730,7 @@ Public Sub MapaV1_Cargar(ByVal Map As String)
     Open Map For Binary As FreeFileMap
     Seek FreeFileMap, 1
     
-    Map = Left(Map, Len(Map) - 4)
+    Map = left(Map, Len(Map) - 4)
     Map = Map & ".inf"
     FreeFileInf = FreeFile
     Open Map For Binary As #2
@@ -812,7 +806,7 @@ Public Sub MapaV1_Cargar(ByVal Map As String)
      
     Call Pestañas(Map)
     
-    Map = Left(Map, Len(Map) - 4) & ".dat"
+    Map = left(Map, Len(Map) - 4) & ".dat"
         
     MapInfo_Cargar Map
     frmMain.lblMapVersion.Caption = MapInfo.MapVersion
@@ -850,7 +844,7 @@ Public Sub MapaV3_Cargar(ByVal Map As String)
     Call Pestañas(Map)
     
     
-    Map = Left(Map, Len(Map) - 4) & ".dat"
+    Map = left(Map, Len(Map) - 4) & ".dat"
         
     MapInfo_Cargar Map
     frmMain.lblMapVersion.Caption = MapInfo.MapVersion
@@ -875,7 +869,7 @@ Public Sub MapaV3_Guardar(Mapa As String)
 On Error GoTo ErrorSave
     Dim FreeFileMap As Long
     
-    If FileExist(Mapa, vbNormal) = True Then
+    If General_File_Exist(Mapa, vbNormal) = True Then
         If MsgBox("¿Desea sobrescribir " & Mapa & "?", vbCritical + vbYesNo) = vbNo Then
             Exit Sub
         Else
@@ -892,7 +886,7 @@ On Error GoTo ErrorSave
     Call Pestañas(Mapa)
     
     
-    Mapa = Left(Mapa, Len(Mapa) - 4) & ".dat"
+    Mapa = left(Mapa, Len(Mapa) - 4) & ".dat"
     MapInfo_Guardar Mapa
     
     'Change mouse icon
@@ -926,7 +920,7 @@ Public Sub MapInfo_Guardar(ByVal Archivo As String)
         MapTitulo = NameMap_Save
     End If
 
-    Call WriteVar(Archivo, MapTitulo, "Name", MapInfo.Name)
+    Call WriteVar(Archivo, MapTitulo, "Name", MapInfo.name)
     Call WriteVar(Archivo, MapTitulo, "MusicNum", MapInfo.Music)
     Call WriteVar(Archivo, MapTitulo, "MagiaSinefecto", Val(MapInfo.MagiaSinEfecto))
     Call WriteVar(Archivo, MapTitulo, "InviSinEfecto", Val(MapInfo.InviSinEfecto))
@@ -936,7 +930,7 @@ Public Sub MapInfo_Guardar(ByVal Archivo As String)
     Call WriteVar(Archivo, MapTitulo, "Terreno", MapInfo.Terreno)
     Call WriteVar(Archivo, MapTitulo, "Zona", MapInfo.Zona)
     Call WriteVar(Archivo, MapTitulo, "Restringir", MapInfo.Restringir)
-    Call WriteVar(Archivo, MapTitulo, "BackUp", str(MapInfo.BackUp))
+    Call WriteVar(Archivo, MapTitulo, "BackUp", Str(MapInfo.BackUp))
 
     If MapInfo.PK Then
         Call WriteVar(Archivo, MapTitulo, "Pk", "0")
@@ -965,14 +959,14 @@ On Error Resume Next
 
     For loopc = Len(Archivo) To 1 Step -1
         If mid(Archivo, loopc, 1) = "\" Then
-            Path = Left(Archivo, loopc)
+            Path = left(Archivo, loopc)
             Exit For
         End If
     Next
     Archivo = Right(Archivo, Len(Archivo) - (Len(Path)))
-    MapTitulo = UCase(Left(Archivo, Len(Archivo) - 4))
+    MapTitulo = UCase(left(Archivo, Len(Archivo) - 4))
 
-    MapInfo.Name = Leer.GetValue(MapTitulo, "Name")
+    MapInfo.name = Leer.GetValue(MapTitulo, "Name")
     MapInfo.Music = Leer.GetValue(MapTitulo, "MusicNum")
     MapInfo.MagiaSinEfecto = Val(Leer.GetValue(MapTitulo, "MagiaSinEfecto"))
     MapInfo.InviSinEfecto = Val(Leer.GetValue(MapTitulo, "InviSinEfecto"))
@@ -1001,33 +995,24 @@ End Sub
 Public Sub MapInfo_Actualizar()
 '*************************************************
 'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
+'Last modified: 02/06/06
 '*************************************************
 
 On Error Resume Next
     ' Mostrar en Formularios
-    frmMapInfo.txtMapNombre.Text = MapInfo.Name
+    frmMapInfo.txtMapNombre.Text = MapInfo.name
     frmMapInfo.txtMapMusica.Text = MapInfo.Music
     frmMapInfo.txtMapTerreno.Text = MapInfo.Terreno
     frmMapInfo.txtMapZona.Text = MapInfo.Zona
     frmMapInfo.txtMapRestringir.Text = MapInfo.Restringir
-    frmMapInfo.chkMapBackup.Value = MapInfo.BackUp
-    frmMapInfo.chkMapMagiaSinEfecto.Value = MapInfo.MagiaSinEfecto
-    frmMapInfo.chkMapInviSinEfecto.Value = MapInfo.InviSinEfecto
-    frmMapInfo.chkMapResuSinEfecto.Value = MapInfo.ResuSinEfecto
-    frmMapInfo.chkMapNoEncriptarMP.Value = MapInfo.NoEncriptarMP
-    frmMapInfo.chkMapPK.Value = IIf(MapInfo.PK = True, 1, 0)
-    frmMapInfo.chkMapInvocarSinEfecto.Value = MapInfo.InvocarSinEfecto
-    frmMapInfo.chkMapOcultarSinEfecto.Value = MapInfo.OcultarSinEfecto
-    frmMapInfo.chkMapRoboNpcsPermitido.Value = MapInfo.RoboNpcsPermitido
-    frmMapInfo.txtStartPosMap.Text = MapInfo.StartPos.Map
-    frmMapInfo.txtStartPosX.Text = MapInfo.StartPos.X
-    frmMapInfo.txtStartPosY.Text = MapInfo.StartPos.Y
-    frmMapInfo.txtOnDeathGoToMap.Text = MapInfo.OnDeathGoTo.Map
-    frmMapInfo.txtOnDeathGoToX.Text = MapInfo.OnDeathGoTo.X
-    frmMapInfo.txtOnDeathGoToY.Text = MapInfo.OnDeathGoTo.Y
+    frmMapInfo.chkMapBackup.value = MapInfo.BackUp
+    frmMapInfo.chkMapMagiaSinEfecto.value = MapInfo.MagiaSinEfecto
+    frmMapInfo.chkMapInviSinEfecto.value = MapInfo.InviSinEfecto
+    frmMapInfo.chkMapResuSinEfecto.value = MapInfo.ResuSinEfecto
+    frmMapInfo.chkMapNoEncriptarMP.value = MapInfo.NoEncriptarMP
+    frmMapInfo.chkMapPK.value = IIf(MapInfo.PK = True, 1, 0)
     frmMapInfo.txtMapVersion = MapInfo.MapVersion
-    frmMain.lblMapNombre = MapInfo.Name
+    frmMain.lblMapNombre = MapInfo.name
     frmMain.lblMapMusica = MapInfo.Music
 
 End Sub
@@ -1047,20 +1032,20 @@ Dim loopc As Integer
 
 For loopc = Len(Map) To 1 Step -1
     If mid(Map, loopc, 1) = "\" Then
-        PATH_Save = Left(Map, loopc)
+        PATH_Save = left(Map, loopc)
         Exit For
     End If
 Next
 Map = Right(Map, Len(Map) - (Len(PATH_Save)))
-For loopc = Len(Left(Map, Len(Map) - 4)) To 1 Step -1
-    If IsNumeric(mid(Left(Map, Len(Map) - 4), loopc, 1)) = False Then
-        NumMap_Save = Right(Left(Map, Len(Map) - 4), Len(Left(Map, Len(Map) - 4)) - loopc)
-        NameMap_Save = Left(Map, loopc)
+For loopc = Len(left(Map, Len(Map) - 4)) To 1 Step -1
+    If IsNumeric(mid(left(Map, Len(Map) - 4), loopc, 1)) = False Then
+        NumMap_Save = Right(left(Map, Len(Map) - 4), Len(left(Map, Len(Map) - 4)) - loopc)
+        NameMap_Save = left(Map, loopc)
         Exit For
     End If
 Next
 For loopc = (NumMap_Save - 4) To (NumMap_Save + 8)
-        If FileExist(PATH_Save & NameMap_Save & loopc & ".map", vbArchive) = True Then
+        If General_File_Exist(PATH_Save & NameMap_Save & loopc & ".map", vbArchive) = True Then
             frmMain.MapPest(loopc - NumMap_Save + 4).Visible = True
             frmMain.MapPest(loopc - NumMap_Save + 4).Enabled = True
             frmMain.MapPest(loopc - NumMap_Save + 4).Caption = NameMap_Save & loopc
@@ -1071,188 +1056,5 @@ Next
 End Sub
 
 
-Public Sub MapaGSZAO_Guardar(ByVal SaveAs As String)
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 09/10/2012 - ^[GS]^
-'*************************************************
-
-On Error GoTo ErrorSave
-    Dim FreeFileMap As Long
-    Dim FreeFileInf As Long
-    Dim Y As Long
-    Dim X As Long
-    Dim ByFlags As Byte
-    Dim loopc As Long
-
-    Dim MapWriter As clsByteBuffer
-    Dim InfWriter As clsByteBuffer
-    Dim IniManager As clsIniManager
-    Set MapWriter = New clsByteBuffer
-    Set InfWriter = New clsByteBuffer
-    Set IniManager = New clsIniManager
-
-    If FileExist(SaveAs, vbNormal) = True Then
-        If MsgBox("¿Desea sobrescribir " & SaveAs & "?", vbCritical + vbYesNo) = vbNo Then
-            Exit Sub
-        Else
-            Kill SaveAs
-        End If
-    End If
-
-    frmMain.MousePointer = 11
-
-    ' Borramos el viejo minimapa
-    If FileExist(Left$(SaveAs, Len(SaveAs) - 4) & ".bmp", vbNormal) = True Then
-        Kill Left$(SaveAs, Len(SaveAs) - 4) & ".bmp"
-    End If
-    ' y borramos el .inf tambien
-    If FileExist(Left$(SaveAs, Len(SaveAs) - 4) & ".inf", vbNormal) = True Then
-        Kill Left$(SaveAs, Len(SaveAs) - 4) & ".inf"
-    End If
-
-    ' Guardamos el nuevo minimapa
-    Call DrawMiniMap(False) ' sin NPCs
-    SavePicture frmMain.pMiniMap.Image, Left$(SaveAs, Len(SaveAs) - 4) & ".bmp"
-    
-    'Open .map file
-    FreeFileMap = FreeFile
-    Open Left$(SaveAs, Len(SaveAs) - 4) & ".map" For Binary As FreeFileMap
-    
-    Call MapWriter.initializeWriter(FreeFileMap)
-    
-    'Open .inf file
-    FreeFileInf = FreeFile
-    Open Left$(SaveAs, Len(SaveAs) - 4) & ".inf" For Binary As FreeFileInf
-    
-    Call InfWriter.initializeWriter(FreeFileInf)
-    
-    'map Header
-    
-    ' Version del Mapa
-    If frmMain.lblMapVersion.Caption < 32767 Then
-        frmMain.lblMapVersion.Caption = frmMain.lblMapVersion + 1
-        frmMapInfo.txtMapVersion = frmMain.lblMapVersion.Caption
-    End If
-    MapInfo.MapVersion = CInt(frmMain.lblMapVersion.Caption)
-    
-    'map Header
-    Call MapWriter.putInteger(MapInfo.MapVersion)
-    
-    'Actualizamos la cabecera!
-    Call modGameIni.IniciarCabecera(MiCabecera)
-        
-    Call MapWriter.putString(MiCabecera.Desc, False)
-    Call MapWriter.putLong(MiCabecera.CRC)
-    Call MapWriter.putLong(MiCabecera.MagicWord)
-    
-    Call MapWriter.putDouble(0)
-    
-    'inf Header
-    Call InfWriter.putDouble(0)
-    Call InfWriter.putInteger(0)
-    
-    'Write .map file
-    For Y = YMinMapSize To YMaxMapSize
-        For X = XMinMapSize To XMaxMapSize
-            With MapData(X, Y)
-                ByFlags = 0
-                
-                If .Blocked Then ByFlags = ByFlags Or 1
-                If .Graphic(2).grh_index Then ByFlags = ByFlags Or 2
-                If .Graphic(3).grh_index Then ByFlags = ByFlags Or 4
-                If .Graphic(4).grh_index Then ByFlags = ByFlags Or 8
-                If .Trigger Then ByFlags = ByFlags Or 16
-                
-                Call MapWriter.putByte(ByFlags)
-                
-                Call MapWriter.putInteger(.Graphic(1).grh_index)
-                
-                For loopc = 2 To 4
-                    If .Graphic(loopc).grh_index Then Call MapWriter.putInteger(.Graphic(loopc).grh_index)
-                Next loopc
-                
-                If .Trigger Then Call MapWriter.putInteger(CInt(.Trigger))
-                
-                '.inf file
-                ByFlags = 0
-                
-                If .TileExit.Map Then ByFlags = ByFlags Or 1
-                If .NPCIndex Then ByFlags = ByFlags Or 2
-                If .OBJInfo.objindex Then ByFlags = ByFlags Or 4
-                
-                Call InfWriter.putByte(ByFlags)
-                
-                If .TileExit.Map Then
-                    Call InfWriter.putInteger(.TileExit.Map)
-                    Call InfWriter.putInteger(.TileExit.X)
-                    Call InfWriter.putInteger(.TileExit.Y)
-                End If
-                
-                If .NPCIndex Then Call InfWriter.putInteger(.NPCIndex)
-                
-                If .OBJInfo.objindex Then
-                    Call InfWriter.putInteger(.OBJInfo.objindex)
-                    Call InfWriter.putInteger(.OBJInfo.Amount)
-                End If
-            End With
-        Next X
-    Next Y
-    
-    Call MapWriter.saveBuffer
-    Call InfWriter.saveBuffer
-    
-    'Close .map file
-    Close FreeFileMap
-
-    'Close .inf file
-    Close FreeFileInf
-    
-    Set MapWriter = Nothing
-    Set InfWriter = Nothing
-    
-    If LenB(MapTitulo) = 0 Then
-        MapTitulo = NameMap_Save
-    End If
-
-    With MapInfo
-        'write .dat file
-        Call IniManager.ChangeValue(MapTitulo, "Name", .Name)
-        Call IniManager.ChangeValue(MapTitulo, "MusicNum", .Music)
-        Call IniManager.ChangeValue(MapTitulo, "MagiaSinefecto", .MagiaSinEfecto)
-        Call IniManager.ChangeValue(MapTitulo, "InviSinEfecto", .InviSinEfecto)
-        Call IniManager.ChangeValue(MapTitulo, "ResuSinEfecto", .ResuSinEfecto)
-        Call IniManager.ChangeValue(MapTitulo, "StartPos", .StartPos.Map & "-" & .StartPos.X & "-" & .StartPos.Y) ' new
-        Call IniManager.ChangeValue(MapTitulo, "OnDeathGoTo", .OnDeathGoTo.Map & "-" & .OnDeathGoTo.X & "-" & .OnDeathGoTo.Y) ' 0.13.3
-    
-        Call IniManager.ChangeValue(MapTitulo, "Terreno", .Terreno)
-        Call IniManager.ChangeValue(MapTitulo, "Zona", .Zona)
-        Call IniManager.ChangeValue(MapTitulo, "Restringir", .Restringir)
-        Call IniManager.ChangeValue(MapTitulo, "BackUp", str$(.BackUp))
-        Call IniManager.ChangeValue(MapTitulo, "Pk", IIf(.PK = True, 1, 0))
-        
-        Call IniManager.ChangeValue(MapTitulo, "OcultarSinEfecto", .OcultarSinEfecto) ' new
-        Call IniManager.ChangeValue(MapTitulo, "InvocarSinEfecto", .InvocarSinEfecto) ' new
-        ' 0.13.3
-        Call IniManager.ChangeValue(MapTitulo, "NoEncriptarMP", .NoEncriptarMP)
-        Call IniManager.ChangeValue(MapTitulo, "RoboNpcsPermitido", .RoboNpcsPermitido) ' new
-    
-        Call IniManager.DumpFile(Left$(SaveAs, Len(SaveAs) - 4) & ".dat")
-
-    End With
-    
-    Set IniManager = Nothing
-
-    Call Pestañas(SaveAs)
-    
-    'Change mouse icon
-    frmMain.MousePointer = 0
-    MapInfo.Changed = 0
-
-Exit Sub
-
-ErrorSave:
-    MsgBox "Error en GuardarGSZAO, Nro. " & Err.Number & " - " & Err.Description, vbCritical + vbOKOnly
-End Sub
 
 

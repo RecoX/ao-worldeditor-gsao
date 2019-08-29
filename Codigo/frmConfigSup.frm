@@ -13,7 +13,7 @@ Begin VB.Form frmConfigSup
    ScaleHeight     =   2820
    ScaleWidth      =   6315
    StartUpPosition =   2  'CenterScreen
-   Begin GSZAOWorldEditor.lvButtons_H cmdAceptar 
+   Begin WorldEditor.lvButtons_H cmdAceptar 
       Height          =   375
       Left            =   4200
       TabIndex        =   15

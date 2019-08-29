@@ -83,7 +83,7 @@ Private Type SoundBuffer
     FileName As String
     looping As Boolean
     X As Byte
-    Y As Byte
+    y As Byte
     normalFq As Long
     Buffer As DirectSoundSecondaryBuffer8
 End Type
@@ -302,7 +302,7 @@ On Error GoTo ErrHandler
        
         'Store position
         .X = srcX
-        .Y = srcY
+        .y = srcY
        
         'Get standard frequency
         .normalFq = .Buffer.GetFrequency()
@@ -332,7 +332,7 @@ Private Sub Update3DSound(ByVal bufferIndex As Long, ByVal deltaX As Integer, By
    
     With DSBuffers(bufferIndex)
         distanceXOld = .X - lastPosX
-        distanceYOld = .Y - lastPosY
+        distanceYOld = .y - lastPosY
        
         distanceXNew = distanceXOld + deltaX
         distanceYNew = distanceYOld + deltaY
@@ -362,7 +362,7 @@ End Sub
 ''
 ' Updates 3D sounds based on the movement of the listener.
  
-Public Sub MoveListener(ByVal X As Integer, ByVal Y As Integer)
+Public Sub MoveListener(ByVal X As Integer, ByVal y As Integer)
     Dim i As Long
     Dim deltaX As Integer
     Dim deltaY As Integer
@@ -370,12 +370,12 @@ Public Sub MoveListener(ByVal X As Integer, ByVal Y As Integer)
     If Not sEffectsActivated Then Exit Sub
    
     deltaX = X - lastPosX
-    deltaY = Y - lastPosY
+    deltaY = y - lastPosY
    
     For i = 1 To NumSoundBuffers
         If Not DSBuffers(i).Buffer Is Nothing Then
             If DSBuffers(i).Buffer.GetStatus And DSBSTATUS_PLAYING Then
-                If DSBuffers(i).X <> 0 And DSBuffers(i).Y <> 0 Then
+                If DSBuffers(i).X <> 0 And DSBuffers(i).y <> 0 Then
                     Call Update3DSound(i, deltaX, deltaY)
                 End If
             End If
@@ -383,7 +383,7 @@ Public Sub MoveListener(ByVal X As Integer, ByVal Y As Integer)
     Next i
    
     lastPosX = X
-    lastPosY = Y
+    lastPosY = y
 End Sub
  
 ''
@@ -397,7 +397,7 @@ On Error GoTo ErrHandler
    
     FileName = UCase$(FileName)
    
-    If Not FileExist(SoundPath & FileName, vbArchive) Then _
+    If Not General_File_Exist(SoundPath & FileName, vbArchive) Then _
         Exit Function
    
     'Check if the buffer is in memory and not playing
@@ -570,7 +570,7 @@ End Function
  
 Private Function LoadMidi(ByVal file As String) As Boolean
 On Error GoTo ErrHandler
-    If Not FileExist(MusicPath & file, vbArchive) Then Exit Function
+    If Not General_File_Exist(MusicPath & file, vbArchive) Then Exit Function
    
     Call StopMidi
    

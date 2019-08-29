@@ -12,7 +12,7 @@ Begin VB.Form frmAutoGuardarMapa
    ScaleHeight     =   2205
    ScaleWidth      =   5070
    StartUpPosition =   2  'CenterScreen
-   Begin GSZAOWorldEditor.lvButtons_H cmdAceptar 
+   Begin WorldEditor.lvButtons_H cmdAceptar 
       Height          =   495
       Left            =   120
       TabIndex        =   4
@@ -37,7 +37,7 @@ Begin VB.Form frmAutoGuardarMapa
       Value           =   0   'False
       cBack           =   12648384
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
+   Begin WorldEditor.lvButtons_H cmdCerrar 
       Height          =   495
       Left            =   3480
       TabIndex        =   3
@@ -81,7 +81,7 @@ Begin VB.Form frmAutoGuardarMapa
       Top             =   840
       Width           =   1215
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdDetener 
+   Begin WorldEditor.lvButtons_H cmdDetener 
       Height          =   495
       Left            =   1920
       TabIndex        =   5

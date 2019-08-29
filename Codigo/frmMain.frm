@@ -1,25 +1,147 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "Comdlg32.ocx"
 Begin VB.Form frmMain 
    Appearance      =   0  'Flat
    BackColor       =   &H00000000&
    BorderStyle     =   1  'Fixed Single
    Caption         =   "WorldEditor"
-   ClientHeight    =   10800
+   ClientHeight    =   10740
    ClientLeft      =   390
    ClientTop       =   840
-   ClientWidth     =   20310
+   ClientWidth     =   15270
    Icon            =   "frmMain.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   MaxButton       =   0   'False
-   ScaleHeight     =   720
+   ScaleHeight     =   716
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   1354
+   ScaleWidth      =   1018
    StartUpPosition =   1  'CenterOwner
    Visible         =   0   'False
    WindowState     =   2  'Maximized
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin VB.CommandButton Command1 
+      Caption         =   "Montaña"
+      Height          =   1215
+      Left            =   15000
+      TabIndex        =   118
+      Top             =   0
+      Width           =   255
+   End
+   Begin VB.PictureBox picRadar 
+      BackColor       =   &H00400040&
+      BorderStyle     =   0  'None
+      Height          =   1590
+      Left            =   120
+      ScaleHeight     =   106
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   107
+      TabIndex        =   115
+      Top             =   120
+      Width           =   1605
+      Begin VB.Shape Shape1 
+         BorderColor     =   &H00000000&
+         Height          =   1365
+         Left            =   120
+         Top             =   105
+         Width           =   1365
+      End
+      Begin VB.Shape ApuntadorRadar 
+         BackColor       =   &H00FFFFFF&
+         BorderColor     =   &H00FFFFFF&
+         BorderStyle     =   6  'Inside Solid
+         DrawMode        =   6  'Mask Pen Not
+         FillColor       =   &H00FFFFFF&
+         Height          =   330
+         Left            =   600
+         Top             =   600
+         Width           =   375
+      End
+      Begin VB.Label POSX 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "X: ?? - Y:??"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   150
+         Left            =   120
+         TabIndex        =   117
+         Top             =   1440
+         Width           =   675
+      End
+      Begin VB.Label FPS 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "FPS: ??"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00C0FFFF&
+         Height          =   150
+         Left            =   1065
+         TabIndex        =   116
+         Top             =   1440
+         Width           =   450
+      End
+   End
+   Begin WorldEditor.lvButtons_H SelectPanel 
+      Height          =   1035
+      Index           =   8
+      Left            =   13560
+      TabIndex        =   99
+      Top             =   30
+      Width           =   1485
+      _ExtentX        =   2619
+      _ExtentY        =   1826
+      Caption         =   "Particula"
+      CapAlign        =   2
+      BackStyle       =   2
+      Shape           =   1
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      LockHover       =   1
+      cGradient       =   8421631
+      Mode            =   1
+      Value           =   0   'False
+      CustomClick     =   1
+      ImgAlign        =   5
+      Image           =   "frmMain.frx":628A
+      ImgSize         =   24
+      cBack           =   -2147483633
+   End
+   Begin VB.PictureBox MainViewPic 
+      AutoRedraw      =   -1  'True
+      BorderStyle     =   0  'None
+      Height          =   9165
+      Left            =   4560
+      ScaleHeight     =   611
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   700
+      TabIndex        =   97
+      Top             =   1425
+      Width           =   10500
+   End
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   6
       Left            =   11160
@@ -47,437 +169,11 @@ Begin VB.Form frmMain
       Value           =   0   'False
       CustomClick     =   1
       ImgAlign        =   5
-      Image           =   "frmMain.frx":628A
-      ImgSize         =   24
-      cBack           =   -2147483633
-   End
-   Begin VB.Frame fQuickSup 
-      BackColor       =   &H00000000&
-      Caption         =   "QuickSuperficie"
-      ForeColor       =   &H00FFFFFF&
-      Height          =   3000
-      Left            =   13320
-      TabIndex        =   121
-      Top             =   0
-      Width           =   6855
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   0
-         Left            =   240
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   123
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   26
-         Left            =   6000
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   149
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   25
-         Left            =   5280
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   148
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   24
-         Left            =   4560
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   147
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   23
-         Left            =   3840
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   146
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   22
-         Left            =   3120
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   145
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   21
-         Left            =   2400
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   144
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   20
-         Left            =   1680
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   143
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   19
-         Left            =   960
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   142
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   18
-         Left            =   240
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   141
-         Top             =   1800
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   17
-         Left            =   6000
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   140
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   16
-         Left            =   5280
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   139
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   15
-         Left            =   4560
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   138
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   14
-         Left            =   3840
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   137
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   13
-         Left            =   3120
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   136
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   12
-         Left            =   2400
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   135
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   11
-         Left            =   1680
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   134
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   10
-         Left            =   960
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   133
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   9
-         Left            =   240
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   132
-         Top             =   1080
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   8
-         Left            =   6000
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   131
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   7
-         Left            =   5280
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   130
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   6
-         Left            =   4560
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   129
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   5
-         Left            =   3840
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   128
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   4
-         Left            =   3120
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   127
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   3
-         Left            =   2400
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   126
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   2
-         Left            =   1680
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   125
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.PictureBox QuickSup 
-         BackColor       =   &H00000000&
-         Height          =   615
-         Index           =   1
-         Left            =   960
-         ScaleHeight     =   555
-         ScaleWidth      =   555
-         TabIndex        =   124
-         Top             =   360
-         Width           =   615
-      End
-      Begin GSZAOWorldEditor.lvButtons_H cAddQuickSup 
-         Height          =   360
-         Left            =   4680
-         TabIndex        =   122
-         Top             =   2520
-         Width           =   1905
-         _ExtentX        =   3360
-         _ExtentY        =   635
-         Caption         =   "&Añadir Superficie Actual"
-         CapAlign        =   2
-         BackStyle       =   2
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         cGradient       =   0
-         Mode            =   1
-         Value           =   0   'False
-         cBack           =   -2147483633
-      End
-   End
-   Begin VB.PictureBox picTemp 
-      BackColor       =   &H00000000&
-      FillColor       =   &H00C0C0C0&
-      Height          =   1860
-      Left            =   4680
-      ScaleHeight     =   1800
-      ScaleWidth      =   2025
-      TabIndex        =   120
-      Top             =   8640
-      Visible         =   0   'False
-      Width           =   2085
-   End
-   Begin VB.PictureBox pMiniMap 
-      Appearance      =   0  'Flat
-      AutoRedraw      =   -1  'True
-      BackColor       =   &H00000000&
-      ForeColor       =   &H80000008&
-      Height          =   1500
-      Left            =   120
-      ScaleHeight     =   100
-      ScaleMode       =   0  'User
-      ScaleWidth      =   100
-      TabIndex        =   117
-      Top             =   120
-      Width           =   1500
-      Begin VB.Shape ApuntadorRadar 
-         BackColor       =   &H00FFFFFF&
-         BorderColor     =   &H00FFFFFF&
-         BorderStyle     =   6  'Inside Solid
-         DrawMode        =   6  'Mask Pen Not
-         FillColor       =   &H00FFFFFF&
-         Height          =   315
-         Left            =   480
-         Top             =   600
-         Width           =   375
-      End
-   End
-   Begin VB.CommandButton Command1 
-      Caption         =   "Montaña"
-      Enabled         =   0   'False
-      Height          =   1215
-      Left            =   19920
-      TabIndex        =   115
-      Top             =   9390
-      Visible         =   0   'False
-      Width           =   255
-   End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
-      Height          =   1035
-      Index           =   8
-      Left            =   18480
-      TabIndex        =   99
-      Top             =   9420
-      Visible         =   0   'False
-      Width           =   1485
-      _ExtentX        =   2619
-      _ExtentY        =   1826
-      Caption         =   "Particula"
-      CapAlign        =   2
-      BackStyle       =   2
-      Shape           =   1
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      LockHover       =   1
-      cGradient       =   8421631
-      Mode            =   1
-      Value           =   0   'False
-      CustomClick     =   1
-      ImgAlign        =   5
       Image           =   "frmMain.frx":6850
       ImgSize         =   24
-      Enabled         =   0   'False
       cBack           =   -2147483633
    End
-   Begin VB.PictureBox MainViewPic 
-      AutoRedraw      =   -1  'True
-      BackColor       =   &H000000FF&
-      BorderStyle     =   0  'None
-      Height          =   9165
-      Left            =   4560
-      ScaleHeight     =   611
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   700
-      TabIndex        =   97
-      Top             =   1425
-      Width           =   10500
-   End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   5
       Left            =   9840
@@ -509,7 +205,7 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   3
       Left            =   8640
@@ -541,7 +237,7 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   2
       Left            =   7200
@@ -573,7 +269,7 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   1
       Left            =   5760
@@ -582,7 +278,7 @@ Begin VB.Form frmMain
       Width           =   2565
       _ExtentX        =   4524
       _ExtentY        =   1826
-      Caption         =   "&Traslados (F6)"
+      Caption         =   "&Translados (F6)"
       CapAlign        =   2
       BackStyle       =   2
       Shape           =   3
@@ -604,7 +300,7 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   0
       Left            =   5160
@@ -636,7 +332,7 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdQuitarFunciones 
+   Begin WorldEditor.lvButtons_H cmdQuitarFunciones 
       Height          =   435
       Left            =   1800
       TabIndex        =   41
@@ -707,118 +403,14 @@ Begin VB.Form frmMain
       TabIndex        =   8
       Top             =   1800
       Width           =   4395
-      Begin VB.TextBox txtDesc 
-         Alignment       =   2  'Center
-         Appearance      =   0  'Flat
-         BackColor       =   &H00404040&
-         BorderStyle     =   0  'None
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FFFFFF&
-         Height          =   675
-         Left            =   120
-         Locked          =   -1  'True
-         MultiLine       =   -1  'True
-         ScrollBars      =   2  'Vertical
-         TabIndex        =   150
-         TabStop         =   0   'False
-         Top             =   2760
-         Visible         =   0   'False
-         Width           =   4080
-      End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarEnTodasLasCapas 
-         Height          =   375
-         Left            =   120
-         TabIndex        =   74
-         Top             =   3840
-         Visible         =   0   'False
-         Width           =   2175
-         _ExtentX        =   3836
-         _ExtentY        =   661
-         Caption         =   "Quitar en &Capas 2 y 3"
-         CapAlign        =   2
-         BackStyle       =   2
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         cGradient       =   0
-         Mode            =   1
-         Value           =   0   'False
-         cBack           =   -2147483633
-      End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarEnEstaCapa 
-         Height          =   375
-         Left            =   120
-         TabIndex        =   75
-         Top             =   3480
-         Visible         =   0   'False
-         Width           =   2175
-         _ExtentX        =   3836
-         _ExtentY        =   661
-         Caption         =   "&Quitar en esta Capa"
-         CapAlign        =   2
-         BackStyle       =   2
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         cGradient       =   0
-         Mode            =   1
-         Value           =   0   'False
-         cBack           =   -2147483633
-      End
-      Begin GSZAOWorldEditor.lvButtons_H cSeleccionarSuperficie 
-         Height          =   735
-         Left            =   2400
-         TabIndex        =   76
-         Top             =   3480
-         Visible         =   0   'False
-         Width           =   1815
-         _ExtentX        =   3201
-         _ExtentY        =   1296
-         Caption         =   "&Insertar Superficie"
-         CapAlign        =   2
-         BackStyle       =   2
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         cGradient       =   0
-         Mode            =   1
-         Value           =   0   'False
-         cBack           =   -2147483633
-      End
       Begin VB.Frame cParticulas 
          BackColor       =   &H80000007&
          Caption         =   "Particles"
          ForeColor       =   &H80000009&
          Height          =   1785
-         Left            =   3840
+         Left            =   360
          TabIndex        =   110
-         Top             =   1560
+         Top             =   360
          Visible         =   0   'False
          Width           =   1860
          Begin VB.TextBox txtParticula 
@@ -831,7 +423,7 @@ Begin VB.Form frmMain
             Top             =   255
             Width           =   555
          End
-         Begin GSZAOWorldEditor.lvButtons_H cInsertarParticula 
+         Begin WorldEditor.lvButtons_H cInsertarParticula 
             Height          =   405
             Left            =   75
             TabIndex        =   112
@@ -856,7 +448,7 @@ Begin VB.Form frmMain
             Value           =   0   'False
             cBack           =   -2147483633
          End
-         Begin GSZAOWorldEditor.lvButtons_H cQuitarParticula 
+         Begin WorldEditor.lvButtons_H cQuitarParticula 
             Height          =   390
             Left            =   75
             TabIndex        =   113
@@ -896,18 +488,18 @@ Begin VB.Form frmMain
          BackColor       =   &H80000012&
          Caption         =   "Luces"
          ForeColor       =   &H80000009&
-         Height          =   3165
-         Left            =   3840
+         Height          =   3405
+         Left            =   165
          TabIndex        =   100
-         Top             =   600
+         Top             =   135
          Visible         =   0   'False
-         Width           =   4095
+         Width           =   3975
          Begin VB.ComboBox Combo1 
             Height          =   315
             ItemData        =   "frmMain.frx":20C96
             Left            =   2400
             List            =   "frmMain.frx":20CA6
-            TabIndex        =   116
+            TabIndex        =   119
             Text            =   "Mañana"
             Top             =   600
             Width           =   1335
@@ -927,7 +519,7 @@ Begin VB.Form frmMain
             Caption         =   "RGB"
             ForeColor       =   &H00FFFFFF&
             Height          =   690
-            Left            =   480
+            Left            =   135
             TabIndex        =   103
             Top             =   315
             Width           =   1680
@@ -1018,7 +610,7 @@ Begin VB.Form frmMain
                Width           =   1035
             End
          End
-         Begin GSZAOWorldEditor.lvButtons_H cInsertarLuz 
+         Begin WorldEditor.lvButtons_H cInsertarLuz 
             Height          =   600
             Left            =   180
             TabIndex        =   107
@@ -1043,7 +635,7 @@ Begin VB.Form frmMain
             Value           =   0   'False
             cBack           =   -2147483633
          End
-         Begin GSZAOWorldEditor.lvButtons_H cQuitarLuz 
+         Begin WorldEditor.lvButtons_H cQuitarLuz 
             Height          =   600
             Left            =   180
             TabIndex        =   108
@@ -1129,7 +721,7 @@ Begin VB.Form frmMain
          Visible         =   0   'False
          Width           =   2900
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarTras 
+      Begin WorldEditor.lvButtons_H cInsertarTrans 
          Height          =   375
          Left            =   240
          TabIndex        =   87
@@ -1138,7 +730,7 @@ Begin VB.Form frmMain
          Width           =   3855
          _ExtentX        =   6800
          _ExtentY        =   661
-         Caption         =   "&Insertar Traslado"
+         Caption         =   "&Insertar Translado"
          CapAlign        =   2
          BackStyle       =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1155,7 +747,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarTrasOBJ 
+      Begin WorldEditor.lvButtons_H cInsertarTransOBJ 
          Height          =   375
          Left            =   240
          TabIndex        =   88
@@ -1181,7 +773,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cUnionManual 
+      Begin WorldEditor.lvButtons_H cUnionManual 
          Height          =   375
          Left            =   240
          TabIndex        =   89
@@ -1207,7 +799,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cUnionAuto 
+      Begin WorldEditor.lvButtons_H cUnionAuto 
          Height          =   375
          Left            =   240
          TabIndex        =   90
@@ -1233,7 +825,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarTras 
+      Begin WorldEditor.lvButtons_H cQuitarTrans 
          Height          =   375
          Left            =   240
          TabIndex        =   91
@@ -1336,7 +928,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H80000014&
-         Height          =   2370
+         Height          =   2580
          Index           =   0
          ItemData        =   "frmMain.frx":20CE5
          Left            =   120
@@ -1347,6 +939,84 @@ Begin VB.Form frmMain
          Top             =   120
          Visible         =   0   'False
          Width           =   4095
+      End
+      Begin WorldEditor.lvButtons_H cQuitarEnTodasLasCapas 
+         Height          =   375
+         Left            =   120
+         TabIndex        =   74
+         Top             =   3840
+         Visible         =   0   'False
+         Width           =   2175
+         _ExtentX        =   3836
+         _ExtentY        =   661
+         Caption         =   "Quitar en &Capas 2 y 3"
+         CapAlign        =   2
+         BackStyle       =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         cGradient       =   0
+         Mode            =   1
+         Value           =   0   'False
+         cBack           =   -2147483633
+      End
+      Begin WorldEditor.lvButtons_H cQuitarEnEstaCapa 
+         Height          =   375
+         Left            =   120
+         TabIndex        =   75
+         Top             =   3480
+         Visible         =   0   'False
+         Width           =   2175
+         _ExtentX        =   3836
+         _ExtentY        =   661
+         Caption         =   "&Quitar en esta Capa"
+         CapAlign        =   2
+         BackStyle       =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         cGradient       =   0
+         Mode            =   1
+         Value           =   0   'False
+         cBack           =   -2147483633
+      End
+      Begin WorldEditor.lvButtons_H cSeleccionarSuperficie 
+         Height          =   735
+         Left            =   2400
+         TabIndex        =   76
+         Top             =   3480
+         Visible         =   0   'False
+         Width           =   1815
+         _ExtentX        =   3201
+         _ExtentY        =   1296
+         Caption         =   "&Insertar Superficie"
+         CapAlign        =   2
+         BackStyle       =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         cGradient       =   0
+         Mode            =   1
+         Value           =   0   'False
+         cBack           =   -2147483633
       End
       Begin VB.ComboBox cNumFunc 
          Appearance      =   0  'Flat
@@ -1542,7 +1212,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H80000014&
-         Height          =   2580
+         Height          =   3210
          Index           =   4
          ItemData        =   "frmMain.frx":20D01
          Left            =   120
@@ -1607,7 +1277,7 @@ Begin VB.Form frmMain
          Top             =   0
          Width           =   0
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarTrigger 
+      Begin WorldEditor.lvButtons_H cQuitarTrigger 
          Height          =   375
          Left            =   120
          TabIndex        =   51
@@ -1633,7 +1303,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cVerTriggers 
+      Begin WorldEditor.lvButtons_H cVerTriggers 
          Height          =   375
          Left            =   120
          TabIndex        =   52
@@ -1659,7 +1329,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarTrigger 
+      Begin WorldEditor.lvButtons_H cInsertarTrigger 
          Height          =   735
          Left            =   2400
          TabIndex        =   53
@@ -1685,7 +1355,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cAgregarFuncalAzar 
+      Begin WorldEditor.lvButtons_H cAgregarFuncalAzar 
          Height          =   375
          Index           =   0
          Left            =   120
@@ -1712,7 +1382,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarFunc 
+      Begin WorldEditor.lvButtons_H cQuitarFunc 
          Height          =   375
          Index           =   0
          Left            =   120
@@ -1739,7 +1409,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarFunc 
+      Begin WorldEditor.lvButtons_H cInsertarFunc 
          Height          =   735
          Index           =   0
          Left            =   2400
@@ -1766,7 +1436,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cVerBloqueos 
+      Begin WorldEditor.lvButtons_H cVerBloqueos 
          Height          =   495
          Left            =   120
          TabIndex        =   62
@@ -1792,7 +1462,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarBloqueo 
+      Begin WorldEditor.lvButtons_H cInsertarBloqueo 
          Height          =   735
          Left            =   120
          TabIndex        =   63
@@ -1818,7 +1488,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarBloqueo 
+      Begin WorldEditor.lvButtons_H cQuitarBloqueo 
          Height          =   735
          Left            =   120
          TabIndex        =   64
@@ -1844,7 +1514,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cAgregarFuncalAzar 
+      Begin WorldEditor.lvButtons_H cAgregarFuncalAzar 
          Height          =   375
          Index           =   2
          Left            =   120
@@ -1871,7 +1541,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarFunc 
+      Begin WorldEditor.lvButtons_H cQuitarFunc 
          Height          =   375
          Index           =   2
          Left            =   120
@@ -1898,7 +1568,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarFunc 
+      Begin WorldEditor.lvButtons_H cInsertarFunc 
          Height          =   735
          Index           =   2
          Left            =   2400
@@ -1925,7 +1595,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cInsertarFunc 
+      Begin WorldEditor.lvButtons_H cInsertarFunc 
          Height          =   735
          Index           =   1
          Left            =   2400
@@ -1952,7 +1622,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cQuitarFunc 
+      Begin WorldEditor.lvButtons_H cQuitarFunc 
          Height          =   375
          Index           =   1
          Left            =   120
@@ -1979,7 +1649,7 @@ Begin VB.Form frmMain
          Value           =   0   'False
          cBack           =   -2147483633
       End
-      Begin GSZAOWorldEditor.lvButtons_H cAgregarFuncalAzar 
+      Begin WorldEditor.lvButtons_H cAgregarFuncalAzar 
          Height          =   375
          Index           =   1
          Left            =   120
@@ -2468,7 +2138,7 @@ Begin VB.Form frmMain
       TabIndex        =   2
       Top             =   30
       Width           =   3225
-      Begin GSZAOWorldEditor.lvButtons_H cmdInformacionDelMapa 
+      Begin WorldEditor.lvButtons_H cmdInformacionDelMapa 
          Height          =   375
          Left            =   100
          TabIndex        =   95
@@ -2618,7 +2288,7 @@ Begin VB.Form frmMain
          Width           =   3015
       End
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   675
       Index           =   4
       Left            =   9840
@@ -2651,13 +2321,12 @@ Begin VB.Form frmMain
       ImgSize         =   24
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H SelectPanel 
+   Begin WorldEditor.lvButtons_H SelectPanel 
       Height          =   1035
       Index           =   7
-      Left            =   17160
+      Left            =   12240
       TabIndex        =   98
-      Top             =   9420
-      Visible         =   0   'False
+      Top             =   30
       Width           =   2415
       _ExtentX        =   4260
       _ExtentY        =   1826
@@ -2682,49 +2351,7 @@ Begin VB.Form frmMain
       ImgAlign        =   5
       Image           =   "frmMain.frx":210C5
       ImgSize         =   24
-      Enabled         =   0   'False
       cBack           =   -2147483633
-   End
-   Begin VB.Label FPS 
-      Alignment       =   1  'Right Justify
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "FPS: ??"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   6
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C0FFFF&
-      Height          =   150
-      Left            =   1065
-      TabIndex        =   119
-      Top             =   1620
-      Width           =   450
-   End
-   Begin VB.Label POSX 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "X: ?? - Y:??"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   6
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   150
-      Left            =   120
-      TabIndex        =   118
-      Top             =   1620
-      Width           =   675
    End
    Begin VB.Line Separacion1 
       BorderColor     =   &H00FFFFFF&
@@ -3069,7 +2696,6 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuGuardarcomoJPG 
          Caption         =   "Guardar Render en &JPG"
-         Enabled         =   0   'False
       End
       Begin VB.Menu mnuArchivoLine7 
          Caption         =   "-"
@@ -3130,8 +2756,8 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuInsertar 
          Caption         =   "&Insertar"
-         Begin VB.Menu mnuInsertarTrasladosAdyasentes 
-            Caption         =   "&Traslados a Mapas Adyasentes"
+         Begin VB.Menu mnuInsertarTransladosAdyasentes 
+            Caption         =   "&Translados a Mapas Adyasentes"
          End
          Begin VB.Menu mnuInsertarSuperficieAlAzar 
             Caption         =   "Superficie al &Azar"
@@ -3148,14 +2774,11 @@ Begin VB.Form frmMain
          Begin VB.Menu mnuBloquearMapa 
             Caption         =   "Bloqueo en &Todo el Mapa"
          End
-         Begin VB.Menu mnuBloquearSinCapas 
-            Caption         =   "Bloqueo en todas las regiones &Sin Capa del Mapa"
-         End
       End
       Begin VB.Menu mnuQuitar 
          Caption         =   "&Quitar"
-         Begin VB.Menu mnuQuitarTraslados 
-            Caption         =   "Todos los &Traslados"
+         Begin VB.Menu mnuQuitarTranslados 
+            Caption         =   "Todos los &Translados"
          End
          Begin VB.Menu mnuQuitarBloqueos 
             Caption         =   "Todos los &Bloqueos"
@@ -3211,8 +2834,8 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuAutoCapturarSuperficie 
          Caption         =   "Auto-C&apturar información de la Superficie"
       End
-      Begin VB.Menu mnuAutoCapturarTraslados 
-         Caption         =   "Auto-&Capturar información de los Traslados"
+      Begin VB.Menu mnuAutoCapturarTranslados 
+         Caption         =   "Auto-&Capturar información de los Translados"
          Checked         =   -1  'True
       End
       Begin VB.Menu mnuAutoGuardarMapas 
@@ -3223,28 +2846,24 @@ Begin VB.Form frmMain
       Caption         =   "&Ver"
       Begin VB.Menu mnuCapas 
          Caption         =   "...&Capas"
-         Begin VB.Menu mnuVerCapa 
-            Caption         =   "Capa &1 (superficies, etc)"
+         Begin VB.Menu mnuVerCapa1 
+            Caption         =   "Capa &1 (Piso)"
             Checked         =   -1  'True
-            Index           =   1
          End
-         Begin VB.Menu mnuVerCapa 
+         Begin VB.Menu mnuVerCapa2 
             Caption         =   "Capa &2 (costas, etc)"
             Checked         =   -1  'True
-            Index           =   2
          End
-         Begin VB.Menu mnuVerCapa 
+         Begin VB.Menu mnuVerCapa3 
             Caption         =   "Capa &3 (arboles, etc)"
             Checked         =   -1  'True
-            Index           =   3
          End
-         Begin VB.Menu mnuVerCapa 
+         Begin VB.Menu mnuVerCapa4 
             Caption         =   "Capa &4 (techos, etc)"
-            Index           =   4
          End
       End
-      Begin VB.Menu mnuVerTraslados 
-         Caption         =   "...&Traslados"
+      Begin VB.Menu mnuVerTranslados 
+         Caption         =   "...&Translados"
       End
       Begin VB.Menu mnuVerBloqueos 
          Caption         =   "...&Bloqueos"
@@ -3275,8 +2894,8 @@ Begin VB.Form frmMain
          Caption         =   "&Superficie"
          Shortcut        =   {F5}
       End
-      Begin VB.Menu mnuTraslados 
-         Caption         =   "&Traslados"
+      Begin VB.Menu mnuTranslados 
+         Caption         =   "&Translados"
          Shortcut        =   {F6}
       End
       Begin VB.Menu mnuBloquear 
@@ -3307,8 +2926,8 @@ Begin VB.Form frmMain
          Caption         =   "Ocultar Superficie"
          Shortcut        =   +{F5}
       End
-      Begin VB.Menu mnuQTraslados 
-         Caption         =   "Ocultar Traslados"
+      Begin VB.Menu mnuQTranslados 
+         Caption         =   "Ocultar Translados"
          Shortcut        =   +{F6}
       End
       Begin VB.Menu mnuQBloquear 
@@ -3365,9 +2984,6 @@ Begin VB.Form frmMain
             Caption         =   "&Graficos"
          End
       End
-      Begin VB.Menu mnuClickExt 
-         Caption         =   "Información de &Click extendida"
-      End
       Begin VB.Menu mnuModoCaminata 
          Caption         =   "Modalidad &Caminata"
       End
@@ -3404,8 +3020,8 @@ Begin VB.Form frmMain
    Begin VB.Menu mnuObjSc 
       Caption         =   "mnuObjSc"
       Visible         =   0   'False
-      Begin VB.Menu mnuConfigObjTras 
-         Caption         =   "&Utilizar como Objeto de Traslados"
+      Begin VB.Menu mnuConfigObjTrans 
+         Caption         =   "&Utilizar como Objeto de Translados"
       End
    End
 End
@@ -3435,7 +3051,7 @@ Attribute VB_Exposed = False
 '**************************************************************
 Option Explicit
 
-Private Sub PonerAlAzar(ByVal N As Integer, t As Byte)
+Private Sub PonerAlAzar(ByVal n As Integer, T As Byte)
 '*************************************************
 'Author: Unkwown
 'Last modified: 20/05/06 by GS
@@ -3446,19 +3062,19 @@ Dim X, Y, i
 Dim Head As Integer
 Dim Body As Integer
 Dim Heading As Byte
-i = N
+i = n
 
-modEdicion.Deshacer_Add "Aplicar " & IIf(t = 0, "Objetos", "NPCs") & " al Azar" ' Hago deshacer
+modEdicion.Deshacer_Add "Aplicar " & IIf(T = 0, "Objetos", "NPCs") & " al Azar" ' Hago deshacer
 
 Do While i > 0
     X = CInt(General_Random_Number(XMinMapSize, XMaxMapSize - 1))
     Y = CInt(General_Random_Number(YMinMapSize, YMaxMapSize - 1))
     
-    Select Case t
+    Select Case T
         Case 0
             If MapData(X, Y).OBJInfo.objindex = 0 Then
                   i = i - 1
-                  If cInsertarBloqueo.Value = True Then
+                  If cInsertarBloqueo.value = True Then
                     MapData(X, Y).Blocked = 1
                   Else
                     MapData(X, Y).Blocked = 0
@@ -3477,8 +3093,8 @@ Do While i > 0
         Case 1
            If MapData(X, Y).Blocked = 0 Then
                   i = i - 1
-                  If cNumFunc(t - 1).Text > 0 Then
-                        NPCIndex = cNumFunc(t - 1).Text
+                  If cNumFunc(T - 1).Text > 0 Then
+                        NPCIndex = cNumFunc(T - 1).Text
                         Body = NpcData(NPCIndex).Body
                         Head = NpcData(NPCIndex).Head
                         Heading = NpcData(NPCIndex).Heading
@@ -3489,8 +3105,8 @@ Do While i > 0
         Case 2
            If MapData(X, Y).Blocked = 0 Then
                   i = i - 1
-                  If cNumFunc(t - 1).Text >= 0 Then
-                        NPCIndex = cNumFunc(t - 1).Text
+                  If cNumFunc(T - 1).Text >= 0 Then
+                        NPCIndex = cNumFunc(T - 1).Text
                         Body = NpcData(NPCIndex).Body
                         Head = NpcData(NPCIndex).Head
                         Heading = NpcData(NPCIndex).Heading
@@ -3503,74 +3119,32 @@ Do While i > 0
 Loop
 End Sub
 
-Private Sub cAddQuickSup_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-On Error GoTo Fallo
-
-If LenB(cGrh.Text) <> 0 Then
-    If cGrh.Text <= UBound(Grh_list) And cGrh.Text <> 0 Then
-        Dim loopc As Integer
-        ' Agregar al comienzo...
-        For loopc = 26 To 1 Step -1
-            QuickSup(loopc).ToolTipText = QuickSup(loopc - 1).ToolTipText
-            QuickSup(loopc).Tag = QuickSup(loopc - 1).Tag
-            QuickSup(loopc).Cls
-            QuickSup(loopc).Picture = QuickSup(loopc - 1).Picture
-        Next
-        QuickSup(0).Tag = cGrh.Text
-        QuickSup(0).ToolTipText = CInt(Val(frmConfigSup.mLargo.Text)) & "-" & CInt(Val(frmConfigSup.mAncho.Text))
-        Call LoadQuickSurface(0)
-
-        ' Guardar configuración
-        For loopc = 0 To 26
-            WriteVar IniPath & WorldEditorQuickSup, "QUICKSUP", "Sup" & loopc, QuickSup(loopc).Tag & "|" & QuickSup(0).ToolTipText
-        Next
-    Else
-        MsgBox "Superficie invalida.", vbInformation + vbOKOnly
-    End If
-Else
-    MsgBox "Superficie invalida.", vbInformation + vbOKOnly
-End If
-
-  Exit Sub
-    
-Fallo:
-
-    MsgBox "cAddQuickSup_Click::Error " & Err.Number & " - " & Err.Description
-    Call LogError("cAddQuickSup_Click::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
-End Sub
-
-Private Sub cAgregarFuncalAzar_Click(Index As Integer)
+Private Sub cAgregarFuncalAzar_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-If IsNumeric(cCantFunc(Index).Text) = False Or cCantFunc(Index).Text > 200 Then
+If IsNumeric(cCantFunc(index).Text) = False Or cCantFunc(index).Text > 200 Then
     MsgBox "El Valor de Cantidad introducido no es soportado!" & vbCrLf & "El valor maximo es 200.", vbCritical
     Exit Sub
 End If
-cAgregarFuncalAzar(Index).Enabled = False
-Call PonerAlAzar(CInt(cCantFunc(Index).Text), 1 + (IIf(Index = 2, -1, Index)))
-cAgregarFuncalAzar(Index).Enabled = True
+cAgregarFuncalAzar(index).Enabled = False
+Call PonerAlAzar(CInt(cCantFunc(index).Text), 1 + (IIf(index = 2, -1, index)))
+cAgregarFuncalAzar(index).Enabled = True
 End Sub
 
-Private Sub cCantFunc_Change(Index As Integer)
+Private Sub cCantFunc_Change(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-    If Val(cCantFunc(Index)) < 1 Then
-      cCantFunc(Index).Text = 1
+    If Val(cCantFunc(index)) < 1 Then
+      cCantFunc(index).Text = 1
     End If
-    If Val(cCantFunc(Index)) > 10000 Then
-      cCantFunc(Index).Text = 10000
+    If Val(cCantFunc(index)) > 10000 Then
+      cCantFunc(index).Text = 10000
     End If
 End Sub
 
@@ -3596,7 +3170,7 @@ Private Sub cCapas_KeyPress(KeyAscii As Integer)
 If IsNumeric(Chr(KeyAscii)) = False Then KeyAscii = 0
 End Sub
 
-Private Sub cFiltro_GotFocus(Index As Integer)
+Private Sub cFiltro_GotFocus(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -3604,17 +3178,17 @@ Private Sub cFiltro_GotFocus(Index As Integer)
 HotKeysAllow = False
 End Sub
 
-Private Sub cFiltro_KeyPress(Index As Integer, KeyAscii As Integer)
+Private Sub cFiltro_KeyPress(index As Integer, KeyAscii As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 If KeyAscii = 13 Then
-    Call Filtrar(Index)
+    Call Filtrar(index)
 End If
 End Sub
 
-Private Sub cFiltro_LostFocus(Index As Integer)
+Private Sub cFiltro_LostFocus(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -3627,7 +3201,8 @@ Private Sub cGrh_KeyPress(KeyAscii As Integer)
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-'On Error GoTo Fallo
+
+On Error GoTo Fallo
 If KeyAscii = 13 Then
     Call fPreviewGrh(cGrh.Text)
     If frmMain.cGrh.ListCount > 5 Then
@@ -3641,26 +3216,26 @@ Fallo:
 
 End Sub
 
-Private Sub cInsertarFunc_Click(Index As Integer)
+Private Sub cInsertarFunc_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cInsertarFunc(Index).Value = True Then
-    cQuitarFunc(Index).Enabled = False
-    cAgregarFuncalAzar(Index).Enabled = False
-    If Index <> 2 Then cCantFunc(Index).Enabled = False
-    Call modPaneles.EstSelectPanel((Index) + 3, True)
+If cInsertarFunc(index).value = True Then
+    cQuitarFunc(index).Enabled = False
+    cAgregarFuncalAzar(index).Enabled = False
+    If index <> 2 Then cCantFunc(index).Enabled = False
+    Call modPaneles.EstSelectPanel((index) + 3, True)
 Else
-    cQuitarFunc(Index).Enabled = True
-    cAgregarFuncalAzar(Index).Enabled = True
-    If Index <> 2 Then cCantFunc(Index).Enabled = True
-    Call modPaneles.EstSelectPanel((Index) + 3, False)
+    cQuitarFunc(index).Enabled = True
+    cAgregarFuncalAzar(index).Enabled = True
+    If index <> 2 Then cCantFunc(index).Enabled = True
+    Call modPaneles.EstSelectPanel((index) + 3, False)
 End If
 End Sub
 
 Private Sub cInsertarLuz_Click()
-    If cInsertarLuz.Value Then
+    If cInsertarLuz.value Then
         cQuitarLuz.Enabled = False
     Else
         cQuitarLuz.Enabled = True
@@ -3668,33 +3243,35 @@ Private Sub cInsertarLuz_Click()
 End Sub
 
 Private Sub cInsertarParticula_Click()
-    If cInsertarParticula.Value Then
+    If cInsertarParticula.value Then
         cQuitarParticula.Enabled = False
     Else
         cQuitarParticula.Enabled = True
     End If
 End Sub
 
-Private Sub cInsertarTras_Click()
+Private Sub cInsertarTrans_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 22/05/06
 '*************************************************
-If cInsertarTras.Value = True Then
-    cQuitarTras.Enabled = False
+If cInsertarTrans.value = True Then
+    cQuitarTrans.Enabled = False
     Call modPaneles.EstSelectPanel(1, True)
 Else
-    cQuitarTras.Enabled = True
+    cQuitarTrans.Enabled = True
     Call modPaneles.EstSelectPanel(1, False)
 End If
 End Sub
+
+
 
 Private Sub cInsertarTrigger_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cInsertarTrigger.Value = True Then
+If cInsertarTrigger.value = True Then
     cQuitarTrigger.Enabled = False
     Call modPaneles.EstSelectPanel(6, True)
 Else
@@ -3723,13 +3300,13 @@ End Sub
 Private Sub Combo1_Click()
     Select Case Combo1.List(Combo1.ListIndex)
         Case "Mañana"
-            Call Ambient.Set_Time(7, 0)
+            Call Meteo.Set_Time(7, 0)
         Case "Dia"
-            Call Ambient.Set_Time(12, 0)
+            Call Meteo.Set_Time(12, 0)
         Case "Tarde"
-            Call Ambient.Set_Time(18, 0)
+            Call Meteo.Set_Time(18, 0)
         Case "Noche"
-            Call Ambient.Set_Time(21, 0)
+            Call Meteo.Set_Time(21, 0)
     End Select
 End Sub
 
@@ -3738,7 +3315,7 @@ frmEngineTest.Show
 End Sub
 
 Private Sub cQuitarLuz_Click()
-    If cQuitarLuz.Value Then
+    If cQuitarLuz.value Then
         cInsertarLuz.Enabled = False
     Else
         cInsertarLuz.Enabled = True
@@ -3746,7 +3323,7 @@ Private Sub cQuitarLuz_Click()
 End Sub
 
 Private Sub cQuitarParticula_Click()
-    If cQuitarParticula.Value Then
+    If cQuitarParticula.value Then
         cInsertarParticula.Enabled = False
     Else
         cInsertarParticula.Enabled = True
@@ -3758,8 +3335,8 @@ Private Sub cUnionManual_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-cInsertarTras.Value = (cUnionManual.Value = True)
-Call cInsertarTras_Click
+cInsertarTrans.value = (cUnionManual.value = True)
+Call cInsertarTrans_Click
 End Sub
 
 Private Sub cverBloqueos_Click()
@@ -3767,7 +3344,7 @@ Private Sub cverBloqueos_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-mnuVerBloqueos.Checked = cVerBloqueos.Value
+mnuVerBloqueos.Checked = cVerBloqueos.value
 End Sub
 
 Private Sub cverTriggers_Click()
@@ -3775,10 +3352,10 @@ Private Sub cverTriggers_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-mnuVerTriggers.Checked = cVerTriggers.Value
+mnuVerTriggers.Checked = cVerTriggers.value
 End Sub
 
-Private Sub cNumFunc_KeyPress(Index As Integer, KeyAscii As Integer)
+Private Sub cNumFunc_KeyPress(index As Integer, KeyAscii As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -3787,13 +3364,13 @@ On Error Resume Next
 
 If KeyAscii = 13 Then
     Dim Cont As String
-    Cont = frmMain.cNumFunc(Index).Text
-    Call cNumFunc_LostFocus(Index)
-    If Cont <> frmMain.cNumFunc(Index).Text Then Exit Sub
-    If frmMain.cNumFunc(Index).ListCount > 5 Then
-        frmMain.cNumFunc(Index).RemoveItem 0
+    Cont = frmMain.cNumFunc(index).Text
+    Call cNumFunc_LostFocus(index)
+    If Cont <> frmMain.cNumFunc(index).Text Then Exit Sub
+    If frmMain.cNumFunc(index).ListCount > 5 Then
+        frmMain.cNumFunc(index).RemoveItem 0
     End If
-    frmMain.cNumFunc(Index).AddItem frmMain.cNumFunc(Index).Text
+    frmMain.cNumFunc(index).AddItem frmMain.cNumFunc(index).Text
     Exit Sub
 ElseIf KeyAscii = 8 Then
     
@@ -3804,34 +3381,34 @@ End If
 
 End Sub
 
-Private Sub cNumFunc_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
+Private Sub cNumFunc_KeyUp(index As Integer, KeyCode As Integer, Shift As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-If cNumFunc(Index).Text = vbNullString Then
-    frmMain.cNumFunc(Index).Text = IIf(Index = 1, 500, 1)
+If cNumFunc(index).Text = vbNullString Then
+    frmMain.cNumFunc(index).Text = IIf(index = 1, 500, 1)
 End If
 End Sub
 
-Private Sub cNumFunc_LostFocus(Index As Integer)
+Private Sub cNumFunc_LostFocus(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-    If Index = 0 Then
-        If frmMain.cNumFunc(Index).Text > 499 Or frmMain.cNumFunc(Index).Text < 1 Then
-            frmMain.cNumFunc(Index).Text = 1
+    If index = 0 Then
+        If frmMain.cNumFunc(index).Text > 499 Or frmMain.cNumFunc(index).Text < 1 Then
+            frmMain.cNumFunc(index).Text = 1
         End If
-    ElseIf Index = 1 Then
-        If frmMain.cNumFunc(Index).Text < 500 Or frmMain.cNumFunc(Index).Text > 32000 Then
-            frmMain.cNumFunc(Index).Text = 500
+    ElseIf index = 1 Then
+        If frmMain.cNumFunc(index).Text < 500 Or frmMain.cNumFunc(index).Text > 32000 Then
+            frmMain.cNumFunc(index).Text = 500
         End If
-    ElseIf Index = 2 Then
-        If frmMain.cNumFunc(Index).Text < 1 Or frmMain.cNumFunc(Index).Text > 32000 Then
-            frmMain.cNumFunc(Index).Text = 1
+    ElseIf index = 2 Then
+        If frmMain.cNumFunc(index).Text < 1 Or frmMain.cNumFunc(index).Text > 32000 Then
+            frmMain.cNumFunc(index).Text = 1
         End If
     End If
 End Sub
@@ -3842,7 +3419,7 @@ Private Sub cInsertarBloqueo_Click()
 'Last modified: 29/05/06
 '*************************************************
 cInsertarBloqueo.Tag = vbNullString
-If cInsertarBloqueo.Value = True Then
+If cInsertarBloqueo.value = True Then
     cQuitarBloqueo.Enabled = False
     Call modPaneles.EstSelectPanel(2, True)
 Else
@@ -3857,7 +3434,7 @@ Private Sub cQuitarBloqueo_Click()
 'Last modified: 20/05/06
 '*************************************************
 cInsertarBloqueo.Tag = vbNullString
-If cQuitarBloqueo.Value = True Then
+If cQuitarBloqueo.value = True Then
     cInsertarBloqueo.Enabled = False
     Call modPaneles.EstSelectPanel(2, True)
 Else
@@ -3871,7 +3448,7 @@ Private Sub cQuitarEnEstaCapa_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cQuitarEnEstaCapa.Value = True Then
+If cQuitarEnEstaCapa.value = True Then
     lListado(0).Enabled = False
     cFiltro(0).Enabled = False
     cGrh.Enabled = False
@@ -3893,7 +3470,7 @@ Private Sub cQuitarEnTodasLasCapas_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cQuitarEnTodasLasCapas.Value = True Then
+If cQuitarEnTodasLasCapas.value = True Then
     cCapas.Enabled = False
     lListado(0).Enabled = False
     cFiltro(0).Enabled = False
@@ -3913,44 +3490,44 @@ End If
 End Sub
 
 
-Private Sub cQuitarFunc_Click(Index As Integer)
+Private Sub cQuitarFunc_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cQuitarFunc(Index).Value = True Then
-    cInsertarFunc(Index).Enabled = False
-    cAgregarFuncalAzar(Index).Enabled = False
-    cCantFunc(Index).Enabled = False
-    cNumFunc(Index).Enabled = False
-    cFiltro((Index) + 1).Enabled = False
-    lListado((Index) + 1).Enabled = False
-    Call modPaneles.EstSelectPanel((Index) + 3, True)
+If cQuitarFunc(index).value = True Then
+    cInsertarFunc(index).Enabled = False
+    cAgregarFuncalAzar(index).Enabled = False
+    cCantFunc(index).Enabled = False
+    cNumFunc(index).Enabled = False
+    cFiltro((index) + 1).Enabled = False
+    lListado((index) + 1).Enabled = False
+    Call modPaneles.EstSelectPanel((index) + 3, True)
 Else
-    cInsertarFunc(Index).Enabled = True
-    cAgregarFuncalAzar(Index).Enabled = True
-    cCantFunc(Index).Enabled = True
-    cNumFunc(Index).Enabled = True
-    cFiltro((Index) + 1).Enabled = True
-    lListado((Index) + 1).Enabled = True
-    Call modPaneles.EstSelectPanel((Index) + 3, False)
+    cInsertarFunc(index).Enabled = True
+    cAgregarFuncalAzar(index).Enabled = True
+    cCantFunc(index).Enabled = True
+    cNumFunc(index).Enabled = True
+    cFiltro((index) + 1).Enabled = True
+    lListado((index) + 1).Enabled = True
+    Call modPaneles.EstSelectPanel((index) + 3, False)
 End If
 End Sub
 
-Private Sub cQuitarTras_Click()
+Private Sub cQuitarTrans_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cQuitarTras.Value = True Then
-    cInsertarTrasOBJ.Enabled = False
-    cInsertarTras.Enabled = False
+If cQuitarTrans.value = True Then
+    cInsertarTransOBJ.Enabled = False
+    cInsertarTrans.Enabled = False
     cUnionManual.Enabled = False
     cUnionAuto.Enabled = False
     tTMapa.Enabled = False
     tTX.Enabled = False
     tTY.Enabled = False
-    mnuInsertarTrasladosAdyasentes.Enabled = False
+    mnuInsertarTransladosAdyasentes.Enabled = False
     Call modPaneles.EstSelectPanel(1, True)
 Else
     tTMapa.Enabled = True
@@ -3958,9 +3535,9 @@ Else
     tTY.Enabled = True
     cUnionAuto.Enabled = True
     cUnionManual.Enabled = True
-    cInsertarTras.Enabled = True
-    cInsertarTrasOBJ.Enabled = True
-    mnuInsertarTrasladosAdyasentes.Enabled = True
+    cInsertarTrans.Enabled = True
+    cInsertarTransOBJ.Enabled = True
+    mnuInsertarTransladosAdyasentes.Enabled = True
     Call modPaneles.EstSelectPanel(1, False)
 End If
 End Sub
@@ -3970,7 +3547,7 @@ Private Sub cQuitarTrigger_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cQuitarTrigger.Value = True Then
+If cQuitarTrigger.value = True Then
     lListado(4).Enabled = False
     cInsertarTrigger.Enabled = False
     Call modPaneles.EstSelectPanel(6, True)
@@ -3986,7 +3563,7 @@ Private Sub cSeleccionarSuperficie_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If cSeleccionarSuperficie.Value = True Then
+If cSeleccionarSuperficie.value = True Then
     cQuitarEnTodasLasCapas.Enabled = False
     cQuitarEnEstaCapa.Enabled = False
     Call modPaneles.EstSelectPanel(0, True)
@@ -4014,22 +3591,6 @@ Me.SetFocus
 
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-fQuickSup.Height = 70
-End Sub
-
-Private Sub fQuickSup_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-fQuickSup.Height = 200
-End Sub
-
 Private Sub MainViewPic_DblClick()
 '*************************************************
 'Author: ^[GS]^
@@ -4053,25 +3614,25 @@ If HotKeysAllow = False Then Exit Sub
 
 Select Case UCase(Chr(KeyAscii))
     Case "S" ' Activa/Desactiva Insertar Superficie
-        cSeleccionarSuperficie.Value = (cSeleccionarSuperficie.Value = False)
+        cSeleccionarSuperficie.value = (cSeleccionarSuperficie.value = False)
         Call cSeleccionarSuperficie_Click
-    Case "T" ' Activa/Desactiva Insertar Traslados
-        cInsertarTras.Value = (cInsertarTras.Value = False)
-        Call cInsertarTras_Click
+    Case "T" ' Activa/Desactiva Insertar Translados
+        cInsertarTrans.value = (cInsertarTrans.value = False)
+        Call cInsertarTrans_Click
     Case "B" ' Activa/Desactiva Insertar Bloqueos
-        cInsertarBloqueo.Value = (cInsertarBloqueo.Value = False)
+        cInsertarBloqueo.value = (cInsertarBloqueo.value = False)
         Call cInsertarBloqueo_Click
     Case "N" ' Activa/Desactiva Insertar NPCs
-        cInsertarFunc(0).Value = (cInsertarFunc(0).Value = False)
+        cInsertarFunc(0).value = (cInsertarFunc(0).value = False)
         Call cInsertarFunc_Click(0)
    ' Case "H" ' Activa/Desactiva Insertar NPCs Hostiles
    '     cInsertarFunc(1).value = (cInsertarFunc(1).value = False)
    '     Call cInsertarFunc_Click(1)
     Case "O" ' Activa/Desactiva Insertar Objetos
-        cInsertarFunc(2).Value = (cInsertarFunc(2).Value = False)
+        cInsertarFunc(2).value = (cInsertarFunc(2).value = False)
         Call cInsertarFunc_Click(2)
     Case "G" ' Activa/Desactiva Insertar Triggers
-        cInsertarTrigger.Value = (cInsertarTrigger.Value = False)
+        cInsertarTrigger.value = (cInsertarTrigger.value = False)
         Call cInsertarTrigger_Click
     Case "Q" ' Quitar Funciones
         Call mnuQuitarFunciones_Click
@@ -4085,33 +3646,33 @@ Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As 
     'If Seleccionando Then CopiarSeleccion
 End Sub
 
-Private Sub lListado_Click(Index As Integer)
+Private Sub lListado_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
 '*************************************************
-'On Error Resume Next
+On Error Resume Next
 If HotKeysAllow = False Then
-    lListado(Index).Tag = lListado(Index).ListIndex
-    Select Case Index
+    lListado(index).Tag = lListado(index).ListIndex
+    Select Case index
         Case 0
-            cGrh.Text = DameGrhIndex(ReadField(2, lListado(Index).Text, Asc("#")))
-            If SupData(ReadField(2, lListado(Index).Text, Asc("#"))).Capa <> 0 Then
-                If LenB(ReadField(2, lListado(Index).Text, Asc("#"))) = 0 Then cCapas.Tag = cCapas.Text
-                cCapas.Text = SupData(ReadField(2, lListado(Index).Text, Asc("#"))).Capa
+            cGrh.Text = DameGrhIndex(general_field_read(2, lListado(index).Text, Asc("#")))
+            If SupData(general_field_read(2, lListado(index).Text, Asc("#"))).Capa <> 0 Then
+                If LenB(general_field_read(2, lListado(index).Text, Asc("#"))) = 0 Then cCapas.Tag = cCapas.Text
+                cCapas.Text = SupData(general_field_read(2, lListado(index).Text, Asc("#"))).Capa
             Else
                 If LenB(cCapas.Tag) <> 0 Then
                     cCapas.Text = cCapas.Tag
                     cCapas.Tag = vbNullString
                 End If
             End If
-            If SupData(ReadField(2, lListado(Index).Text, Asc("#"))).Block = True Then
-                If LenB(cInsertarBloqueo.Tag) = 0 Then cInsertarBloqueo.Tag = IIf(cInsertarBloqueo.Value = True, 1, 0)
-                cInsertarBloqueo.Value = True
+            If SupData(general_field_read(2, lListado(index).Text, Asc("#"))).Block = True Then
+                If LenB(cInsertarBloqueo.Tag) = 0 Then cInsertarBloqueo.Tag = IIf(cInsertarBloqueo.value = True, 1, 0)
+                cInsertarBloqueo.value = True
                 Call cInsertarBloqueo_Click
             Else
                 If LenB(cInsertarBloqueo.Tag) <> 0 Then
-                    cInsertarBloqueo.Value = IIf(Val(cInsertarBloqueo.Tag) = 1, True, False)
+                    cInsertarBloqueo.value = IIf(Val(cInsertarBloqueo.Tag) = 1, True, False)
                     cInsertarBloqueo.Tag = vbNullString
                     Call cInsertarBloqueo_Click
                 End If
@@ -4122,38 +3683,29 @@ If HotKeysAllow = False Then
                 Call modPaneles.VistaPreviaDeSup
             End If
         Case 1
-            cNumFunc(0).Text = ReadField(2, lListado(Index).Text, Asc("#"))
+            cNumFunc(0).Text = general_field_read(2, lListado(index).Text, Asc("#"))
         Case 2
-            cNumFunc(1).Text = ReadField(2, lListado(Index).Text, Asc("#"))
+            cNumFunc(1).Text = general_field_read(2, lListado(index).Text, Asc("#"))
         Case 3
-            cNumFunc(2).Text = ReadField(2, lListado(Index).Text, Asc("#"))
-        Case 4
-            Dim cTemp As Integer
-            cTemp = Val(ReadField(1, ReadField(2, lListado(Index).Text, Asc("#")), Asc(" ")))
-            If cTemp = 0 Then
-                txtDesc.Text = "Sin Trigger. Eliminar los Triggers aplicados."
-            Else
-                txtDesc.Text = TriggerData(cTemp).Desc
-            End If
+            cNumFunc(2).Text = general_field_read(2, lListado(index).Text, Asc("#"))
     End Select
 Else
-    If Index = 0 Then Exit Sub ' GSZAO
-    lListado(Index).ListIndex = lListado(Index).Tag
+    lListado(index).ListIndex = lListado(index).Tag
 End If
 
 End Sub
 
-Private Sub lListado_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lListado_MouseDown(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
 '*************************************************
-If Index = 3 And Button = 2 Then
+If index = 3 And Button = 2 Then
     If lListado(3).ListIndex > -1 Then Me.PopupMenu mnuObjSc
 End If
 End Sub
 
-Private Sub lListado_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lListado_MouseMove(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 22/05/06
@@ -4162,20 +3714,20 @@ On Error Resume Next
 HotKeysAllow = False
 End Sub
 
-Private Sub MapPest_Click(Index As Integer)
+Private Sub MapPest_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-If (Index + NumMap_Save - 4) <> NumMap_Save Then
+If (index + NumMap_Save - 4) <> NumMap_Save Then
     Dialog.CancelError = True
     On Error GoTo ErrHandler
+    Dialog.FileName = PATH_Save & NameMap_Save & (index + NumMap_Save - 4) & ".map"
     If MapInfo.Changed = 1 Then
         If MsgBox(MSGMod, vbExclamation + vbYesNo) = vbYes Then
             modMapIO.GuardarMapa Dialog.FileName
         End If
     End If
-        Dialog.FileName = PATH_Save & NameMap_Save & (Index + NumMap_Save - 4) & ".map"
         Call modMapIO.NuevoMapa
         DoEvents
         modMapIO.AbrirMapa Dialog.FileName, MapData
@@ -4243,7 +3795,6 @@ If Len(Dialog.FileName) < 3 Then Exit Sub
     DoEvents
     mnuReAbrirMapa.Enabled = True
     EngineRun = True
-    Call DrawMiniMap
     
 Exit Sub
 ErrHandler:
@@ -4283,12 +3834,12 @@ Private Sub mnuActualizarTriggers_Click()
 Call modIndices.CargarIndicesTriggers
 End Sub
 
-Private Sub mnuAutoCapturarTraslados_Click()
+Private Sub mnuAutoCapturarTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 28/05/06
 '*************************************************
-mnuAutoCapturarTraslados.Checked = (mnuAutoCapturarTraslados.Checked = False)
+mnuAutoCapturarTranslados.Checked = (mnuAutoCapturarTranslados.Checked = False)
 End Sub
 
 Private Sub mnuAutoCapturarSuperficie_Click()
@@ -4334,7 +3885,7 @@ Private Sub mnuBloquear_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 2 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
@@ -4367,23 +3918,6 @@ Call modEdicion.Deshacer_Add("Bloquear Selección")
 Call BlockearSeleccion
 End Sub
 
-Private Sub mnuBloquearSinCapas_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 02/09/2013
-'*************************************************
-Call modEdicion.Bloquear_Sin_Capas
-End Sub
-
-Private Sub mnuClickExt_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013
-'*************************************************
-mnuClickExt.Checked = (mnuClickExt.Checked = False)
-
-End Sub
-
 Private Sub mnuConfigAvanzada_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -4392,7 +3926,7 @@ Private Sub mnuConfigAvanzada_Click()
 frmConfigSup.Show
 End Sub
 
-Private Sub mnuConfigObjTras_Click()
+Private Sub mnuConfigObjTrans_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
@@ -4447,13 +3981,12 @@ Private Sub mnuGuardarcomoBMP_Click()
 'Author: Salvito
 'Last modified: 01/05/2008 - ^[GS]^
 '*************************************************
-    Call TakeScreenShot(ddevice, d3dx, 100 * 32, 100 * 32)
-    'Dim Ratio As Integer
-    'Ratio = CInt(Val(InputBox("En que escala queres Renderizar? Entre 1 y 20.", "Elegi Escala", "1")))
-    'If Ratio < 1 Then Ratio = 1
-    'If Ratio >= 1 And Ratio <= 20 Then
+    Dim Ratio As Integer
+    Ratio = CInt(Val(InputBox("En que escala queres Renderizar? Entre 1 y 20.", "Elegi Escala", "1")))
+    If Ratio < 1 Then Ratio = 1
+    If Ratio >= 1 And Ratio <= 20 Then
         'RenderToPicture Ratio, True
-    'End If
+    End If
 End Sub
 
 Private Sub mnuGuardarcomoJPG_Click()
@@ -4461,12 +3994,12 @@ Private Sub mnuGuardarcomoJPG_Click()
 'Author: Salvito
 'Last modified: 01/05/2008 - ^[GS]^
 '*************************************************
-    'Dim Ratio As Integer
-    'Ratio = CInt(Val(InputBox("En que escala queres Renderizar? Entre 1 y 20.", "Elegi Escala", "1")))
-    'If Ratio < 1 Then Ratio = 1
-    'If Ratio >= 1 And Ratio <= 20 Then
-    '    RenderToPicture Ratio, False
-    'End If
+    Dim Ratio As Integer
+    Ratio = CInt(Val(InputBox("En que escala queres Renderizar? Entre 1 y 20.", "Elegi Escala", "1")))
+    If Ratio < 1 Then Ratio = 1
+    If Ratio >= 1 And Ratio <= 20 Then
+        'RenderToPicture Ratio, False
+    End If
 End Sub
 
 Private Sub mnuGuardarMapa_Click()
@@ -4534,7 +4067,7 @@ Private Sub mnuInsertarSuperficieEnTodo_Click()
 Call modEdicion.Superficie_Todo
 End Sub
 
-Private Sub mnuInsertarTrasladosAdyasentes_Click()
+Private Sub mnuInsertarTransladosAdyasentes_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -4569,7 +4102,7 @@ Private Sub mnuNPCs_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 3 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
@@ -4616,7 +4149,6 @@ End If
 Call modMapIO.NuevoMapa
 
 Call cmdInformacionDelMapa_Click
-Call DrawMiniMap
 
 End Sub
 
@@ -4628,7 +4160,7 @@ Private Sub mnuObjetos_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 5 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
@@ -4693,7 +4225,7 @@ Private Sub mnuQSuperficie_Click()
 modPaneles.VerFuncion 0, False
 End Sub
 
-Private Sub mnuQTraslados_Click()
+Private Sub mnuQTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -4724,54 +4256,54 @@ Private Sub mnuQuitarFunciones_Click()
 'Last modified: 20/05/06
 '*************************************************
 ' Superficies
-cSeleccionarSuperficie.Value = False
+cSeleccionarSuperficie.value = False
 Call cSeleccionarSuperficie_Click
-cQuitarEnEstaCapa.Value = False
+cQuitarEnEstaCapa.value = False
 Call cQuitarEnEstaCapa_Click
-cQuitarEnTodasLasCapas.Value = False
+cQuitarEnTodasLasCapas.value = False
 Call cQuitarEnTodasLasCapas_Click
-' Traslados
-cQuitarTras.Value = False
-Call cQuitarTras_Click
-cInsertarTras.Value = False
-Call cInsertarTras_Click
+' Translados
+cQuitarTrans.value = False
+Call cQuitarTrans_Click
+cInsertarTrans.value = False
+Call cInsertarTrans_Click
 ' Bloqueos
-cQuitarBloqueo.Value = False
+cQuitarBloqueo.value = False
 Call cQuitarBloqueo_Click
-cInsertarBloqueo.Value = False
+cInsertarBloqueo.value = False
 Call cInsertarBloqueo_Click
 ' Otras funciones
-cInsertarFunc(0).Value = False
+cInsertarFunc(0).value = False
 Call cInsertarFunc_Click(0)
-cInsertarFunc(1).Value = False
+cInsertarFunc(1).value = False
 Call cInsertarFunc_Click(1)
-cInsertarFunc(2).Value = False
+cInsertarFunc(2).value = False
 Call cInsertarFunc_Click(2)
-cQuitarFunc(0).Value = False
+cQuitarFunc(0).value = False
 Call cQuitarFunc_Click(0)
-cQuitarFunc(1).Value = False
+cQuitarFunc(1).value = False
 Call cQuitarFunc_Click(1)
-cQuitarFunc(2).Value = False
+cQuitarFunc(2).value = False
 Call cQuitarFunc_Click(2)
 ' Triggers
-cInsertarTrigger.Value = False
+cInsertarTrigger.value = False
 Call cInsertarTrigger_Click
-cQuitarTrigger.Value = False
+cQuitarTrigger.value = False
 Call cQuitarTrigger_Click
 
 
 'Luces
-cInsertarLuz.Value = False
+cInsertarLuz.value = False
 Call cInsertarLuz_Click
 
-cQuitarLuz.Value = False
+cQuitarLuz.value = False
 Call cQuitarLuz_Click
 
 'Particulas
-cQuitarParticula.Value = False
+cQuitarParticula.value = False
 Call cQuitarParticula_Click
 
-cInsertarParticula.Value = False
+cInsertarParticula.value = False
 Call cInsertarParticula_Click
 
 End Sub
@@ -4824,12 +4356,12 @@ Private Sub mnuQuitarTODO_Click()
 Call modEdicion.Borrar_Mapa
 End Sub
 
-Private Sub mnuQuitarTraslados_Click()
+Private Sub mnuQuitarTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 16/10/06
 '*************************************************
-Call modEdicion.Quitar_Traslados
+Call modEdicion.Quitar_Translados
 End Sub
 
 Private Sub mnuQuitarTriggers_Click()
@@ -4846,7 +4378,7 @@ Private Sub mnuReAbrirMapa_Click()
 'Last modified: 20/05/06
 '*************************************************
 On Error GoTo ErrHandler
-    If FileExist(Dialog.FileName, vbArchive) = False Then Exit Sub
+    If General_File_Exist(Dialog.FileName, vbArchive) = False Then Exit Sub
     If MapInfo.Changed = 1 Then
         If MsgBox(MSGMod, vbExclamation + vbYesNo) = vbYes Then
             modMapIO.GuardarMapa Dialog.FileName
@@ -4886,14 +4418,14 @@ Private Sub mnuSuperficie_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 0 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
 modPaneles.VerFuncion 0, True
 End Sub
 
-Private Sub mnuTraslados_Click()
+Private Sub mnuTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
@@ -4901,7 +4433,7 @@ Private Sub mnuTraslados_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 1 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
@@ -4916,7 +4448,7 @@ Private Sub mnuTriggers_Click()
 Dim i As Byte
 For i = 0 To 6
     If i <> 6 Then
-        frmMain.SelectPanel(i).Value = False
+        frmMain.SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
@@ -4945,13 +4477,13 @@ Private Sub mnuVerBloqueos_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-cVerBloqueos.Value = (cVerBloqueos.Value = False)
-mnuVerBloqueos.Checked = cVerBloqueos.Value
+cVerBloqueos.value = (cVerBloqueos.value = False)
+mnuVerBloqueos.Checked = cVerBloqueos.value
 
 End Sub
 
 Private Sub mnuVerCapa1_Click()
-mnuVerCapa(1).Checked = (mnuVerCapa(1).Checked = False)
+mnuVerCapa1.Checked = (mnuVerCapa1.Checked = False)
 End Sub
 
 Private Sub mnuVerCapa2_Click()
@@ -4959,7 +4491,7 @@ Private Sub mnuVerCapa2_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-mnuVerCapa(2).Checked = (mnuVerCapa(2).Checked = False)
+mnuVerCapa2.Checked = (mnuVerCapa2.Checked = False)
 End Sub
 
 Private Sub mnuVerCapa3_Click()
@@ -4967,7 +4499,7 @@ Private Sub mnuVerCapa3_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-mnuVerCapa(3).Checked = (mnuVerCapa(3).Checked = False)
+mnuVerCapa3.Checked = (mnuVerCapa3.Checked = False)
 End Sub
 
 Private Sub mnuVerCapa4_Click()
@@ -4975,27 +4507,17 @@ Private Sub mnuVerCapa4_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-mnuVerCapa(4).Checked = (mnuVerCapa(4).Checked = False)
+mnuVerCapa4.Checked = (mnuVerCapa4.Checked = False)
 End Sub
 
-
-Private Sub mnuVerCapa_Click(Index As Integer)
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 25/08/2012 - ^[GS]^
-'*************************************************
-mnuVerCapa(Index).Checked = (mnuVerCapa(Index).Checked = False)
-
-bVerCapa(Index) = mnuVerCapa(Index).Checked
-End Sub
 
 Private Sub mnuVerGrilla_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 24/11/08
 '*************************************************
-bVerGrilla = (bVerGrilla = False)
-mnuVerGrilla.Checked = bVerGrilla
+VerGrilla = (VerGrilla = False)
+mnuVerGrilla.Checked = VerGrilla
 End Sub
 
 Private Sub mnuVerNPCs_Click()
@@ -5016,12 +4538,12 @@ mnuVerObjetos.Checked = (mnuVerObjetos.Checked = False)
 
 End Sub
 
-Private Sub mnuVerTraslados_Click()
+Private Sub mnuVerTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 26/05/06
 '*************************************************
-mnuVerTraslados.Checked = (mnuVerTraslados.Checked = False)
+mnuVerTranslados.Checked = (mnuVerTranslados.Checked = False)
 
 End Sub
 
@@ -5030,147 +4552,11 @@ Private Sub mnuVerTriggers_Click()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-cVerTriggers.Value = (cVerTriggers.Value = False)
-mnuVerTriggers.Checked = cVerTriggers.Value
+cVerTriggers.value = (cVerTriggers.value = False)
+mnuVerTriggers.Checked = cVerTriggers.value
 End Sub
 
-
-
-
-
-
-Private Sub MainViewPic_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-'*************************************************
-'Author: Unkwown
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-
-Dim tX As Integer
-Dim tY As Integer
-
-If Not MapaCargado Then Exit Sub
-
-ConvertCPtoTP 0, 0, X, Y, tX, tY
-
-'If Shift = 1 And Button = 2 Then PegarSeleccion tX, tY: Exit Sub
-If Shift = 1 And Button = 1 Then
-    Seleccionando = True
-    SeleccionIX = tX '+ UserPos.X
-    SeleccionIY = tY '+ UserPos.Y
-    
-    If SeleccionIX < 1 Or SeleccionIX > 100 Then Seleccionando = False
-    If SeleccionIY < 1 Or SeleccionIY > 100 Then Seleccionando = False
-Else
-    ClickEdit Button, tX, tY
-End If
-
-End Sub
-
-
-Private Sub MainViewpic_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-'*************************************************
-'Author: Unkwown
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-
-On Error GoTo Fallo
-
-    Dim tX As Integer
-    Dim tY As Integer
-    
-    'Make sure map is loaded
-    If Not MapaCargado Then Exit Sub
-    HotKeysAllow = True
-    
-    ConvertCPtoTP 0, 0, X, Y, tX, tY
-    
-    POSX.Caption = "X: " & tX & " - Y: " & tY
-    If tX < 10 Or tY < 10 Or tX > 90 Or tY > 90 Then
-        POSX.ForeColor = vbRed
-    Else
-        POSX.ForeColor = vbWhite
-    End If
-     If Shift = 1 And Button = 1 Then
-        Seleccionando = True
-        SeleccionFX = tX '+ TileX
-        SeleccionFY = tY '+ TileY
-        
-        If SeleccionIX < 1 Or SeleccionIX > 100 Then Seleccionando = False
-        If SeleccionIY < 1 Or SeleccionIY > 100 Then Seleccionando = False
-        If SeleccionFX < 1 Or SeleccionFX > 100 Then Seleccionando = False
-        If SeleccionFY < 1 Or SeleccionFY > 100 Then Seleccionando = False
-
-    Else
-        ClickEdit Button, tX, tY
-    End If
-    
-    fQuickSup.Height = 70
-    
-    Exit Sub
-
-Fallo:
-    MsgBox "MainViewpic_MouseMove::Error " & Err.Number & " - " & Err.Description
-    Call LogError("MainViewpic_MouseMove::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
-End Sub
-
-
-Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013 - ^[GS]^
-'*************************************************
-Dim i As Long
-
-' Guardar configuración
-WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "GuardarConfig", IIf(frmMain.mnuGuardarUltimaConfig.Checked = True, "1", "0")
-
-If frmMain.mnuGuardarUltimaConfig.Checked Then
-    If InStr(1, Dialog.FileName, App.Path) = 1 Then
-        WriteVar IniPath & WorldEditorIni, "PATH", "UltimoMapa", mid$(Dialog.FileName, Len(App.Path) + 1)
-    Else
-        WriteVar IniPath & WorldEditorIni, "PATH", "UltimoMapa", Dialog.FileName
-    End If
-    
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "ControlAutomatico", IIf(frmMain.mnuVerAutomatico.Checked = True, "1", "0")
-    
-    For i = 2 To 4
-        WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Capa" & i, IIf(bVerCapa(i), "1", "0")
-    Next i
-    
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Traslados", IIf(bVerTraslados, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Objetos", IIf(bVerObjetos, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "NPCs", IIf(bVerNpcs, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Triggers", IIf(bVerTriggers, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Bloqueos", IIf(bVerBloqueos, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "ClickExtendido", IIf(bClickExtend, "1", "0")
-    
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "LastPos", UserPos.X & "-" & UserPos.Y
-    
-    WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "UtilizarDeshacer", IIf(frmMain.mnuUtilizarDeshacer.Checked = True, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "AutoCapturarTrans", IIf(frmMain.mnuAutoCapturarTraslados.Checked = True, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "AutoCapturarSup", IIf(frmMain.mnuAutoCapturarSuperficie.Checked = True, "1", "0")
-    WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "ObjTraslado", Val(Cfg_TrOBJ)
-    WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "Agua3D", IIf(bAgua3D = True, "1", "0")
-    
-End If
-
-'Allow MainLoop to close program
-If prgRun = True Then
-    prgRun = False
-    Cancel = 1
-End If
-
-End Sub
-
-
-
-Private Sub picRadar_Click()
-
-End Sub
-
-Private Sub pMiniMap_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picRadar_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
@@ -5185,7 +4571,7 @@ UserPos.Y = Y
 bRefreshRadar = True
 End Sub
 
-Private Sub pMiniMap_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picRadar_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 28/05/06
@@ -5194,53 +4580,116 @@ MiRadarX = X
 MiRadarY = Y
 End Sub
 
-Private Sub QuickSup_Click(Index As Integer)
+
+
+Private Sub MainViewPic_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 '*************************************************
-'Author: ^[GS]^
-'Last modified: 01/04/2013
+'Author: Unkwown
+'Last modified: 20/05/06 - GS
+'Last modified: 20/11/07 - Loopzer
 '*************************************************
 
-On Error GoTo Fallo
+Dim tX As Integer
+Dim tY As Integer
 
-    If LenB(QuickSup(Index).Tag) <> 0 Then
-        If QuickSup(Index).Tag <> 0 Then
-            Call modPaneles.EstSelectPanel(0, True)
-            cGrh.Text = QuickSup(Index).Tag
-            If LenB(QuickSup(Index).ToolTipText) <> 0 Then
-                frmConfigSup.mLargo.Text = CInt(Val(ReadField(1, QuickSup(Index).ToolTipText, Asc("-"))))
-                frmConfigSup.mAncho.Text = CInt(Val(ReadField(2, QuickSup(Index).ToolTipText, Asc("-"))))
-            End If
-            Call fPreviewGrh(cGrh.Text)
-            If frmMain.PreviewGrh.Visible = True Then
-                Call modPaneles.VistaPreviaDeSup
-            End If
-        End If
-    End If
-    
-    Exit Sub
-    
-Fallo:
+If Not MapaCargado Then Exit Sub
 
-    MsgBox "QuickSup_Click::Error " & Err.Number & " - " & Err.Description
-    Call LogError("QuickSup_Click::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
+ConvertCPtoTP 0, 0, X, Y, tX, tY
+
+'If Shift = 1 And Button = 2 Then PegarSeleccion tX, tY: Exit Sub
+If Shift = 1 And Button = 1 Then
+    Seleccionando = True
+    SeleccionIX = tX '+ UserPos.X
+    SeleccionIY = tY '+ UserPos.Y
+Else
+    ClickEdit Button, tX, tY
+End If
+
 End Sub
 
-Private Sub SelectPanel_Click(Index As Integer)
+
+Private Sub MainViewpic_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+'*************************************************
+'Author: Unkwown
+'Last modified: 20/05/06 - GS
+'*************************************************
+
+Dim tX As Integer
+Dim tY As Integer
+
+'Make sure map is loaded
+If Not MapaCargado Then Exit Sub
+HotKeysAllow = True
+
+ConvertCPtoTP 0, 0, X, Y, tX, tY
+
+POSX.Caption = "X: " & tX & " - Y: " & tY
+If tX < 10 Or tY < 10 Or tX > 90 Or tY > 90 Then
+    POSX.ForeColor = vbRed
+Else
+    POSX.ForeColor = vbWhite
+End If
+ If Shift = 1 And Button = 1 Then
+    Seleccionando = True
+    SeleccionFX = tX '+ TileX
+    SeleccionFY = tY '+ TileY
+Else
+    ClickEdit Button, tX, tY
+End If
+End Sub
+
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+'*************************************************
+'Author: ^[GS]^
+'Last modified: 24/11/08
+'*************************************************
+
+' Guardar configuración
+WriteVar inipath & "WorldEditor.ini", "CONFIGURACION", "GuardarConfig", IIf(frmMain.mnuGuardarUltimaConfig.Checked = True, "1", "0")
+If frmMain.mnuGuardarUltimaConfig.Checked = True Then
+    WriteVar inipath & "WorldEditor.ini", "PATH", "UltimoMapa", Dialog.FileName
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "ControlAutomatico", IIf(frmMain.mnuVerAutomatico.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Capa2", IIf(frmMain.mnuVerCapa2.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Capa3", IIf(frmMain.mnuVerCapa3.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Capa4", IIf(frmMain.mnuVerCapa4.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Translados", IIf(frmMain.mnuVerTranslados.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Objetos", IIf(frmMain.mnuVerObjetos.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "NPCs", IIf(frmMain.mnuVerNPCs.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Triggers", IIf(frmMain.mnuVerTriggers.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Grilla", IIf(frmMain.mnuVerGrilla.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "Bloqueos", IIf(frmMain.mnuVerBloqueos.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "MOSTRAR", "LastPos", UserPos.X & "-" & UserPos.Y
+    WriteVar inipath & "WorldEditor.ini", "CONFIGURACION", "UtilizarDeshacer", IIf(frmMain.mnuUtilizarDeshacer.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "CONFIGURACION", "AutoCapturarTrans", IIf(frmMain.mnuAutoCapturarTranslados.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "CONFIGURACION", "AutoCapturarSup", IIf(frmMain.mnuAutoCapturarSuperficie.Checked = True, "1", "0")
+    WriteVar inipath & "WorldEditor.ini", "CONFIGURACION", "ObjTranslado", Val(Cfg_TrOBJ)
+End If
+
+'Allow MainLoop to close program
+If prgRun = True Then
+    prgRun = False
+    Cancel = 1
+End If
+
+End Sub
+
+
+
+Private Sub SelectPanel_Click(index As Integer)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 Dim i As Byte
 For i = 0 To 8
-    If i <> Index Then
-        SelectPanel(i).Value = False
+    If i <> index Then
+        SelectPanel(i).value = False
         Call VerFuncion(i, False)
     End If
 Next
 If mnuAutoQuitarFunciones.Checked = True Then Call mnuQuitarFunciones_Click
-Call VerFuncion(Index, SelectPanel(Index).Value)
+Call VerFuncion(index, SelectPanel(index).value)
 End Sub
 
 
@@ -5266,7 +4715,7 @@ Public Sub ObtenerNombreArchivo(ByVal Guardar As Boolean)
 'Author: Unkwown
 'Last modified: 20/05/06
 '*************************************************
-On Error Resume Next
+
 With Dialog
     .Filter = "Mapas de Argentum Online (*.map)|*.map"
     If Guardar Then

@@ -38,10 +38,8 @@ Option Explicit
 Public Sub EstSelectPanel(ByVal Numero As Byte, ByVal Activado As Boolean)
 '*************************************************
 'Author: ^[GS]^
-'Last modified: 08/08/2014
+'Last modified: 30/05/06
 '*************************************************
-On Error Resume Next
-
     If Activado = True Then
         frmMain.SelectPanel(Numero).GradientMode = lv_Bottom2Top
         frmMain.SelectPanel(Numero).HoverBackColor = frmMain.SelectPanel(Numero).GradientColor
@@ -49,23 +47,23 @@ On Error Resume Next
             Select Case Numero
                 Case 0
                     If frmMain.cCapas.Text = 4 Then
-                        frmMain.mnuVerCapa(4).Tag = CInt(frmMain.mnuVerCapa(4).Checked)
-                        frmMain.mnuVerCapa(4).Checked = True
+                        frmMain.mnuVerCapa4.Tag = CInt(frmMain.mnuVerCapa4.Checked)
+                        frmMain.mnuVerCapa4.Checked = True
                     ElseIf frmMain.cCapas.Text = 3 Then
-                        frmMain.mnuVerCapa(3).Tag = CInt(frmMain.mnuVerCapa(3).Checked)
-                        frmMain.mnuVerCapa(3).Checked = True
+                        frmMain.mnuVerCapa3.Tag = CInt(frmMain.mnuVerCapa3.Checked)
+                        frmMain.mnuVerCapa3.Checked = True
                     ElseIf frmMain.cCapas.Text = 2 Then
-                        frmMain.mnuVerCapa(2).Tag = CInt(frmMain.mnuVerCapa(2).Checked)
-                        frmMain.mnuVerCapa(2).Checked = True
+                        frmMain.mnuVerCapa2.Tag = CInt(frmMain.mnuVerCapa2.Checked)
+                        frmMain.mnuVerCapa2.Checked = True
                     End If
                 Case 2
-                    frmMain.cVerBloqueos.Tag = CInt(frmMain.cVerBloqueos.Value)
-                    frmMain.cVerBloqueos.Value = True
-                    frmMain.mnuVerBloqueos.Checked = frmMain.cVerBloqueos.Value
+                    frmMain.cVerBloqueos.Tag = CInt(frmMain.cVerBloqueos.value)
+                    frmMain.cVerBloqueos.value = True
+                    frmMain.mnuVerBloqueos.Checked = frmMain.cVerBloqueos.value
                 Case 6
-                    frmMain.cVerTriggers.Tag = CInt(frmMain.cVerTriggers.Value)
-                    frmMain.cVerTriggers.Value = True
-                    frmMain.mnuVerTriggers.Checked = frmMain.cVerTriggers.Value
+                    frmMain.cVerTriggers.Tag = CInt(frmMain.cVerTriggers.value)
+                    frmMain.cVerTriggers.value = True
+                    frmMain.mnuVerTriggers.Checked = frmMain.cVerTriggers.value
             End Select
         End If
     Else
@@ -75,25 +73,23 @@ On Error Resume Next
             Select Case Numero
                 Case 0
                     If frmMain.cCapas.Text = 4 Then
-                        If LenB(frmMain.mnuVerCapa(3).Tag) <> 0 Then frmMain.mnuVerCapa(4).Checked = CBool(frmMain.mnuVerCapa(4).Tag)
+                        If LenB(frmMain.mnuVerCapa3.Tag) <> 0 Then frmMain.mnuVerCapa4.Checked = CBool(frmMain.mnuVerCapa4.Tag)
                     ElseIf frmMain.cCapas.Text = 3 Then
-                        If LenB(frmMain.mnuVerCapa(3).Tag) <> 0 Then frmMain.mnuVerCapa(3).Checked = CBool(frmMain.mnuVerCapa(3).Tag)
+                        If LenB(frmMain.mnuVerCapa3.Tag) <> 0 Then frmMain.mnuVerCapa3.Checked = CBool(frmMain.mnuVerCapa3.Tag)
                     ElseIf frmMain.cCapas.Text = 2 Then
-                        If LenB(frmMain.mnuVerCapa(2).Tag) <> 0 Then frmMain.mnuVerCapa(2).Checked = CBool(frmMain.mnuVerCapa(2).Tag)
+                        If LenB(frmMain.mnuVerCapa2.Tag) <> 0 Then frmMain.mnuVerCapa2.Checked = CBool(frmMain.mnuVerCapa2.Tag)
                     End If
                 Case 2
                     If LenB(frmMain.cVerBloqueos.Tag) = 0 Then frmMain.cVerBloqueos.Tag = 0
-                    frmMain.cVerBloqueos.Value = CBool(frmMain.cVerBloqueos.Tag)
-                    frmMain.mnuVerBloqueos.Checked = frmMain.cVerBloqueos.Value
+                    frmMain.cVerBloqueos.value = CBool(frmMain.cVerBloqueos.Tag)
+                    frmMain.mnuVerBloqueos.Checked = frmMain.cVerBloqueos.value
                 Case 6
                     If LenB(frmMain.cVerTriggers.Tag) = 0 Then frmMain.cVerTriggers.Tag = 0
-                    frmMain.cVerTriggers.Value = CBool(frmMain.cVerTriggers.Tag)
-                    frmMain.mnuVerTriggers.Checked = frmMain.cVerTriggers.Value
+                    frmMain.cVerTriggers.value = CBool(frmMain.cVerTriggers.Tag)
+                    frmMain.mnuVerTriggers.Checked = frmMain.cVerTriggers.value
             End Select
         End If
     End If
-    
-
 End Sub
 
 ''
@@ -125,24 +121,24 @@ Public Sub VerFuncion(ByVal Numero As Byte, ByVal Ver As Boolean, Optional Norma
             frmMain.lbGrh.Visible = Ver
             frmMain.PreviewGrh.Visible = Ver
             If Ver = True Then
-                frmMain.StatTxt.Top = 672
+                frmMain.StatTxt.top = 672
                 frmMain.StatTxt.Height = 37
             Else
-                frmMain.StatTxt.Top = 416
+                frmMain.StatTxt.top = 416
                 frmMain.StatTxt.Height = 293
             End If
-        Case 1 ' Traslados
+        Case 1 ' Translados
             frmMain.lMapN.Visible = Ver
             frmMain.lXhor.Visible = Ver
             frmMain.lYver.Visible = Ver
             frmMain.tTMapa.Visible = Ver
             frmMain.tTX.Visible = Ver
             frmMain.tTY.Visible = Ver
-            frmMain.cInsertarTras.Visible = Ver
-            frmMain.cInsertarTrasOBJ.Visible = Ver
+            frmMain.cInsertarTrans.Visible = Ver
+            frmMain.cInsertarTransOBJ.Visible = Ver
             frmMain.cUnionManual.Visible = Ver
             frmMain.cUnionAuto.Visible = Ver
-            frmMain.cQuitarTras.Visible = Ver
+            frmMain.cQuitarTrans.Visible = Ver
         Case 2 ' Bloqueos
             frmMain.cQuitarBloqueo.Visible = Ver
             frmMain.cInsertarBloqueo.Visible = Ver
@@ -185,7 +181,6 @@ Public Sub VerFuncion(ByVal Numero As Byte, ByVal Ver As Boolean, Optional Norma
             frmMain.cInsertarTrigger.Visible = Ver
             frmMain.cVerTriggers.Visible = Ver
             frmMain.lListado(4).Visible = Ver
-            frmMain.txtDesc.Visible = Ver
         Case 7
             frmMain.cLuces.Visible = Ver
         Case 8
@@ -194,13 +189,13 @@ Public Sub VerFuncion(ByVal Numero As Byte, ByVal Ver As Boolean, Optional Norma
     If Ver = True Then
         vMostrando = Numero
         If Numero < 0 Or Numero > 6 Then Exit Sub
-        If frmMain.SelectPanel(Numero).Value = False Then
-            frmMain.SelectPanel(Numero).Value = True
+        If frmMain.SelectPanel(Numero).value = False Then
+            frmMain.SelectPanel(Numero).value = True
         End If
     Else
         If Numero < 0 Or Numero > 6 Then Exit Sub
-        If frmMain.SelectPanel(Numero).Value = True Then
-            frmMain.SelectPanel(Numero).Value = False
+        If frmMain.SelectPanel(Numero).value = True Then
+            frmMain.SelectPanel(Numero).value = False
         End If
     End If
 End Sub
@@ -213,10 +208,8 @@ End Sub
 Public Sub Filtrar(ByVal Numero As Byte)
 '*************************************************
 'Author: ^[GS]^
-'Last modified: 13/02/2014 - ^[GS]^
+'Last modified: 26/05/06
 '*************************************************
-
-On Error GoTo Fallo
 
     Dim vMaximo As Integer
     Dim vDatos As String
@@ -224,14 +217,11 @@ On Error GoTo Fallo
     Dim i As Integer
     Dim j As Integer
     
-    frmMain.lListado(Numero).Visible = False
-    frmMain.lListado(Numero).Clear
-    DoEvents
-    
     If frmMain.cFiltro(Numero).ListCount > 5 Then
         frmMain.cFiltro(Numero).RemoveItem 0
     End If
     frmMain.cFiltro(Numero).AddItem frmMain.cFiltro(Numero).Text
+    frmMain.lListado(Numero).Clear
         
     Select Case Numero
         Case 0 ' superficie
@@ -248,37 +238,26 @@ On Error GoTo Fallo
     
         Select Case Numero
             Case 0 ' superficie
-                vDatos = SupData(i).Name
+                vDatos = SupData(i).name
                 NumI = i
             Case 1 ' NPCs
-                vDatos = NpcData(i + 1).Name
+                vDatos = NpcData(i + 1).name
                 NumI = i + 1
             Case 2 ' NPCs Hostiles
                 'vDatos = NpcData(i + 500).name
                 'NumI = i + 500
             Case 3 ' Objetos
-                vDatos = "[" & GetObjType(ObjData(i + 1).ObjType) & "] " & ObjData(i + 1).Name ' GSZAO
+                vDatos = ObjData(i + 1).name
                 NumI = i + 1
         End Select
         
         For j = 1 To Len(vDatos)
-            If UCase$(mid$(vDatos & str(i), j, Len(frmMain.cFiltro(Numero).Text))) = UCase$(frmMain.cFiltro(Numero).Text) Or LenB(frmMain.cFiltro(Numero).Text) = 0 Then
+            If UCase$(mid$(vDatos & Str(i), j, Len(frmMain.cFiltro(Numero).Text))) = UCase$(frmMain.cFiltro(Numero).Text) Or LenB(frmMain.cFiltro(Numero).Text) = 0 Then
                 frmMain.lListado(Numero).AddItem vDatos & " - #" & NumI
                 Exit For
             End If
         Next
     Next
-    
-    DoEvents
-    frmMain.lListado(Numero).Visible = True
-    
-    Exit Sub
-
-Fallo:
-    MsgBox "Filtrar::Error " & Err.Number & " - " & Err.Description
-    Call LogError("Filtrar::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
 End Sub
 
 Public Function DameGrhIndex(ByVal GrhIn As Integer) As Integer
@@ -287,14 +266,14 @@ Public Function DameGrhIndex(ByVal GrhIn As Integer) As Integer
 'Last modified: 20/05/06
 '*************************************************
 
-DameGrhIndex = SupData(GrhIn).Grh
+DameGrhIndex = SupData(GrhIn).grh
 
 If SupData(GrhIn).Width > 0 Then
-    frmConfigSup.MOSAICO.Value = vbChecked
+    frmConfigSup.MOSAICO.value = vbChecked
     frmConfigSup.mAncho.Text = SupData(GrhIn).Width
     frmConfigSup.mLargo.Text = SupData(GrhIn).Height
 Else
-    frmConfigSup.MOSAICO.Value = vbUnchecked
+    frmConfigSup.MOSAICO.value = vbUnchecked
     frmConfigSup.mAncho.Text = "0"
     frmConfigSup.mLargo.Text = "0"
 End If
@@ -309,31 +288,22 @@ Public Sub fPreviewGrh(ByVal GrhIn As Integer)
 'Last modified: 22/05/06
 '*************************************************
 
-On Error GoTo Fallo
+If Val(GrhIn) < 1 Then
+  frmMain.cGrh.Text = MaxGrhs
+  Exit Sub
+End If
 
-    If Val(GrhIn) < 1 Then
-      frmMain.cGrh.Text = grh_count
-      Exit Sub
-    End If
-    
-    If Val(GrhIn) > grh_count Then
-      frmMain.cGrh.Text = 1
-      Exit Sub
-    End If
-    
-    'Change CurrentGrh
-    CurrentGrh.grh_index = GrhIn
-    CurrentGrh.Started = 1
-    CurrentGrh.frame_counter = 1
-    CurrentGrh.frame_speed = Grh_list(CurrentGrh.grh_index).frame_speed
+If Val(GrhIn) > MaxGrhs Then
+  frmMain.cGrh.Text = 1
+  Exit Sub
+End If
 
-    Exit Sub
+'Change CurrentGrh
+CurrentGrh.Grh_Index = GrhIn
+CurrentGrh.Started = 1
+CurrentGrh.frame_counter = 1
+CurrentGrh.frame_speed = grh_list(CurrentGrh.Grh_Index).frame_speed
 
-Fallo:
-    MsgBox "fPreviewGrh::Error " & Err.Number & " - " & Err.Description
-    Call LogError("fPreviewGrh::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
 End Sub
 
 ''
@@ -343,54 +313,42 @@ End Sub
 Public Sub VistaPreviaDeSup()
 '*************************************************
 'Author: ^[GS]^
-'Last modified: 01/04/2013 - ^[GS]^
+'Last modified: 26/05/06
 '*************************************************
-
-On Error GoTo Fallo
-
-    Dim SR As RECT, DR As RECT
-    If CurrentGrh.grh_index = 0 Then Exit Sub
-    frmGrafico.ShowPic = frmGrafico.Picture1
-        If frmConfigSup.MOSAICO = vbUnchecked Then
-            DR.Left = 0
-            DR.Top = 0
-            DR.Bottom = (Grh_list(CurrentGrh.grh_index).src_height)
-            DR.Right = (Grh_list(CurrentGrh.grh_index).src_width)
-            SR.Left = Grh_list(CurrentGrh.grh_index).Src_X
-            SR.Top = Grh_list(CurrentGrh.grh_index).Src_Y
-            SR.Bottom = (Grh_list(CurrentGrh.grh_index).src_height)
-            SR.Right = (Grh_list(CurrentGrh.grh_index).src_width)
-            Call modDXEngine.DXEngine_TextureToHdcRender(Grh_list(CurrentGrh.grh_index).texture_index, frmGrafico.ShowPic.hDC, DR.Left, DR.Top, SR.Left, SR.Top, SR.Right, SR.Bottom)
-        Else
-            Dim j As Integer, i As Integer
-            Dim Cont As Integer
-            For i = 1 To CInt(Val(frmConfigSup.mLargo))
-                For j = 1 To CInt(Val(frmConfigSup.mAncho))
-                    If CurrentGrh.grh_index > UBound(Grh_list) Then Exit For ' No explotar!
-                    DR.Left = (j - 1) * 32
-                    DR.Top = (i - 1) * 32
-                    SR.Left = Grh_list(CurrentGrh.grh_index).Src_X
-                    SR.Top = Grh_list(CurrentGrh.grh_index).Src_Y
-                    SR.Right = Grh_list(CurrentGrh.grh_index).src_width
-                    SR.Bottom = Grh_list(CurrentGrh.grh_index).src_height
-                    'If Cont = 15 Then Stop
-                    Call modDXEngine.DXEngine_TextureToHdcRender(Grh_list(CurrentGrh.grh_index).texture_index, frmGrafico.ShowPic.hDC, DR.Left, DR.Top, SR.Left, SR.Top, SR.Right, SR.Bottom)
-                    If Cont < CInt(Val(frmConfigSup.mAncho)) Then
-                        Cont = Cont + 1: CurrentGrh.grh_index = CurrentGrh.grh_index + 1
-                        Cont = 0
-                    End If
-                Next
+Dim SR As RECT, DR As RECT
+If CurrentGrh.Grh_Index = 0 Then Exit Sub
+frmGrafico.ShowPic = frmGrafico.Picture1
+    If frmConfigSup.MOSAICO = vbUnchecked Then
+        DR.left = 0
+        DR.top = 0
+        DR.Bottom = (grh_list(CurrentGrh.Grh_Index).src_height)
+        DR.Right = (grh_list(CurrentGrh.Grh_Index).src_width)
+        SR.left = grh_list(CurrentGrh.Grh_Index).Src_X
+        SR.top = grh_list(CurrentGrh.Grh_Index).Src_Y
+        SR.Bottom = (grh_list(CurrentGrh.Grh_Index).src_height)
+        SR.Right = (grh_list(CurrentGrh.Grh_Index).src_width)
+        Call modDXEngine.DXEngine_TextureToHdcRender(grh_list(CurrentGrh.Grh_Index).texture_index, frmGrafico.ShowPic.hdc, DR.left, DR.top, SR.left, SR.top, SR.Right, SR.Bottom)
+    Else
+        Dim j As Integer, i As Integer
+        Dim Cont As Integer
+        For i = 1 To CInt(Val(frmConfigSup.mLargo))
+            For j = 1 To CInt(Val(frmConfigSup.mAncho))
+                DR.left = (j - 1) * 32
+                DR.top = (i - 1) * 32
+                SR.left = grh_list(CurrentGrh.Grh_Index).Src_X
+                SR.top = grh_list(CurrentGrh.Grh_Index).Src_Y
+                SR.Right = grh_list(CurrentGrh.Grh_Index).src_width
+                SR.Bottom = grh_list(CurrentGrh.Grh_Index).src_height
+                'If Cont = 15 Then Stop
+                Call modDXEngine.DXEngine_TextureToHdcRender(grh_list(CurrentGrh.Grh_Index).texture_index, frmGrafico.ShowPic.hdc, DR.left, DR.top, SR.left, SR.top, SR.Right, SR.Bottom)
+                If Cont < CInt(Val(frmConfigSup.mAncho)) Then
+                    Cont = Cont + 1: CurrentGrh.Grh_Index = CurrentGrh.Grh_Index + 1
+                    Cont = 0
+                End If
             Next
-            CurrentGrh.grh_index = CurrentGrh.grh_index - Cont
-        End If
-    frmGrafico.ShowPic.Picture = frmGrafico.ShowPic.Image
-    frmMain.PreviewGrh = frmGrafico.ShowPic
-
-    Exit Sub
-
-Fallo:
-    MsgBox "VistaPreviaDeSup::Error " & Err.Number & " - " & Err.Description
-    Call LogError("VistaPreviaDeSup::Error " & Err.Number & " - " & Err.Description)
-    Resume Next
-    
+        Next
+        CurrentGrh.Grh_Index = CurrentGrh.Grh_Index - Cont
+    End If
+frmGrafico.ShowPic.Picture = frmGrafico.ShowPic.Image
+frmMain.PreviewGrh = frmGrafico.ShowPic
 End Sub

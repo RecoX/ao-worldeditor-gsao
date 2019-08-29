@@ -2,156 +2,30 @@ VERSION 5.00
 Begin VB.Form frmMapInfo 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Información del Mapa"
-   ClientHeight    =   5055
+   ClientHeight    =   4080
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   4410
+   ClientWidth     =   4425
    Icon            =   "frmMapInfo.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   5055
-   ScaleWidth      =   4410
+   ScaleHeight     =   4080
+   ScaleWidth      =   4425
    StartUpPosition =   2  'CenterScreen
-   Begin VB.TextBox txtOnDeathGoToY 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   3960
-      TabIndex        =   35
-      Text            =   "0"
-      Top             =   2640
-      Width           =   375
-   End
-   Begin VB.TextBox txtOnDeathGoToX 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   3240
-      TabIndex        =   33
-      Text            =   "0"
-      Top             =   2640
-      Width           =   375
-   End
-   Begin VB.TextBox txtOnDeathGoToMap 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   2160
-      TabIndex        =   31
-      Text            =   "0"
-      Top             =   2640
-      Width           =   735
-   End
-   Begin VB.TextBox txtStartPosY 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   3960
-      TabIndex        =   29
-      Text            =   "0"
-      Top             =   2280
-      Width           =   375
-   End
-   Begin VB.TextBox txtStartPosX 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   3240
-      TabIndex        =   27
-      Text            =   "0"
-      Top             =   2280
-      Width           =   375
-   End
-   Begin VB.TextBox txtStartPosMap 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   2160
-      TabIndex        =   25
-      Text            =   "0"
-      Top             =   2280
-      Width           =   735
-   End
-   Begin VB.CheckBox chkMapRoboNpcsPermitido 
-      Caption         =   "Robo de NPCs permitido"
-      Height          =   255
-      Left            =   120
-      TabIndex        =   22
-      Top             =   3960
-      Width           =   2055
-   End
-   Begin VB.CheckBox chkMapInvocarSinEfecto 
-      Caption         =   "Invocar Sin Efecto"
-      Height          =   255
-      Left            =   2400
-      TabIndex        =   21
-      Top             =   3240
-      Width           =   1815
-   End
-   Begin VB.CheckBox chkMapOcultarSinEfecto 
-      Caption         =   "Ocultar Sin Efecto"
-      Height          =   255
-      Left            =   120
-      TabIndex        =   20
-      Top             =   3240
-      Width           =   2055
-   End
    Begin VB.CheckBox chkMapResuSinEfecto 
-      Caption         =   "Resucitar Sin Efecto"
+      Caption         =   "ResuSinEfecto"
       Height          =   255
       Left            =   2400
       TabIndex        =   19
-      Top             =   3000
+      Top             =   2520
       Width           =   1815
    End
    Begin VB.CheckBox chkMapInviSinEfecto 
-      Caption         =   "Invisibilidad Sin Efecto"
+      Caption         =   "InviSinEfecto"
       Height          =   255
       Left            =   120
       TabIndex        =   18
-      Top             =   3000
+      Top             =   2520
       Width           =   2055
    End
    Begin VB.TextBox txtMapVersion 
@@ -171,7 +45,7 @@ Begin VB.Form frmMapInfo
       Top             =   480
       Width           =   2655
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdMusica 
+   Begin WorldEditor.lvButtons_H cmdMusica 
       Height          =   330
       Left            =   3600
       TabIndex        =   15
@@ -196,11 +70,11 @@ Begin VB.Form frmMapInfo
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
+   Begin WorldEditor.lvButtons_H cmdCerrar 
       Height          =   375
       Left            =   2640
       TabIndex        =   14
-      Top             =   4560
+      Top             =   3600
       Width           =   1695
       _ExtentX        =   2990
       _ExtentY        =   661
@@ -241,7 +115,7 @@ Begin VB.Form frmMapInfo
       Width           =   2655
    End
    Begin VB.CheckBox chkMapPK 
-      Caption         =   "PK (mapa inseguro)"
+      Caption         =   "PK (inseguro)"
       BeginProperty DataFormat 
          Type            =   4
          Format          =   "0%"
@@ -263,8 +137,8 @@ Begin VB.Form frmMapInfo
       Height          =   255
       Left            =   120
       TabIndex        =   11
-      Top             =   3720
-      Width           =   2055
+      Top             =   3000
+      Width           =   1575
    End
    Begin VB.ComboBox txtMapTerreno 
       BeginProperty Font 
@@ -279,7 +153,7 @@ Begin VB.Form frmMapInfo
       Height          =   330
       ItemData        =   "frmMapInfo.frx":62A0
       Left            =   1680
-      List            =   "frmMapInfo.frx":62B0
+      List            =   "frmMapInfo.frx":62AD
       TabIndex        =   10
       Top             =   1560
       Width           =   2655
@@ -295,9 +169,9 @@ Begin VB.Form frmMapInfo
          Strikethrough   =   0   'False
       EndProperty
       Height          =   330
-      ItemData        =   "frmMapInfo.frx":62D6
+      ItemData        =   "frmMapInfo.frx":62CA
       Left            =   1680
-      List            =   "frmMapInfo.frx":62E3
+      List            =   "frmMapInfo.frx":62D7
       TabIndex        =   9
       Top             =   1200
       Width           =   2655
@@ -350,8 +224,8 @@ Begin VB.Form frmMapInfo
       Height          =   255
       Left            =   2400
       TabIndex        =   4
-      Top             =   3480
-      Width           =   1815
+      Top             =   2760
+      Width           =   1575
    End
    Begin VB.CheckBox chkMapNoEncriptarMP 
       Caption         =   "No Encriptar MP"
@@ -367,8 +241,8 @@ Begin VB.Form frmMapInfo
       Height          =   255
       Left            =   2400
       TabIndex        =   3
-      Top             =   3720
-      Width           =   1815
+      Top             =   3000
+      Width           =   1575
    End
    Begin VB.CheckBox chkMapMagiaSinEfecto 
       Caption         =   "Magia Sin Efecto"
@@ -384,143 +258,7 @@ Begin VB.Form frmMapInfo
       Height          =   255
       Left            =   120
       TabIndex        =   2
-      Top             =   3480
-      Width           =   2055
-   End
-   Begin VB.Label Label13 
-      Caption         =   "Y"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   3720
-      TabIndex        =   36
-      Top             =   2640
-      Width           =   135
-   End
-   Begin VB.Label Label12 
-      Caption         =   "X"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   3000
-      TabIndex        =   34
-      Top             =   2640
-      Width           =   135
-   End
-   Begin VB.Label Label11 
-      Caption         =   "Mapa"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   1680
-      TabIndex        =   32
-      Top             =   2640
-      Width           =   375
-   End
-   Begin VB.Label Label10 
-      Caption         =   "Y"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   3720
-      TabIndex        =   30
-      Top             =   2280
-      Width           =   135
-   End
-   Begin VB.Label Label9 
-      Caption         =   "X"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   3000
-      TabIndex        =   28
-      Top             =   2280
-      Width           =   135
-   End
-   Begin VB.Label Label 
-      Caption         =   "Mapa"
-      BeginProperty Font 
-         Name            =   "Arial Narrow"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   1680
-      TabIndex        =   26
-      Top             =   2280
-      Width           =   375
-   End
-   Begin VB.Label Label8 
-      Caption         =   "Traslado al morir:"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   -1  'True
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   120
-      TabIndex        =   24
-      Top             =   2640
-      Width           =   1455
-   End
-   Begin VB.Label Label7 
-      Caption         =   "Redirigir Login a:"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   -1  'True
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   120
-      TabIndex        =   23
-      Top             =   2280
+      Top             =   2760
       Width           =   1575
    End
    Begin VB.Label Label6 
@@ -546,8 +284,8 @@ Begin VB.Form frmMapInfo
       Index           =   1
       X1              =   135
       X2              =   4315
-      Y1              =   4320
-      Y2              =   4320
+      Y1              =   3360
+      Y2              =   3360
    End
    Begin VB.Label Label5 
       Caption         =   "Restringir:"
@@ -640,8 +378,8 @@ Begin VB.Form frmMapInfo
       Index           =   0
       X1              =   120
       X2              =   4315
-      Y1              =   4320
-      Y2              =   4320
+      Y1              =   3360
+      Y2              =   3360
    End
 End
 Attribute VB_Name = "frmMapInfo"
@@ -675,18 +413,8 @@ Private Sub chkMapBackup_LostFocus()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-MapInfo.BackUp = chkMapBackup.Value
+MapInfo.BackUp = chkMapBackup.value
 MapInfo.Changed = 1
-End Sub
-
-Private Sub chkMapInvocarSinEfecto_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.InvocarSinEfecto = chkMapInvocarSinEfecto.Value
-MapInfo.Changed = 1
-
 End Sub
 
 Private Sub chkMapMagiaSinEfecto_LostFocus()
@@ -694,7 +422,7 @@ Private Sub chkMapMagiaSinEfecto_LostFocus()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-MapInfo.MagiaSinEfecto = chkMapMagiaSinEfecto.Value
+MapInfo.MagiaSinEfecto = chkMapMagiaSinEfecto.value
 MapInfo.Changed = 1
 End Sub
 
@@ -703,17 +431,7 @@ Private Sub chkMapInviSinEfecto_LostFocus()
 'Author:
 'Last modified:
 '*************************************************
-MapInfo.InviSinEfecto = chkMapInviSinEfecto.Value
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub chkMapOcultarSinEfecto_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.OcultarSinEfecto = chkMapOcultarSinEfecto.Value
+MapInfo.InviSinEfecto = chkMapInviSinEfecto.value
 MapInfo.Changed = 1
 
 End Sub
@@ -723,7 +441,7 @@ Private Sub chkMapResuSinEfecto_LostFocus()
 'Author:
 'Last modified:
 '*************************************************
-MapInfo.ResuSinEfecto = chkMapResuSinEfecto.Value
+MapInfo.ResuSinEfecto = chkMapResuSinEfecto.value
 MapInfo.Changed = 1
 
 End Sub
@@ -733,7 +451,7 @@ Private Sub chkMapNoEncriptarMP_LostFocus()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-MapInfo.NoEncriptarMP = chkMapNoEncriptarMP.Value
+MapInfo.NoEncriptarMP = chkMapNoEncriptarMP.value
 MapInfo.Changed = 1
 End Sub
 
@@ -742,18 +460,8 @@ Private Sub chkMapPK_LostFocus()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-MapInfo.PK = chkMapPK.Value
+MapInfo.PK = chkMapPK.value
 MapInfo.Changed = 1
-End Sub
-
-Private Sub chkMapRoboNpcsPermitido_Click()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.RoboNpcsPermitido = chkMapRoboNpcsPermitido.Value
-MapInfo.Changed = 1
-
 End Sub
 
 Private Sub cmdCerrar_Click()
@@ -808,8 +516,8 @@ Private Sub txtMapNombre_LostFocus()
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-MapInfo.Name = txtMapNombre.Text
-frmMain.lblMapNombre.Caption = MapInfo.Name
+MapInfo.name = txtMapNombre.Text
+frmMain.lblMapNombre.Caption = MapInfo.name
 MapInfo.Changed = 1
 End Sub
 
@@ -862,64 +570,4 @@ Private Sub txtMapZona_LostFocus()
 '*************************************************
 MapInfo.Zona = txtMapZona.Text
 MapInfo.Changed = 1
-End Sub
-
-Private Sub txtOnDeathGoToMap_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.OnDeathGoTo.Map = Val(txtOnDeathGoToMap.Text)
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub txtOnDeathGoToX_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.OnDeathGoTo.X = Val(txtOnDeathGoToX.Text)
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub txtOnDeathGoToY_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.OnDeathGoTo.Y = Val(txtOnDeathGoToY.Text)
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub txtStartPosMap_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.StartPos.Map = Val(txtStartPosMap.Text)
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub txtStartPosX_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.StartPos.X = Val(txtStartPosX.Text)
-MapInfo.Changed = 1
-
-End Sub
-
-Private Sub txtStartPosY_Change()
-'*************************************************
-'Author: ^[GS]^
-'Last modified: 11/09/2012 - ^[GS]^
-'*************************************************
-MapInfo.StartPos.Y = Val(txtStartPosY.Text)
-MapInfo.Changed = 1
-
 End Sub

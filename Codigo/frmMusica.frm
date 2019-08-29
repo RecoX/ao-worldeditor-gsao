@@ -12,7 +12,7 @@ Begin VB.Form frmMusica
    ScaleHeight     =   1935
    ScaleWidth      =   5430
    StartUpPosition =   2  'CenterScreen
-   Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
+   Begin WorldEditor.lvButtons_H cmdCerrar 
       Height          =   495
       Left            =   2880
       TabIndex        =   4
@@ -37,7 +37,7 @@ Begin VB.Form frmMusica
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdAplicarYCerrar 
+   Begin WorldEditor.lvButtons_H cmdAplicarYCerrar 
       Height          =   495
       Left            =   2880
       TabIndex        =   3
@@ -63,7 +63,7 @@ Begin VB.Form frmMusica
       Enabled         =   0   'False
       cBack           =   12648447
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdDetener 
+   Begin WorldEditor.lvButtons_H cmdDetener 
       Height          =   495
       Left            =   4080
       TabIndex        =   2
@@ -89,7 +89,7 @@ Begin VB.Form frmMusica
       Enabled         =   0   'False
       cBack           =   12632319
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdEscuchar 
+   Begin WorldEditor.lvButtons_H cmdEscuchar 
       Height          =   495
       Left            =   2880
       TabIndex        =   1

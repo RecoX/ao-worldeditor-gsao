@@ -22,7 +22,7 @@ Begin VB.Form frmInformes
       Top             =   120
       Width           =   6375
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdObjetos 
+   Begin WorldEditor.lvButtons_H cmdObjetos 
       Height          =   495
       Left            =   120
       TabIndex        =   1
@@ -47,7 +47,7 @@ Begin VB.Form frmInformes
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
+   Begin WorldEditor.lvButtons_H cmdCerrar 
       Height          =   495
       Left            =   4320
       TabIndex        =   2
@@ -72,7 +72,7 @@ Begin VB.Form frmInformes
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdTranslados 
+   Begin WorldEditor.lvButtons_H cmdTranslados 
       Height          =   495
       Left            =   2280
       TabIndex        =   3
@@ -97,7 +97,7 @@ Begin VB.Form frmInformes
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin GSZAOWorldEditor.lvButtons_H cmdNPCs 
+   Begin WorldEditor.lvButtons_H cmdNPCs 
       Height          =   495
       Left            =   4560
       TabIndex        =   4
@@ -195,7 +195,7 @@ Private Sub ActalizarObjetos()
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-Dim Y As Integer
+Dim y As Integer
 Dim X As Integer
 
 If Not MapaCargado Then
@@ -204,13 +204,13 @@ End If
 
 txtInfo.Text = "Informe de Objetos (X,Y)"
 
-For Y = YMinMapSize To YMaxMapSize
+For y = YMinMapSize To YMaxMapSize
     For X = XMinMapSize To XMaxMapSize
-        If MapData(X, Y).OBJInfo.objindex > 0 Then
-            txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & Y & " tiene " & MapData(X, Y).OBJInfo.Amount & " del Objeto " & MapData(X, Y).OBJInfo.objindex & " - " & ObjData(MapData(X, Y).OBJInfo.objindex).name
+        If MapData(X, y).OBJInfo.objindex > 0 Then
+            txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & y & " tiene " & MapData(X, y).OBJInfo.Amount & " del Objeto " & MapData(X, y).OBJInfo.objindex & " - " & ObjData(MapData(X, y).OBJInfo.objindex).name
         End If
     Next X
-Next Y
+Next y
 
 End Sub
 
@@ -224,7 +224,7 @@ Private Sub ActalizarNPCs()
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-Dim Y As Integer
+Dim y As Integer
 Dim X As Integer
 
 If Not MapaCargado Then
@@ -233,52 +233,52 @@ End If
 
 txtInfo.Text = "Informe de NPCs/Hostiles (X,Y)"
 
-For Y = YMinMapSize To YMaxMapSize
+For y = YMinMapSize To YMaxMapSize
     For X = XMinMapSize To XMaxMapSize
-        If MapData(X, Y).NPCIndex > 0 Then
-            If MapData(X, Y).NPCIndex >= 500 Then
-                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & Y & " tiene " & NpcData(MapData(X, Y).NPCIndex).name & " (Hostil)"
+        If MapData(X, y).NPCIndex > 0 Then
+            If MapData(X, y).NPCIndex >= 500 Then
+                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & y & " tiene " & NpcData(MapData(X, y).NPCIndex).name & " (Hostil)"
             Else
-                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & Y & " tiene " & NpcData(MapData(X, Y).NPCIndex).name
+                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & y & " tiene " & NpcData(MapData(X, y).NPCIndex).name
             End If
         End If
     Next X
-Next Y
+Next y
 
 End Sub
 
 ''
-'   Genera el informe de Traslados
+'   Genera el informe de Translados
 '
 
-Private Sub ActalizarTraslados()
+Private Sub ActalizarTranslados()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
 On Error Resume Next
-Dim Y As Integer
+Dim y As Integer
 Dim X As Integer
 
 If Not MapaCargado Then
     Exit Sub
 End If
 
-txtInfo.Text = "Informe de Traslados (X,Y)"
+txtInfo.Text = "Informe de Translados (X,Y)"
 
-For Y = YMinMapSize To YMaxMapSize
+For y = YMinMapSize To YMaxMapSize
     For X = XMinMapSize To XMaxMapSize
-            If MapData(X, Y).TileExit.Map > 0 Then
-                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & Y & " nos traslada a la posición " & MapData(X, Y).TileExit.X & "," & MapData(X, Y).TileExit.Y & " del Mapa " & MapData(X, Y).TileExit.Map
-                If ((X < 20 And MapData(X, Y).TileExit.X < 20) Or (X > 80 And MapData(X, Y).TileExit.X > 80)) And (X <> MapData(X, Y).TileExit.X) Then
+            If MapData(X, y).TileExit.Map > 0 Then
+                txtInfo.Text = txtInfo.Text & vbCrLf & X & "," & y & " nos traslada a la posición " & MapData(X, y).TileExit.X & "," & MapData(X, y).TileExit.y & " del Mapa " & MapData(X, y).TileExit.Map
+                If ((X < 20 And MapData(X, y).TileExit.X < 20) Or (X > 80 And MapData(X, y).TileExit.X > 80)) And (X <> MapData(X, y).TileExit.X) Then
                     txtInfo.Text = txtInfo.Text & " (X sospechoso)"
                 End If
-                If ((Y < 20 And MapData(X, Y).TileExit.Y < 20) Or (Y > 80 And MapData(X, Y).TileExit.Y > 80)) And (Y <> MapData(X, Y).TileExit.Y) Then
+                If ((y < 20 And MapData(X, y).TileExit.y < 20) Or (y > 80 And MapData(X, y).TileExit.y > 80)) And (y <> MapData(X, y).TileExit.y) Then
                     txtInfo.Text = txtInfo.Text & " (Y sospechoso)"
                 End If
             End If
     Next X
-Next Y
+Next y
 
 End Sub
 
@@ -298,10 +298,10 @@ Private Sub cmdObjetos_Click()
 Call ActalizarObjetos
 End Sub
 
-Private Sub cmdTraslados_Click()
+Private Sub cmdTranslados_Click()
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 20/05/06
 '*************************************************
-Call ActalizarTraslados
+Call ActalizarTranslados
 End Sub

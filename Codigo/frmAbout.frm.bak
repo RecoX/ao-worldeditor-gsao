@@ -43,7 +43,7 @@ Begin VB.Form frmAbout
    Begin VB.Label lblCred 
       Alignment       =   2  'Center
       BackColor       =   &H00000000&
-      Caption         =   "Mejoras por:                       About, Loopzer, Salvito"
+      Caption         =   "Actualizaciones de About, Loopzer y Salvito."
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   9
@@ -54,7 +54,7 @@ Begin VB.Form frmAbout
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H000000FF&
-      Height          =   600
+      Height          =   480
       Index           =   1
       Left            =   720
       TabIndex        =   7
@@ -119,7 +119,7 @@ Begin VB.Form frmAbout
       Index           =   0
       Left            =   960
       TabIndex        =   3
-      Top             =   2040
+      Top             =   1920
       Width           =   2565
    End
    Begin VB.Label lblCred 
@@ -161,7 +161,7 @@ Begin VB.Form frmAbout
       Index           =   3
       Left            =   960
       TabIndex        =   1
-      Top             =   2640
+      Top             =   2520
       Width           =   2565
    End
    Begin VB.Line Line1 
@@ -188,7 +188,7 @@ Begin VB.Form frmAbout
       Caption         =   "Programado por ^[GS]^"
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   9.75
+         Size            =   9
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False

@@ -31,7 +31,7 @@ End Type
 
 Private Type DXFont
     dFont As D3DXFont
-    size As Integer
+    Size As Integer
 End Type
 
 
@@ -87,19 +87,19 @@ Private font_count As Integer
 'Constants
 '***************************
 'Engine
-Public Const COLOR_KEY As Long = &HFF000000
-Public Const FVF As Long = D3DFVF_XYZRHW Or D3DFVF_TEX1 Or D3DFVF_DIFFUSE Or D3DFVF_SPECULAR
+Private Const COLOR_KEY As Long = &HFF000000
+Private Const FVF As Long = D3DFVF_XYZRHW Or D3DFVF_TEX1 Or D3DFVF_DIFFUSE Or D3DFVF_SPECULAR
 'PI
-Public Const PI As Single = 3.14159265358979
+Private Const PI As Single = 3.14159265358979
 
 'Old fashion BitBlt functions
-Public Const SRCCOPY = &HCC0020
+Private Const SRCCOPY = &HCC0020
 
-Public Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long) As Long
-Public Declare Function TransparentBlt Lib "msimg32" (ByVal hdcDest As Long, ByVal nXOriginDest As Long, ByVal nYOriginDest As Long, ByVal nWidthDest As Long, ByVal nHeightDest As Long, ByVal hdcsrc As Long, ByVal nXOriginSrc As Long, ByVal nYOriginSrc As Long, ByVal nWidthSrc As Long, ByVal nHeightSrc As Long, ByVal crTransparent As Long) As Long
-Public Declare Function SelectObject Lib "gdi32" (ByVal hDC As Long, ByVal hObject As Long) As Long
-Public Declare Function CreateCompatibleDC Lib "gdi32" (ByVal hDC As Long) As Long
-Public Declare Function DeleteDC Lib "gdi32" (ByVal hDC As Long) As Long
+Private Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long) As Long
+Private Declare Function TransparentBlt Lib "msimg32" (ByVal hdcDest As Long, ByVal nXOriginDest As Long, ByVal nYOriginDest As Long, ByVal nWidthDest As Long, ByVal nHeightDest As Long, ByVal hdcsrc As Long, ByVal nXOriginSrc As Long, ByVal nYOriginSrc As Long, ByVal nWidthSrc As Long, ByVal nHeightSrc As Long, ByVal crTransparent As Long) As Long
+Private Declare Function SelectObject Lib "gdi32" (ByVal hdc As Long, ByVal hObject As Long) As Long
+Private Declare Function CreateCompatibleDC Lib "gdi32" (ByVal hdc As Long) As Long
+Private Declare Function DeleteDC Lib "gdi32" (ByVal hdc As Long) As Long
 
 'Initialization
 Public Function DXEngine_Initialize(ByVal f_hwnd As Long, ByVal s_hwnd As Long, ByVal windowed As Boolean)
@@ -284,8 +284,8 @@ Public Sub DXEngine_TextureRenderAdvance(ByVal texture_index As Long, ByVal dest
     Dim dest_rect As RECT
     Dim temp_verts(3) As TLVERTEX
     Dim Texture As Direct3DTexture8
-    Dim texture_width As Long
-    Dim texture_height As Long
+    Dim texture_width As Integer
+    Dim texture_height As Integer
 
     'rgb_list(0) = RGB(255, 255, 255)
     'rgb_list(1) = RGB(255, 255, 255)
@@ -295,16 +295,16 @@ Public Sub DXEngine_TextureRenderAdvance(ByVal texture_index As Long, ByVal dest
     'Set up the destination rectangle
     With dest_rect
         .Bottom = dest_y + dest_height
-        .Left = dest_x
+        .left = dest_x
         .Right = dest_x + dest_width
-        .Top = dest_y
+        .top = dest_y
     End With
     
     With src_rect
         .Bottom = Src_Y + src_height
         .Right = Src_X + src_width
-        .Top = Src_Y
-        .Left = Src_X
+        .top = Src_Y
+        .left = Src_X
     End With
     
     Set Texture = DXPool.GetTexture(texture_index)
@@ -336,38 +336,38 @@ Public Sub DXEngine_TextureRender(ByVal texture_index As Long, ByVal dest_x As L
                                             ByVal Src_Y As Long, ByVal dest_width As Long, ByVal dest_height As Long, _
                                             Optional ByVal alpha_blend As Boolean, Optional ByVal angle As Single)
 '**************************************************************
-'Last Modify Date: 25/08/2012 - ^[GS]^
 'This sub doesnt allow texture resizing
 '
 '**************************************************************
     Dim src_rect As RECT
     Dim dest_rect As RECT
     Dim temp_verts(3) As TLVERTEX
-    Dim texture_height As Long
-    Dim texture_width As Long
+    Dim texture_height As Integer
+    Dim texture_width As Integer
     Dim Texture As Direct3DTexture8
     
     'Set up the source rectangle
     With src_rect
         .Bottom = Src_Y + src_height - 1
-        .Left = Src_X
+        .left = Src_X
         .Right = Src_X + src_width - 1
-        .Top = Src_Y
+        .top = Src_Y
     End With
         
     'Set up the destination rectangle
     With dest_rect
         .Bottom = dest_y + dest_height
-        .Left = dest_x
+        .left = dest_x
         .Right = dest_x + dest_width
-        .Top = dest_y
+        .top = dest_y
     End With
     
+    'ESTO NO ME GUSTA
     Set Texture = DXPool.GetTexture(texture_index)
     Call DXPool.Texture_Dimension_Get(texture_index, texture_width, texture_height)
     
-    Geometry_Create_Box temp_verts(), dest_rect, src_rect, rgb_list(), texture_width, texture_height, angle
-    
+    'Set up the TempVerts(3) vertices
+    Geometry_Create_Box temp_verts(), dest_rect, src_rect, rgb_list(), texture_height, texture_width, angle
     'Set Texture
     ddevice.SetTexture 0, Texture
     
@@ -392,113 +392,7 @@ Public Sub DXEngine_TextureRender(ByVal texture_index As Long, ByVal dest_x As L
     'Turn off alphablending after we're done
     'ddevice.SetRenderState D3DRS_ALPHABLENDENABLE, 0
 End Sub
-
-Public Sub Geometry_Create_Box(ByRef verts() As TLVERTEX, ByRef dest As RECT, ByRef src As RECT, ByRef rgb_list() As Long, _
-                                Optional ByRef Textures_Width As Long, Optional ByRef Textures_Height As Long, Optional ByVal angle As Single)
-'**************************************************************
-'Author: Aaron Perkins
-'Modified by Juan Martín Sotuyo Dodero
-'Last Modify Date: 11/17/2002
-'
-' * v1      * v3
-' |\        |
-' |  \      |
-' |    \    |
-' |      \  |
-' |        \|
-' * v0      * v2
-'**************************************************************
-    Dim x_center As Single
-    Dim y_center As Single
-    Dim radius As Single
-    Dim x_Cor As Single
-    Dim y_Cor As Single
-    Dim left_point As Single
-    Dim right_point As Single
-    Dim temp As Single
-   
-    If angle > 0 Then
-        'Center coordinates on screen of the square
-        x_center = dest.Left + (dest.Right - dest.Left) / 2
-        y_center = dest.Top + (dest.Bottom - dest.Top) / 2
-       
-        'Calculate radius
-        radius = Sqr((dest.Right - x_center) ^ 2 + (dest.Bottom - y_center) ^ 2)
-       
-        'Calculate left and right points
-        temp = (dest.Right - x_center) / radius
-        right_point = Atn(temp / Sqr(-temp * temp + 1))
-        left_point = 3.1459 - right_point
-    End If
-   
-    'Calculate screen coordinates of sprite, and only rotate if necessary
-    If angle = 0 Then
-        x_Cor = dest.Left
-        y_Cor = dest.Bottom
-    Else
-        x_Cor = x_center + Cos(-left_point - angle) * radius
-        y_Cor = y_center - Sin(-left_point - angle) * radius
-    End If
-   
-   
-    '0 - Bottom left vertex
-    If Textures_Width Or Textures_Height Then
-        verts(2) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(0), 0, src.Left / Textures_Width + 0.001, (src.Bottom + 1) / Textures_Height)
-    Else
-        verts(2) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(0), 0, 0, 0)
-    End If
-    'Calculate screen coordinates of sprite, and only rotate if necessary
-    If angle = 0 Then
-        x_Cor = dest.Left
-        y_Cor = dest.Top
-    Else
-        x_Cor = x_center + Cos(left_point - angle) * radius
-        y_Cor = y_center - Sin(left_point - angle) * radius
-    End If
-   
-   
-    '1 - Top left vertex
-    If Textures_Width Or Textures_Height Then
-        verts(0) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(1), 0, src.Left / Textures_Width + 0.001, src.Top / Textures_Height + 0.001)
-    Else
-        verts(0) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(1), 0, 0, 1)
-    End If
-    'Calculate screen coordinates of sprite, and only rotate if necessary
-    If angle = 0 Then
-        x_Cor = dest.Right
-        y_Cor = dest.Bottom
-    Else
-        x_Cor = x_center + Cos(-right_point - angle) * radius
-        y_Cor = y_center - Sin(-right_point - angle) * radius
-    End If
-   
-   
-    '2 - Bottom right vertex
-    If Textures_Width Or Textures_Height Then
-        verts(3) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(2), 0, (src.Right + 1) / Textures_Width, (src.Bottom + 1) / Textures_Height)
-    Else
-        verts(3) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(2), 0, 1, 0)
-    End If
-    'Calculate screen coordinates of sprite, and only rotate if necessary
-    If angle = 0 Then
-        x_Cor = dest.Right
-        y_Cor = dest.Top
-    Else
-        x_Cor = x_center + Cos(right_point - angle) * radius
-        y_Cor = y_center - Sin(right_point - angle) * radius
-    End If
-   
-   
-    '3 - Top right vertex
-    If Textures_Width Or Textures_Height Then
-        verts(1) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(3), 0, (src.Right + 1) / Textures_Width, src.Top / Textures_Height + 0.001)
-    Else
-        verts(1) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(3), 0, 1, 1)
-    End If
-
-End Sub
-
-Public Function Geometry_Create_TLVertex(ByVal X As Single, ByVal Y As Single, ByVal Z As Single, _
+Private Function Geometry_Create_TLVertex(ByVal X As Single, ByVal Y As Single, ByVal Z As Single, _
                                             ByVal rhw As Single, ByVal Color As Long, ByVal Specular As Long, tu As Single, _
                                             ByVal tv As Single) As TLVERTEX
 '**************************************************************
@@ -515,7 +409,110 @@ Public Function Geometry_Create_TLVertex(ByVal X As Single, ByVal Y As Single, B
     Geometry_Create_TLVertex.tv = tv
 End Function
 
-Public Sub DXEngine_GraphicTextRender(Font_Index As Integer, ByVal Text As String, ByVal Top As Long, ByVal Left As Long, _
+Private Sub Geometry_Create_Box(ByRef verts() As TLVERTEX, ByRef dest As RECT, ByRef src As RECT, ByRef rgb_list() As Long, _
+                                Optional ByRef texture_width As Integer, Optional ByRef texture_height As Integer, Optional ByVal angle As Single)
+'**************************************************************
+'Authors: Aaron Perkins;
+'Last Modify Date: 5/07/2002
+'
+' * v1 *    v3
+' |     \   |
+' |     \   |
+' |     \   |
+' |     \   |
+' |     \   |
+' * v0 *    v2
+'**************************************************************
+    Dim x_center As Single
+    Dim y_center As Single
+    Dim radius As Single
+    Dim x_Cor As Single
+    Dim y_Cor As Single
+    Dim left_point As Single
+    Dim right_point As Single
+    Dim temp As Single
+    
+    If angle > 0 Then
+        'Center coordinates on screen of the square
+        x_center = dest.left + (dest.Right - dest.left - 1) / 2
+        y_center = dest.top + (dest.Bottom - dest.top - 1) / 2
+        
+        'Calculate radius
+        radius = Sqr((dest.Right - x_center) ^ 2 + (dest.Bottom - y_center) ^ 2)
+        
+        'Calculate left and right points
+        temp = (dest.Right - x_center) / radius
+        right_point = Atn(temp / Sqr(-temp * temp + 1))
+        left_point = PI - right_point
+    End If
+    
+    'Calculate screen coordinates of sprite, and only rotate if necessary
+    If angle = 0 Then
+        x_Cor = dest.left
+        y_Cor = dest.Bottom
+    Else
+        x_Cor = x_center + Cos(-left_point - angle) * radius
+        y_Cor = y_center - Sin(-left_point - angle) * radius
+    End If
+    
+    
+    '0 - Bottom left vertex
+    If texture_width And texture_height Then
+        verts(0) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(0), 0, src.left / texture_width, (src.Bottom) / texture_height)
+    Else
+        verts(0) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(0), 0, 0, 1)
+    End If
+    'Calculate screen coordinates of sprite, and only rotate if necessary
+    If angle = 0 Then
+        x_Cor = dest.left
+        y_Cor = dest.top
+    Else
+        x_Cor = x_center + Cos(left_point - angle) * radius
+        y_Cor = y_center - Sin(left_point - angle) * radius
+    End If
+    
+    
+    '1 - Top left vertex
+    If texture_width And texture_height Then
+        verts(1) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(1), 0, src.left / texture_width, src.top / texture_height)
+    Else
+        verts(1) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(1), 0, 0, 0)
+    End If
+    'Calculate screen coordinates of sprite, and only rotate if necessary
+    If angle = 0 Then
+        x_Cor = dest.Right
+        y_Cor = dest.Bottom
+    Else
+        x_Cor = x_center + Cos(-right_point - angle) * radius
+        y_Cor = y_center - Sin(-right_point - angle) * radius
+    End If
+    
+    
+    '2 - Bottom right vertex
+    If texture_width And texture_height Then
+        verts(2) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(2), 0, (src.Right) / texture_width, (src.Bottom) / texture_height)
+    Else
+        verts(2) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(2), 0, 1, 1)
+    End If
+    'Calculate screen coordinates of sprite, and only rotate if necessary
+    If angle = 0 Then
+        x_Cor = dest.Right
+        y_Cor = dest.top
+    Else
+        x_Cor = x_center + Cos(right_point - angle) * radius
+        y_Cor = y_center - Sin(right_point - angle) * radius
+    End If
+    
+    
+    '3 - Top right vertex
+    If texture_width And texture_height Then
+        verts(3) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(3), 0, (src.Right) / texture_width, src.top / texture_height)
+    Else
+        verts(3) = Geometry_Create_TLVertex(x_Cor, y_Cor, 0, 1, rgb_list(3), 0, 1, 0)
+    End If
+End Sub
+
+Public Sub DXEngine_GraphicTextRender(Font_Index As Integer, ByVal Text As String, ByVal top As Long, ByVal left As Long, _
                                   ByVal Color As Long)
 
     If Len(Text) > 255 Then Exit Sub
@@ -537,8 +534,8 @@ Public Sub DXEngine_GraphicTextRender(Font_Index As Integer, ByVal Text As Strin
             X = X + 1
         Else
             X = X + 1
-            Call DXEngine_TextureRenderAdvance(gfont_list(Font_Index).texture_index, Left + X * gfont_list(Font_Index).Char_Size, _
-                                                        Top, gfont_list(Font_Index).Caracteres(Char).Src_X, gfont_list(Font_Index).Caracteres(Char).Src_Y, _
+            Call DXEngine_TextureRenderAdvance(gfont_list(Font_Index).texture_index, left + X * gfont_list(Font_Index).Char_Size, _
+                                                        top, gfont_list(Font_Index).Caracteres(Char).Src_X, gfont_list(Font_Index).Caracteres(Char).Src_Y, _
                                                             gfont_list(Font_Index).Char_Size, gfont_list(Font_Index).Char_Size, gfont_list(Font_Index).Char_Size, gfont_list(Font_Index).Char_Size, _
                                                                 rgb_list(), False)
         End If
@@ -583,20 +580,19 @@ Private Sub LoadChars(ByVal Font_Index As Integer)
     Next i
 End Sub
 Public Sub LoadGraphicFonts()
-On Error Resume Next
     Dim i As Byte
     Dim file_path As String
-    
-    file_path = IniPath & App.EXEName & ".ini"
 
-    If FileExist(file_path, vbArchive) Then
-        gfont_count = GetVar(file_path, "FUENTES", "FontCount")
+    file_path = DirIndex & "GUIFonts.ini"
+
+    If General_File_Exist(file_path, vbArchive) Then
+        gfont_count = general_var_get(file_path, "INIT", "FontCount")
         If gfont_count > 0 Then
             ReDim gfont_list(1 To gfont_count) As tGraphicFont
             For i = 1 To gfont_count
                 With gfont_list(i)
-                    .Char_Size = GetVar(file_path, "FONT" & i, "Size")
-                    .texture_index = GetVar(file_path, "FONT" & i, "Graphic")
+                    .Char_Size = general_var_get(file_path, "FONT" & i, "Size")
+                    .texture_index = general_var_get(file_path, "FONT" & i, "Graphic")
                     If .texture_index > 0 Then Call DXPool.Texture_Load(.texture_index, 0)
                     LoadChars (i)
                 End With
@@ -645,18 +641,18 @@ Private Sub DeviceRenderStates()
     End With
 End Sub
 
-Private Sub Font_Make(ByVal Style As String, ByVal size As Long, ByVal italic As Boolean, ByVal bold As Boolean)
+Private Sub Font_Make(ByVal Style As String, ByVal Size As Long, ByVal italic As Boolean, ByVal bold As Boolean)
     font_count = font_count + 1
     ReDim Preserve font_list(1 To font_count)
     
     Dim font_desc As IFont
     Dim fnt As New StdFont
-    fnt.Name = Style
-    fnt.size = size
+    fnt.name = Style
+    fnt.Size = Size
     fnt.bold = bold
     fnt.italic = italic
     Set font_desc = fnt
-    font_list(font_count).size = size
+    font_list(font_count).Size = Size
     Set font_list(font_count).dFont = d3dx.CreateFont(ddevice, font_desc.hFont)
 End Sub
 
@@ -665,26 +661,25 @@ Private Sub LoadFonts()
     Dim i As Integer
     Dim file_path As String
     
-    file_path = DirMapIndex & "Fonts.ini"
+    file_path = DirIndex & "fonts.ini"
     
-    If Not FileExist(file_path, vbArchive) Then Exit Sub
+    If Not General_File_Exist(file_path, vbArchive) Then Exit Sub
     
-    num_fonts = GetVar(file_path, "INIT", "FontCount")
+    num_fonts = general_var_get(file_path, "INIT", "FontCount")
     
     For i = 1 To num_fonts
-        Call Font_Make(GetVar(file_path, "FONT" & i, "Name"), GetVar(file_path, "FONT" & i, "Size"), GetVar(file_path, "FONT" & i, "Cursiva"), GetVar(file_path, "FONT" & i, "Negrita"))
+        Call Font_Make(general_var_get(file_path, "FONT" & i, "Name"), general_var_get(file_path, "FONT" & i, "Size"), general_var_get(file_path, "FONT" & i, "Cursiva"), general_var_get(file_path, "FONT" & i, "Negrita"))
     Next i
 End Sub
-Public Sub DXEngine_TextRender(ByVal Font_Index As Integer, ByVal Text As String, ByVal Left As Integer, ByVal Top As Integer, ByVal Color As Long, Optional ByVal Alingment As Byte = DT_LEFT, Optional ByVal Width As Integer = 0, Optional ByVal Height As Integer = 0)
-
+Public Sub DXEngine_TextRender(ByVal Font_Index As Integer, ByVal Text As String, ByVal left As Integer, ByVal top As Integer, ByVal Color As Long, Optional ByVal Alingment As Byte = DT_LEFT, Optional ByVal Width As Integer = 0, Optional ByVal Height As Integer = 0)
     If Not Font_Check(Font_Index) Then Exit Sub
     
     Dim TextRect As RECT 'This defines where it will be
     'Dim BorderColor As Long
     
     'Set width and height if no specified
-    If Width = 0 Then Width = Len(Text) * (font_list(Font_Index).size + 1)
-    If Height = 0 Then Height = font_list(Font_Index).size * 2
+    If Width = 0 Then Width = Len(Text) * (font_list(Font_Index).Size + 1)
+    If Height = 0 Then Height = font_list(Font_Index).Size * 2
     
     'DrawBorder
     
@@ -711,10 +706,10 @@ Public Sub DXEngine_TextRender(ByVal Font_Index As Integer, ByVal Text As String
     'TextRect.Right = left + width
     'd3dx.DrawText font_list(Font_Index).dFont, BorderColor, Text, TextRect, Alingment
     
-    TextRect.Top = Top
-    TextRect.Left = Left
-    TextRect.Bottom = Top + Height
-    TextRect.Right = Left + Width
+    TextRect.top = top
+    TextRect.left = left
+    TextRect.Bottom = top + Height
+    TextRect.Right = left + Width
     d3dx.DrawText font_list(Font_Index).dFont, Color, Text, TextRect, Alingment
 
 End Sub
@@ -729,7 +724,7 @@ Private Sub Fonts_Destroy()
     
     For i = 1 To font_count
         Set font_list(i).dFont = Nothing
-        font_list(i).size = 0
+        font_list(i).Size = 0
     Next i
     font_count = 0
 End Sub
@@ -744,8 +739,9 @@ End Function
 Public Sub DXEngine_TextureToHdcRender(ByVal texture_index As Long, desthdc As Long, ByVal screen_x As Long, ByVal screen_Y As Long, ByVal SX As Integer, ByVal SY As Integer, ByVal sW As Integer, ByVal sH As Integer, Optional transparent As Boolean = False)
 '**************************************************************
 'Author: Aaron Perkins
-'Last Modify Date: 09/10/2012 - ^[GS]^
-'This method is SLOW... Don't use in a loop if you care about speed!
+'Last Modify Date: 5/02/2003
+'This method is SLOW... Don't use in a loop if you care about
+'speed!
 '*************************************************************
 
     Dim file_path As String
@@ -756,20 +752,6 @@ Public Sub DXEngine_TextureToHdcRender(ByVal texture_index As Long, desthdc As L
     Dim hdcsrc As Long
 
     file_path = DirGraficos & texture_index & ".bmp"
-    If FileExist(file_path, vbArchive) Then ' GSZAO
-        If frmMain.picTemp.Tag <> file_path Then
-            frmMain.picTemp.Picture = LoadPicture(file_path)
-            frmMain.picTemp.Tag = file_path
-        End If
-    Else
-        file_path = DirGraficos & texture_index & ".png"
-        If FileExist(file_path, vbArchive) Then
-            If frmMain.picTemp.Tag <> file_path Then
-                Call modPngGDI.PngPictureLoad(file_path, frmMain.picTemp, False)
-                frmMain.picTemp.Tag = file_path
-            End If
-        End If
-    End If
     
     Src_X = SX
     Src_Y = SY
@@ -778,7 +760,7 @@ Public Sub DXEngine_TextureToHdcRender(ByVal texture_index As Long, desthdc As L
 
     hdcsrc = CreateCompatibleDC(desthdc)
     
-    SelectObject hdcsrc, frmMain.picTemp.Picture
+    SelectObject hdcsrc, LoadPicture(file_path)
     
     If transparent = False Then
         BitBlt desthdc, screen_x, screen_Y, src_width, src_height, hdcsrc, Src_X, Src_Y, SRCCOPY
@@ -795,8 +777,8 @@ Public Sub DXEngine_BeginSecondaryRender()
 End Sub
 Public Sub DXEngine_EndSecondaryRender(ByVal hWnd As Long, ByVal Width As Integer, ByVal Height As Integer)
     Dim DR As RECT
-    DR.Left = 0
-    DR.Top = 0
+    DR.left = 0
+    DR.top = 0
     DR.Bottom = Height
     DR.Right = Width
     
@@ -810,9 +792,9 @@ Public Sub DXEngine_DrawBox(ByVal X As Integer, ByVal Y As Integer, ByVal Width 
     
     With box_rect
         .Bottom = Y + Height
-        .Left = X
+        .left = X
         .Right = X + Width
-        .Top = Y
+        .top = Y
     End With
     
     ddevice.SetRenderState D3DRS_SRCBLEND, D3DBLEND_ONE
@@ -821,27 +803,27 @@ Public Sub DXEngine_DrawBox(ByVal X As Integer, ByVal Y As Integer, ByVal Width 
     ddevice.SetTexture 0, Nothing
     
     'Upper Line
-    VertexB(0) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Top, 0, 1, Color, 0, 0, 0)
-    VertexB(1) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Top, 0, 1, Color, 0, 0, 0)
-    VertexB(2) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Top + border_width, 0, 1, Color, 0, 0, 0)
-    VertexB(3) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Top + border_width, 0, 1, Color, 0, 0, 0)
+    VertexB(0) = Geometry_Create_TLVertex(box_rect.left, box_rect.top, 0, 1, Color, 0, 0, 0)
+    VertexB(1) = Geometry_Create_TLVertex(box_rect.Right, box_rect.top, 0, 1, Color, 0, 0, 0)
+    VertexB(2) = Geometry_Create_TLVertex(box_rect.left, box_rect.top + border_width, 0, 1, Color, 0, 0, 0)
+    VertexB(3) = Geometry_Create_TLVertex(box_rect.Right, box_rect.top + border_width, 0, 1, Color, 0, 0, 0)
     ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexB(0), Len(VertexB(0))
     'Left Line
-    VertexB(0) = Geometry_Create_TLVertex(box_rect.Left + border_width, box_rect.Top, 0, 1, Color, 0, 0, 0)
-    VertexB(1) = Geometry_Create_TLVertex(box_rect.Left + border_width, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
-    VertexB(2) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Top, 0, 2, Color, 0, 0, 0)
-    VertexB(3) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Bottom, 0, 2, Color, 0, 0, 0)
+    VertexB(0) = Geometry_Create_TLVertex(box_rect.left + border_width, box_rect.top, 0, 1, Color, 0, 0, 0)
+    VertexB(1) = Geometry_Create_TLVertex(box_rect.left + border_width, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
+    VertexB(2) = Geometry_Create_TLVertex(box_rect.left, box_rect.top, 0, 2, Color, 0, 0, 0)
+    VertexB(3) = Geometry_Create_TLVertex(box_rect.left, box_rect.Bottom, 0, 2, Color, 0, 0, 0)
     ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexB(0), Len(VertexB(0))
     'Right Border
-    VertexB(0) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Top, 0, 1, Color, 0, 0, 0)
+    VertexB(0) = Geometry_Create_TLVertex(box_rect.Right, box_rect.top, 0, 1, Color, 0, 0, 0)
     VertexB(1) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
-    VertexB(2) = Geometry_Create_TLVertex(box_rect.Right - border_width, box_rect.Top, 0, 3, Color, 0, 0, 0)
+    VertexB(2) = Geometry_Create_TLVertex(box_rect.Right - border_width, box_rect.top, 0, 3, Color, 0, 0, 0)
     VertexB(3) = Geometry_Create_TLVertex(box_rect.Right - border_width, box_rect.Bottom, 0, 3, Color, 0, 0, 0)
     ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexB(0), Len(VertexB(0))
     'Bottom Border
-    VertexB(0) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Bottom - border_width, 0, 1, Color, 0, 0, 0)
+    VertexB(0) = Geometry_Create_TLVertex(box_rect.left, box_rect.Bottom - border_width, 0, 1, Color, 0, 0, 0)
     VertexB(1) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Bottom - border_width, 0, 1, Color, 0, 0, 0)
-    VertexB(2) = Geometry_Create_TLVertex(box_rect.Left, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
+    VertexB(2) = Geometry_Create_TLVertex(box_rect.left, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
     VertexB(3) = Geometry_Create_TLVertex(box_rect.Right, box_rect.Bottom, 0, 1, Color, 0, 0, 0)
     ddevice.DrawPrimitiveUP D3DPT_TRIANGLESTRIP, 2, VertexB(0), Len(VertexB(0))
     
@@ -928,14 +910,14 @@ Public Function Particle_Group_Remove_All() As Boolean
 'Last Modify Date: 1/04/2003
 '
 '*****************************************************************
-    Dim Index As Long
+    Dim index As Long
    
-    For Index = 1 To particle_group_last
+    For index = 1 To particle_group_last
         'Make sure it's a legal index
-        If Particle_Group_Check(Index) Then
-            Particle_Group_Destroy Index
+        If Particle_Group_Check(index) Then
+            Particle_Group_Destroy index
         End If
-    Next Index
+    Next index
    
     Particle_Group_Remove_All = True
 End Function
@@ -1061,7 +1043,7 @@ Private Sub Particle_Group_Make(ByVal particle_group_index As Long, ByVal map_x 
 End Sub
  
 Private Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As Integer, ByVal screen_Y As Integer, _
-                            ByVal Grh_index As Long, ByRef rgb_list() As Long, _
+                            ByVal grh_index As Long, ByRef rgb_list() As Long, _
                             Optional ByVal alpha_blend As Boolean, Optional ByVal no_move As Boolean, _
                             Optional ByVal X1 As Integer, Optional ByVal Y1 As Integer, Optional ByVal angle As Integer, _
                             Optional ByVal vecx1 As Integer, Optional ByVal vecx2 As Integer, _
@@ -1074,7 +1056,7 @@ Private Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As I
                             Optional ByVal move_y1 As Integer, Optional ByVal move_y2 As Integer, Optional ByVal YMove As Boolean, _
                             Optional ByVal spin_speedH As Single, Optional ByVal spin As Boolean, Optional grh_resize As Boolean, _
                             Optional grh_resizex As Integer, Optional grh_resizey As Integer, _
-                            Optional ByVal Radio As Integer, Optional ByVal Count As Integer, Optional ByVal Index As Integer)
+                            Optional ByVal Radio As Integer, Optional ByVal Count As Integer, Optional ByVal index As Integer)
 '**************************************************************
 'Author: Aaron Perkins
 'Last Modify Date: 4/24/2003
@@ -1083,13 +1065,13 @@ Private Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As I
 
     If no_move = False Then
                 If temp_particle.alive_counter = 0 Then
-                    Grh_Initialize temp_particle.Grh, Grh_index, alpha_blend
+                    Grh_Initialize temp_particle.Grh, grh_index, alpha_blend
                     If Radio = 0 Then
                         temp_particle.X = General_Random_Number(X1, X2)
                         temp_particle.Y = General_Random_Number(Y1, Y2)
                     Else
-                        temp_particle.X = (General_Random_Number(X1, X2) + Radio) + Radio * Cos(PI * 2 * Index / Count)
-                        temp_particle.Y = (General_Random_Number(Y1, Y2) + Radio) + Radio * Sin(PI * 2 * Index / Count)
+                        temp_particle.X = (General_Random_Number(X1, X2) + Radio) + Radio * Cos(PI * 2 * index / Count)
+                        temp_particle.Y = (General_Random_Number(Y1, Y2) + Radio) + Radio * Sin(PI * 2 * index / Count)
                     End If
                     temp_particle.vector_x = General_Random_Number(vecx1, vecx2)
                     temp_particle.vector_y = General_Random_Number(vecy1, vecy2)
@@ -1126,7 +1108,7 @@ Private Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As I
     
  
     'Draw it
-    If temp_particle.Grh.Grh_index Then
+    If temp_particle.Grh.grh_index Then
         Grh_Render temp_particle.Grh, temp_particle.X + screen_x, temp_particle.Y + screen_Y, rgb_list()
     End If
 End Sub
