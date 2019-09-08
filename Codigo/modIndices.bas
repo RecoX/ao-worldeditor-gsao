@@ -66,8 +66,8 @@ On Error GoTo Fallo
             If bBuscarErroresEnGrhIndex = True Then ' GSZAO
                 For t = 0 To i - 1
                     If LenB(SupData(t).Name) <> 0 Then
-                        If SupData(t).Grh = SupData(i).Grh Then ' ï¿½usa mismo grh?!
-                            If SupData(t).Width = SupData(i).Width And SupData(t).Height = SupData(i).Height Then ' mismo tamaï¿½o!
+                        If SupData(t).Grh = SupData(i).Grh Then ' ¿usa mismo grh?!
+                            If SupData(t).Width = SupData(i).Width And SupData(t).Height = SupData(i).Height Then ' mismo tamaño!
                                 MsgBox "El indice " & i & " (" & SupData(i).Name & ") tiene repetido el Grh con el indice " & t & " (" & SupData(t).Name & ")", vbInformation + vbOKOnly
                             End If
                         End If
@@ -369,7 +369,7 @@ Function GetObjType(ByVal ObjType As Integer) As String
             Case 13
                 GetObjType = "Bebida"
             Case 14
-                GetObjType = "Leï¿½a"
+                GetObjType = "Leña"
             Case 15
                 GetObjType = "Fogata"
             Case 16

@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "clsAmbient"
+Attribute VB_Name = "clsMeteo"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -75,9 +75,9 @@ Private Sub Rain_Start()
     'RainParticleIndex = DXEngine_ParticleGroupCreate(0, 0, e_ParticleType.Rain, -1)
 End Sub
 
-Public Sub Get_AmbientColorRGB(rgb_list() As Long)
-    rgb_list(0) = D3DColorARGB(LuzActual.A, LuzActual.R, LuzActual.G, LuzActual.B)
-    rgb_list(1) = rgb_list(0)
-    rgb_list(2) = rgb_list(0)
-    rgb_list(3) = rgb_list(0)
+Public Sub Get_AmbientColorRGB(Rgb_List() As Long)
+    Rgb_List(0) = D3DColorARGB(LuzActual.A, LuzActual.R, LuzActual.G, LuzActual.B)
+    Rgb_List(1) = Rgb_List(0)
+    Rgb_List(2) = Rgb_List(0)
+    Rgb_List(3) = Rgb_List(0)
 End Sub

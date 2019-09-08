@@ -56,10 +56,10 @@ Begin VB.Form frmMain
       Caption         =   "QuickSuperficie"
       ForeColor       =   &H00FFFFFF&
       Height          =   3000
-      Left            =   13320
+      Left            =   13560
       TabIndex        =   121
       Top             =   0
-      Width           =   6855
+      Width           =   6735
       Begin VB.PictureBox QuickSup 
          BackColor       =   &H00000000&
          Height          =   615
@@ -816,9 +816,9 @@ Begin VB.Form frmMain
          Caption         =   "Particles"
          ForeColor       =   &H80000009&
          Height          =   1785
-         Left            =   3840
+         Left            =   2160
          TabIndex        =   110
-         Top             =   1560
+         Top             =   1320
          Visible         =   0   'False
          Width           =   1860
          Begin VB.TextBox txtParticula 
@@ -896,10 +896,10 @@ Begin VB.Form frmMain
          BackColor       =   &H80000012&
          Caption         =   "Luces"
          ForeColor       =   &H80000009&
-         Height          =   3165
-         Left            =   3840
+         Height          =   4245
+         Left            =   0
          TabIndex        =   100
-         Top             =   600
+         Top             =   0
          Visible         =   0   'False
          Width           =   4095
          Begin VB.ComboBox Combo1 
@@ -917,9 +917,9 @@ Begin VB.Form frmMain
             Caption         =   "Luces redondas"
             ForeColor       =   &H00FFFFFF&
             Height          =   270
-            Left            =   2055
+            Left            =   2040
             TabIndex        =   109
-            Top             =   2565
+            Top             =   3480
             Width           =   1515
          End
          Begin VB.Frame RGBCOLOR 
@@ -946,7 +946,7 @@ Begin VB.Form frmMain
                Height          =   315
                Left            =   600
                TabIndex        =   106
-               Text            =   "1"
+               Text            =   "255"
                Top             =   270
                Width           =   450
             End
@@ -965,7 +965,7 @@ Begin VB.Form frmMain
                Height          =   315
                Left            =   1095
                TabIndex        =   105
-               Text            =   "1"
+               Text            =   "255"
                Top             =   270
                Width           =   450
             End
@@ -984,7 +984,7 @@ Begin VB.Form frmMain
                Height          =   315
                Left            =   105
                TabIndex        =   104
-               Text            =   "1"
+               Text            =   "255"
                Top             =   270
                Width           =   450
             End
@@ -1013,7 +1013,7 @@ Begin VB.Form frmMain
                Height          =   315
                Left            =   105
                TabIndex        =   102
-               Text            =   "1"
+               Text            =   "8"
                Top             =   240
                Width           =   1035
             End
@@ -2704,6 +2704,7 @@ Begin VB.Form frmMain
       Left            =   1065
       TabIndex        =   119
       Top             =   1620
+      Visible         =   0   'False
       Width           =   450
    End
    Begin VB.Label POSX 
@@ -2712,7 +2713,7 @@ Begin VB.Form frmMain
       Caption         =   "X: ?? - Y:??"
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   6
+         Size            =   9
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -2720,11 +2721,11 @@ Begin VB.Form frmMain
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   150
+      Height          =   210
       Left            =   120
       TabIndex        =   118
-      Top             =   1620
-      Width           =   675
+      Top             =   1590
+      Width           =   1020
    End
    Begin VB.Line Separacion1 
       BorderColor     =   &H00FFFFFF&
@@ -3034,7 +3035,7 @@ Begin VB.Form frmMain
    End
    Begin VB.Menu FileMnu 
       Caption         =   "&Archivo"
-      Begin VB.Menu mnuArchivoLine1 
+      Begin VB.Menu mnuArchivoLine10 
          Caption         =   "-"
       End
       Begin VB.Menu mnuNuevoMapa 
@@ -3091,7 +3092,7 @@ Begin VB.Form frmMain
          Caption         =   "C&ortar Selección"
          Shortcut        =   ^X
       End
-      Begin VB.Menu mnuCopiar 
+      Begin VB.Menu mnucopiar 
          Caption         =   "&Copiar Selección"
          Shortcut        =   ^C
       End
@@ -3388,6 +3389,37 @@ Begin VB.Form frmMain
          Caption         =   "&Guardar Ultima Configuración"
       End
    End
+   Begin VB.Menu mnumapa 
+      Caption         =   "Copiado de  Mapa"
+      Begin VB.Menu mnuSinTras 
+         Caption         =   "Bloquear, Sacar Traslados y NPCs"
+      End
+      Begin VB.Menu mnuIrMapa 
+         Caption         =   "Ir al Mapa"
+      End
+      Begin VB.Menu mnuArchivoLine1 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnubordes 
+         Caption         =   "Copiar bordes de mapas"
+      End
+      Begin VB.Menu mnuangulos 
+         Caption         =   "Pegar bordes de mapas"
+      End
+      Begin VB.Menu mnuArchivoLine13 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuLuces 
+         Caption         =   "Luces"
+         Enabled         =   0   'False
+         Visible         =   0   'False
+      End
+      Begin VB.Menu mnuParticulas 
+         Caption         =   "Particulas"
+         Enabled         =   0   'False
+         Visible         =   0   'False
+      End
+   End
    Begin VB.Menu mnuAyuda 
       Caption         =   "Ay&uda"
       Begin VB.Menu mnuManual 
@@ -3442,7 +3474,7 @@ Private Sub PonerAlAzar(ByVal N As Integer, t As Byte)
 '*************************************************
 Dim objindex As Long
 Dim NPCIndex As Long
-Dim X, Y, i
+Dim X, y, i
 Dim Head As Integer
 Dim Body As Integer
 Dim Heading As Byte
@@ -3452,50 +3484,50 @@ modEdicion.Deshacer_Add "Aplicar " & IIf(t = 0, "Objetos", "NPCs") & " al Azar" 
 
 Do While i > 0
     X = CInt(General_Random_Number(XMinMapSize, XMaxMapSize - 1))
-    Y = CInt(General_Random_Number(YMinMapSize, YMaxMapSize - 1))
+    y = CInt(General_Random_Number(YMinMapSize, YMaxMapSize - 1))
     
     Select Case t
         Case 0
-            If MapData(X, Y).OBJInfo.objindex = 0 Then
+            If MapData(X, y).OBJInfo.objindex = 0 Then
                   i = i - 1
                   If cInsertarBloqueo.Value = True Then
-                    MapData(X, Y).Blocked = 1
+                    MapData(X, y).Blocked = 1
                   Else
-                    MapData(X, Y).Blocked = 0
+                    MapData(X, y).Blocked = 0
                   End If
                   If cNumFunc(2).Text > 0 Then
                       objindex = cNumFunc(2).Text
-                      Grh_Initialize MapData(X, Y).ObjGrh, ObjData(objindex).grh_index
-                      MapData(X, Y).OBJInfo.objindex = objindex
-                      MapData(X, Y).OBJInfo.Amount = Val(cCantFunc(2).Text)
+                      Grh_Initialize MapData(X, y).ObjGrh, ObjData(objindex).grh_index
+                      MapData(X, y).OBJInfo.objindex = objindex
+                      MapData(X, y).OBJInfo.Amount = Val(cCantFunc(2).Text)
                       Select Case ObjData(objindex).ObjType ' GS
                             Case 4, 8, 10, 22 ' Arboles, Carteles, Foros, Yacimientos
-                                MapData(X, Y).Graphic(3) = MapData(X, Y).ObjGrh
+                                MapData(X, y).Graphic(3) = MapData(X, y).ObjGrh
                       End Select
                   End If
             End If
         Case 1
-           If MapData(X, Y).Blocked = 0 Then
+           If MapData(X, y).Blocked = 0 Then
                   i = i - 1
                   If cNumFunc(t - 1).Text > 0 Then
                         NPCIndex = cNumFunc(t - 1).Text
                         Body = NpcData(NPCIndex).Body
                         Head = NpcData(NPCIndex).Head
                         Heading = NpcData(NPCIndex).Heading
-                        Call MakeChar(NextOpenChar(), Body, Head, Heading, CInt(X), CInt(Y))
-                        MapData(X, Y).NPCIndex = NPCIndex
+                        Call MakeChar(NextOpenChar(), Body, Head, Heading, CInt(X), CInt(y))
+                        MapData(X, y).NPCIndex = NPCIndex
                   End If
             End If
         Case 2
-           If MapData(X, Y).Blocked = 0 Then
+           If MapData(X, y).Blocked = 0 Then
                   i = i - 1
                   If cNumFunc(t - 1).Text >= 0 Then
                         NPCIndex = cNumFunc(t - 1).Text
                         Body = NpcData(NPCIndex).Body
                         Head = NpcData(NPCIndex).Head
                         Heading = NpcData(NPCIndex).Heading
-                        Call MakeChar(NextOpenChar(), Body, Head, Heading, CInt(X), CInt(Y))
-                        MapData(X, Y).NPCIndex = NPCIndex
+                        Call MakeChar(NextOpenChar(), Body, Head, Heading, CInt(X), CInt(y))
+                        MapData(X, y).NPCIndex = NPCIndex
                   End If
            End If
         End Select
@@ -4014,7 +4046,7 @@ Me.SetFocus
 
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 01/04/2013 - ^[GS]^
@@ -4022,7 +4054,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
 fQuickSup.Height = 70
 End Sub
 
-Private Sub fQuickSup_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub fQuickSup_MouseMove(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 01/04/2013 - ^[GS]^
@@ -4081,7 +4113,7 @@ End Sub
 
 
 
-Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, y As Single)
     'If Seleccionando Then CopiarSeleccion
 End Sub
 
@@ -4143,7 +4175,7 @@ End If
 
 End Sub
 
-Private Sub lListado_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lListado_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
@@ -4153,7 +4185,7 @@ If Index = 3 And Button = 2 Then
 End If
 End Sub
 
-Private Sub lListado_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lListado_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 22/05/06
@@ -4164,7 +4196,7 @@ End Sub
 
 Private Sub MapPest_Click(Index As Integer)
 '*************************************************
-'Author: ^[GS]^
+'Author: ^[GS]^ ReyarB
 'Last modified: 20/05/06
 '*************************************************
 If (Index + NumMap_Save - 4) <> NumMap_Save Then
@@ -4283,6 +4315,10 @@ Private Sub mnuActualizarTriggers_Click()
 Call modIndices.CargarIndicesTriggers
 End Sub
 
+Private Sub mnuangulos_Click()
+frmMapas.Show
+End Sub
+
 Private Sub mnuAutoCapturarTraslados_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -4375,6 +4411,23 @@ Private Sub mnuBloquearSinCapas_Click()
 Call modEdicion.Bloquear_Sin_Capas
 End Sub
 
+Private Sub mnuBloqueos_Click()
+'*************************************************
+'Author: ^[GS]^
+'Last modified: 20/05/06
+'*************************************************
+Call modEdicion.Bloquear_Bordes
+End Sub
+
+Private Sub mnubordes_Click()
+    If MapInfo.Changed = 1 Then
+        If MsgBox(MSGMod, vbExclamation + vbYesNo) = vbYes Then
+            modMapIO.GuardarMapa Dialog.FileName
+        End If
+    End If
+frmcopiarmapa.Show
+End Sub
+
 Private Sub mnuClickExt_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -4408,6 +4461,7 @@ Private Sub mnuCopiar_Click()
 Call CopiarSeleccion
 End Sub
 
+
 Private Sub mnuCortar_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -4416,6 +4470,7 @@ Private Sub mnuCortar_Click()
 Call modEdicion.Deshacer_Add("Cortar Selección")
 Call CortarSeleccion
 End Sub
+
 
 Private Sub mnuDeshacer_Click()
 '*************************************************
@@ -4542,6 +4597,27 @@ Private Sub mnuInsertarTrasladosAdyasentes_Click()
 frmUnionAdyacente.Show
 End Sub
 
+
+
+Private Sub mnuIrMapa_Click()
+    If MapInfo.Changed = 1 Then
+        If MsgBox(MSGMod, vbExclamation + vbYesNo) = vbYes Then
+            modMapIO.GuardarMapa Dialog.FileName
+        End If
+    End If
+frmcopiarmapa.Mapa.Visible = True
+frmcopiarmapa.iralmapa.Visible = True
+frmcopiarmapa.Image1.Visible = False
+frmcopiarmapa.Image2.Visible = False
+frmcopiarmapa.Image3.Visible = False
+frmcopiarmapa.Image4.Visible = False
+frmcopiarmapa.Show
+End Sub
+
+Private Sub mnuLuces_Click()
+modPaneles.VerFuncion 7, True
+End Sub
+
 Private Sub mnuManual_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -4643,6 +4719,7 @@ Private Sub mnuOptimizar_Click()
 '*************************************************
 frmOptimizar.Show
 End Sub
+
 
 Private Sub mnuPegar_Click()
 '*************************************************
@@ -4878,6 +4955,18 @@ Private Sub mnuSalir_Click()
 Unload Me
 End Sub
 
+
+
+Private Sub mnuSinTras_Click()
+'*************************************************
+'Author: ^[ReyarB]^
+'Last modified: 01/01/2018
+'*************************************************
+Call frmUnionAdyacente.Show
+Call modEdicion.Bloquear_Bordes
+frmOptimizar.Show
+End Sub
+
 Private Sub mnuSuperficie_Click()
 '*************************************************
 'Author: ^[GS]^
@@ -5039,7 +5128,7 @@ End Sub
 
 
 
-Private Sub MainViewPic_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub MainViewPic_MouseDown(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: Unkwown
 'Last modified: 01/04/2013 - ^[GS]^
@@ -5050,7 +5139,7 @@ Dim tY As Integer
 
 If Not MapaCargado Then Exit Sub
 
-ConvertCPtoTP 0, 0, X, Y, tX, tY
+ConvertCPtoTP 0, 0, X, y, tX, tY
 
 'If Shift = 1 And Button = 2 Then PegarSeleccion tX, tY: Exit Sub
 If Shift = 1 And Button = 1 Then
@@ -5067,7 +5156,7 @@ End If
 End Sub
 
 
-Private Sub MainViewpic_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub MainViewpic_MouseMove(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: Unkwown
 'Last modified: 01/04/2013 - ^[GS]^
@@ -5082,7 +5171,7 @@ On Error GoTo Fallo
     If Not MapaCargado Then Exit Sub
     HotKeysAllow = True
     
-    ConvertCPtoTP 0, 0, X, Y, tX, tY
+    ConvertCPtoTP 0, 0, X, y, tX, tY
     
     POSX.Caption = "X: " & tX & " - Y: " & tY
     If tX < 10 Or tY < 10 Or tX > 90 Or tY > 90 Then
@@ -5146,7 +5235,7 @@ If frmMain.mnuGuardarUltimaConfig.Checked Then
     WriteVar IniPath & WorldEditorIni, "MOSTRAR", "Bloqueos", IIf(bVerBloqueos, "1", "0")
     WriteVar IniPath & WorldEditorIni, "MOSTRAR", "ClickExtendido", IIf(bClickExtend, "1", "0")
     
-    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "LastPos", UserPos.X & "-" & UserPos.Y
+    WriteVar IniPath & WorldEditorIni, "MOSTRAR", "LastPos", UserPos.X & "-" & UserPos.y
     
     WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "UtilizarDeshacer", IIf(frmMain.mnuUtilizarDeshacer.Checked = True, "1", "0")
     WriteVar IniPath & WorldEditorIni, "CONFIGURACION", "AutoCapturarTrans", IIf(frmMain.mnuAutoCapturarTraslados.Checked = True, "1", "0")
@@ -5170,28 +5259,28 @@ Private Sub picRadar_Click()
 
 End Sub
 
-Private Sub pMiniMap_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub pMiniMap_MouseDown(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 29/05/06
 '*************************************************
 If X < MinXBorder Then X = 11
 If X > MaxXBorder Then X = 89
-If Y < MinYBorder Then Y = 10
-If Y > MaxYBorder Then Y = 92
+If y < MinYBorder Then y = 10
+If y > MaxYBorder Then y = 92
 
 UserPos.X = X
-UserPos.Y = Y
+UserPos.y = y
 bRefreshRadar = True
 End Sub
 
-Private Sub pMiniMap_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub pMiniMap_MouseMove(Button As Integer, Shift As Integer, X As Single, y As Single)
 '*************************************************
 'Author: ^[GS]^
 'Last modified: 28/05/06
 '*************************************************
 MiRadarX = X
-MiRadarY = Y
+MiRadarY = y
 End Sub
 
 Private Sub QuickSup_Click(Index As Integer)

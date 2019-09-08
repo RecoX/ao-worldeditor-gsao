@@ -29,7 +29,7 @@ Attribute VB_Name = "modGameIni"
 
 Option Explicit
 
-' GSZAO - Archivos de configuraciï¿½n!
+' GSZAO - Archivos de configuración!
 Public Const fAOSetup = "AOSetup.init"
 Public Const fConfigInit = "Config.init"
 
@@ -53,12 +53,12 @@ Public Const nDirMAPINDEX = "\MAPINDEX\" ' Directorio de MapIndex
 Public Const nDirGRAFICOS = "\GRAFICOS\" ' Directorio de Graficos
 Public Const nDirDAT = "\DATS\" ' Directorio de Dats
 Public Const nDirMIDI = "\MIDI\" ' Directorio de Musica
-Public WorldEditorIni As String ' Archivo de configuraciï¿½n del WorldEditor!
-Public WorldEditorQuickSup As String ' Archivo de configuraciï¿½n con las superficies de acceso rapido personales
+Public WorldEditorIni As String ' Archivo de configuración del WorldEditor!
+Public WorldEditorQuickSup As String ' Archivo de configuración con las superficies de acceso rapido personales
 Public IniPath As String ' Directorio del WorldEditor!
 Public bGraficosAO As Boolean
-Public bAutoPantalla As Boolean ' Determinar el tamaï¿½o de trabajo automaticamente!
-Public bBuscarErroresEnGrhIndex As Boolean ' ï¿½Buscar errores?!
+Public bAutoPantalla As Boolean ' Determinar el tamaño de trabajo automaticamente!
+Public bBuscarErroresEnGrhIndex As Boolean ' ¿Buscar errores?!
 
 Public Type tCabecera 'Cabecera de los con
     Desc As String * 255
@@ -74,7 +74,7 @@ Public Type tConfigInit
     
     ' Usuario
     Nombre As String            ' Nombre de usuario
-    Password As String          ' Contraseï¿½a del usuario
+    Password As String          ' Contraseña del usuario
     Recordar As Byte            ' Activado el recordar!
     
     ' Directorio
@@ -96,7 +96,7 @@ End Type
 Public Type tAOSetup
     ' VIDEO
     bVertex     As Byte     ' GSZAO - Cambia el Vortex de dibujado
-    bVSync      As Boolean  ' GSZAO - Utiliza Sincronizaciï¿½n Vertical (VSync)
+    bVSync      As Boolean  ' GSZAO - Utiliza Sincronización Vertical (VSync)
     bDinamic    As Boolean  ' Utilizar carga Dinamica de Graficos o Estatica
     byMemory    As Byte     ' Uso maximo de memoria para la carga Dinamica (exclusivamente)
 
@@ -161,7 +161,7 @@ Public Sub InitGraphicsFile()
     If InStr(1, ClientConfigInit.IndiceGraficos, "Graficos") Then
         GraphicsFile = ClientConfigInit.IndiceGraficos
     Else
-        GraphicsFile = "Graficos.ind"
+        GraphicsFile = "Graficos1.ind"
     End If
 End Sub
 

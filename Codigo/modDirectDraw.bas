@@ -396,7 +396,7 @@ On Error GoTo Fallo
     'podria usar copy mem , pero por las dudas no XD
     Static UltimoX As Integer
     Static UltimoY As Integer
-    If UltimoX = SobreX And UltimoY = SobreY Then Exit Sub
+    'If UltimoX = SobreX And UltimoY = SobreY Then Exit Sub
     UltimoX = SobreX
     UltimoY = SobreY
     Dim X As Integer
@@ -573,6 +573,8 @@ Fallo:
     Call LogError("CopiarSeleccion::Error " & Err.Number & " - " & Err.Description)
     
 End Sub
+
+
 Public Sub GenerarVista()
 '*************************************************
 'Author: Loopzer
@@ -652,7 +654,7 @@ For Y = (MinY) To (MaxY)
                 ' Pone Grh !
                 Sobre = -1
                 If frmMain.cSeleccionarSuperficie.Value = True Then
-                    Sobre = MapData(X, Y).Graphic(bCapa).Grh_index
+                    Sobre = MapData(X, Y).Graphic(bCapa).grh_index
                     If frmConfigSup.MOSAICO.Value = vbChecked Then
                         Dim aux As Integer
                         Dim dy As Integer
@@ -667,21 +669,21 @@ For Y = (MinY) To (MaxY)
                         If frmMain.mnuAutoCompletarSuperficies.Checked = False Then
                             aux = Val(frmMain.cGrh.Text) + _
                             (((Y + dy) Mod frmConfigSup.mLargo.Text) * frmConfigSup.mAncho.Text) + ((X + dX) Mod frmConfigSup.mAncho.Text)
-                            If MapData(X, Y).Graphic(bCapa).Grh_index <> aux Then
-                                MapData(X, Y).Graphic(bCapa).Grh_index = aux
+                            If MapData(X, Y).Graphic(bCapa).grh_index <> aux Then
+                                MapData(X, Y).Graphic(bCapa).grh_index = aux
                                 Grh_Initialize MapData(X, Y).Graphic(bCapa), aux
                             End If
                         Else
                             aux = Val(frmMain.cGrh.Text) + _
                             (((Y + dy) Mod frmConfigSup.mLargo.Text) * frmConfigSup.mAncho.Text) + ((X + dX) Mod frmConfigSup.mAncho.Text)
-                            If MapData(X, Y).Graphic(bCapa).Grh_index <> aux Then
-                                MapData(X, Y).Graphic(bCapa).Grh_index = aux
+                            If MapData(X, Y).Graphic(bCapa).grh_index <> aux Then
+                                MapData(X, Y).Graphic(bCapa).grh_index = aux
                                 Grh_Initialize MapData(X, Y).Graphic(bCapa), aux
                             End If
                         End If
                     Else
-                        If MapData(X, Y).Graphic(bCapa).Grh_index <> Val(frmMain.cGrh.Text) Then
-                            MapData(X, Y).Graphic(bCapa).Grh_index = Val(frmMain.cGrh.Text)
+                        If MapData(X, Y).Graphic(bCapa).grh_index <> Val(frmMain.cGrh.Text) Then
+                            MapData(X, Y).Graphic(bCapa).grh_index = Val(frmMain.cGrh.Text)
                             Grh_Initialize MapData(X, Y).Graphic(bCapa), Val(frmMain.cGrh.Text)
                         End If
                     End If
@@ -707,23 +709,23 @@ For Y = (MinY) To (MaxY)
                     
                     'Ready the texture
                     'If grhindex = 0 Then Exit Sub
-                    If MapData(X, Y).Graphic(1).Grh_index Then
+                    If MapData(X, Y).Graphic(1).grh_index Then
                     xb = (ScreenX - 1) * 32 + PixelOffsetX
                     yb = (ScreenY - 1) * 32 + PixelOffsetY
                    
                     If MapData(X, Y).Graphic(1).Started = 1 Then
                        
-                        MapData(X, Y).Graphic(1).frame_counter = MapData(X, Y).Graphic(1).frame_counter + ((timer_elapsed_time * 0.1) * Grh_list(MapData(X, Y).Graphic(1).Grh_index).frame_count / MapData(X, Y).Graphic(1).frame_speed)
-                            If MapData(X, Y).Graphic(1).frame_counter > Grh_list(MapData(X, Y).Graphic(1).Grh_index).frame_count Then
-                                MapData(X, Y).Graphic(1).frame_counter = (MapData(X, Y).Graphic(1).frame_counter Mod Grh_list(MapData(X, Y).Graphic(1).Grh_index).frame_count) + 1
+                        MapData(X, Y).Graphic(1).frame_counter = MapData(X, Y).Graphic(1).frame_counter + ((timer_elapsed_time * 0.1) * Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count / MapData(X, Y).Graphic(1).frame_speed)
+                            If MapData(X, Y).Graphic(1).frame_counter > Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count Then
+                                MapData(X, Y).Graphic(1).frame_counter = (MapData(X, Y).Graphic(1).frame_counter Mod Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_count) + 1
                             End If
                            
                     End If
                 
                     If MapData(X, Y).Graphic(1).frame_counter = 0 Then MapData(X, Y).Graphic(1).frame_counter = 1
-                    If MapData(X, Y).Graphic(1).Grh_index <= 0 Or MapData(X, Y).Graphic(1).Grh_index > UBound(Grh_list) Then MapData(X, Y).Graphic(1).Grh_index = 1 ' GSZAO - Evitamos bugs extraños
+                    If MapData(X, Y).Graphic(1).grh_index <= 0 Or MapData(X, Y).Graphic(1).grh_index > UBound(Grh_list) Then MapData(X, Y).Graphic(1).grh_index = 1 ' GSZAO - Evitamos bugs extraños
                  
-                    iGrhIndex = Grh_list(MapData(X, Y).Graphic(1).Grh_index).frame_list(MapData(X, Y).Graphic(1).frame_counter)
+                    iGrhIndex = Grh_list(MapData(X, Y).Graphic(1).grh_index).frame_list(MapData(X, Y).Graphic(1).frame_counter)
                 
                     With Grh_list(iGrhIndex)
                     
@@ -856,13 +858,13 @@ For Y = (MinY) To (MaxY)
                 End With
             End If
             'Layer 2 **********************************
-            If MapData(X, Y).Graphic(2).Grh_index <> 0 And bVerCapa(2) Then
+            If MapData(X, Y).Graphic(2).grh_index <> 0 And bVerCapa(2) Then
                 modGrh.Grh_Render MapData(X, Y).Graphic(2), ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, MapData(X, Y).light_value, True
             End If
             
             If Sobre >= 0 Then
-                If MapData(X, Y).Graphic(bCapa).Grh_index <> Sobre Then
-                MapData(X, Y).Graphic(bCapa).Grh_index = Sobre
+                If MapData(X, Y).Graphic(bCapa).grh_index <> Sobre Then
+                MapData(X, Y).Graphic(bCapa).grh_index = Sobre
                 Grh_Initialize MapData(X, Y).Graphic(bCapa), Sobre
                 End If
             End If
@@ -895,7 +897,7 @@ For Y = (MinY) To (MaxY)   '- 8+ 8
                      PixelOffsetYTemp = PixelOffsetY
                     
                    'Dibuja solamente players
-                   If TempChar.Head.Head(TempChar.Heading).Grh_index <> 0 Then
+                   If TempChar.Head.Head(TempChar.Heading).grh_index <> 0 Then
                      'Draw Body
                      modGrh.Grh_Render TempChar.Body.Walk(TempChar.Heading), iPPx, iPPy, MapData(X, Y).light_value, True
                      'Draw Head
@@ -904,7 +906,7 @@ For Y = (MinY) To (MaxY)   '- 8+ 8
                    End If
                  End If
              'Layer 3 *****************************************
-             If MapData(X, Y).Graphic(3).Grh_index <> 0 And bVerCapa(3) Then
+             If MapData(X, Y).Graphic(3).grh_index <> 0 And bVerCapa(3) Then
                 'Draw
                 modGrh.Grh_Render MapData(X, Y).Graphic(3), ((32 * ScreenX) - 32) + PixelOffsetX, ((32 * ScreenY) - 32) + PixelOffsetY, MapData(X, Y).light_value, True
              End If
@@ -927,20 +929,20 @@ For Y = (MinY) To (MaxY)
         If X < 101 And X > 0 And Y < 101 And Y > 0 Then ' 30/05/2006
             iPPx = ((32 * ScreenX) - 32) + PixelOffsetX
             iPPy = ((32 * ScreenY) - 32) + PixelOffsetY
-            If MapData(X, Y).Graphic(4).Grh_index <> 0 _
+            If MapData(X, Y).Graphic(4).grh_index <> 0 _
             And (bVerCapa(4) = True) Then
                 'Draw
                 modGrh.Grh_Render MapData(X, Y).Graphic(4), iPPx, iPPy, MapData(X, Y).light_value, True
             End If
             If MapData(X, Y).TileExit.Map <> 0 And bVerTraslados Then
-                Grh.Grh_index = 3
+                Grh.grh_index = 3
                 Grh.frame_counter = 1
                 Grh.Started = 0
                 modGrh.Grh_Render Grh, iPPx, iPPy, MapData(X, Y).light_value, True
             End If
             
             If MapData(X, Y).light_index Then
-                Grh.Grh_index = 4
+                Grh.grh_index = 4
                 Grh.frame_counter = 1
                 Grh.Started = 0
                 modGrh.Grh_Render Grh, iPPx, iPPy, colorlist, True
@@ -948,7 +950,7 @@ For Y = (MinY) To (MaxY)
             
             'Show blocked tiles
             If bVerBloqueos And MapData(X, Y).Blocked = 1 Then
-                Grh.Grh_index = 4
+                Grh.grh_index = 4
                 Grh.frame_counter = 1
                 Grh.Started = 0
                 modGrh.Grh_Render Grh, iPPx, iPPy, MapData(X, Y).light_value, True
@@ -1367,10 +1369,10 @@ Function CalcularAlturaPoligono(mx As Integer, my As Integer, Xn As Integer, Yn 
 End Function
 
 Function HayAgua(ByVal X As Integer, ByVal Y As Integer) As Boolean
-    HayAgua = ((MapData(X, Y).Graphic(1).Grh_index >= 1505 And MapData(X, Y).Graphic(1).Grh_index <= 1520) Or _
-            (MapData(X, Y).Graphic(1).Grh_index >= 5665 And MapData(X, Y).Graphic(1).Grh_index <= 5680) Or _
-            (MapData(X, Y).Graphic(1).Grh_index >= 13547 And MapData(X, Y).Graphic(1).Grh_index <= 13562)) And _
-                MapData(X, Y).Graphic(2).Grh_index = 0
+    HayAgua = ((MapData(X, Y).Graphic(1).grh_index >= 1505 And MapData(X, Y).Graphic(1).grh_index <= 1520) Or _
+            (MapData(X, Y).Graphic(1).grh_index >= 5665 And MapData(X, Y).Graphic(1).grh_index <= 5680) Or _
+            (MapData(X, Y).Graphic(1).grh_index >= 13547 And MapData(X, Y).Graphic(1).grh_index <= 13562)) And _
+                MapData(X, Y).Graphic(2).grh_index = 0
                 
 End Function
 
@@ -1438,10 +1440,10 @@ Public Function LoadQuickSurface(ByVal iQuick As Integer)
     
     If iQuick >= 0 And iQuick <= 26 Then
     
-        Dim Grh_index As Long
-        Grh_index = frmMain.QuickSup(iQuick).Tag
+        Dim grh_index As Long
+        grh_index = frmMain.QuickSup(iQuick).Tag
         
-        If Grh_index <= UBound(Grh_list) And Grh_index <> 0 Then
+        If grh_index <= UBound(Grh_list) And grh_index <> 0 Then
         
             Dim file_index As Long
             Dim file_path As String
@@ -1452,11 +1454,11 @@ Public Function LoadQuickSurface(ByVal iQuick As Integer)
             Dim hdcsrc As Long
             Dim desthdc As Long
             
-            If Grh_list(Grh_index).frame_count <> 1 Then
-                Grh_index = Grh_list(Grh_index).frame_list(1)
+            If Grh_list(grh_index).frame_count <> 1 Then
+                grh_index = Grh_list(grh_index).frame_list(1)
             End If
     
-            file_index = Grh_list(Grh_index).texture_index
+            file_index = Grh_list(grh_index).texture_index
     
             file_path = DirGraficos & file_index & ".bmp"
             If FileExist(file_path, vbArchive) Then ' GSZAO
@@ -1474,10 +1476,10 @@ Public Function LoadQuickSurface(ByVal iQuick As Integer)
                 End If
             End If
             
-            Src_X = Grh_list(Grh_index).Src_X
-            Src_Y = Grh_list(Grh_index).Src_Y
-            src_width = Grh_list(Grh_index).src_width
-            src_height = Grh_list(Grh_index).src_height
+            Src_X = Grh_list(grh_index).Src_X
+            Src_Y = Grh_list(grh_index).Src_Y
+            src_width = Grh_list(grh_index).src_width
+            src_height = Grh_list(grh_index).src_height
         
             frmMain.QuickSup(iQuick).Cls
             

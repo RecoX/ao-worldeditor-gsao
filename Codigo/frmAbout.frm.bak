@@ -2,24 +2,24 @@ VERSION 5.00
 Begin VB.Form frmAbout 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Acerca de WoldEditor"
-   ClientHeight    =   4470
+   ClientHeight    =   4350
    ClientLeft      =   2340
    ClientTop       =   1935
-   ClientWidth     =   4665
+   ClientWidth     =   4365
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    Picture         =   "frmAbout.frx":628A
-   ScaleHeight     =   3085.273
+   ScaleHeight     =   3002.447
    ScaleMode       =   0  'User
-   ScaleWidth      =   4380.675
+   ScaleWidth      =   4098.96
    StartUpPosition =   2  'CenterScreen
-   Begin GSZAOWorldEditor.lvButtons_H cmdOK 
+   Begin WorldEditor.lvButtons_H cmdOK 
       Height          =   375
-      Left            =   1560
+      Left            =   2880
       TabIndex        =   4
-      Top             =   4080
+      Top             =   3840
       Width           =   1335
       _ExtentX        =   2355
       _ExtentY        =   661
@@ -40,30 +40,10 @@ Begin VB.Form frmAbout
       Value           =   0   'False
       cBack           =   -2147483633
    End
-   Begin VB.Label Label1 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "ReyarB"
-      BeginProperty Font 
-         Name            =   "Morpheus"
-         Size            =   20.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FF0000&
-      Height          =   540
-      Left            =   1920
-      TabIndex        =   8
-      Top             =   600
-      Width           =   1320
-   End
    Begin VB.Label lblCred 
       Alignment       =   2  'Center
       BackColor       =   &H00000000&
-      Caption         =   "Mejoras por:                       About, Loopzer, Salvito"
+      Caption         =   "Actualizaciones de About, Loopzer y Salvito."
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   9
@@ -74,11 +54,11 @@ Begin VB.Form frmAbout
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H000000FF&
-      Height          =   600
+      Height          =   480
       Index           =   1
       Left            =   720
       TabIndex        =   7
-      Top             =   1440
+      Top             =   1320
       Width           =   3075
    End
    Begin VB.Label lblTitle 
@@ -86,7 +66,7 @@ Begin VB.Form frmAbout
       BackStyle       =   0  'Transparent
       Caption         =   "WorldEditor"
       BeginProperty Font 
-         Name            =   "Morpheus"
+         Name            =   "Arial"
          Size            =   26.25
          Charset         =   0
          Weight          =   700
@@ -94,12 +74,12 @@ Begin VB.Form frmAbout
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   705
-      Left            =   720
+      ForeColor       =   &H00FFFFFF&
+      Height          =   615
+      Left            =   1200
       TabIndex        =   6
       Top             =   0
-      Width           =   3090
+      Width           =   2970
    End
    Begin VB.Label lblVersion 
       AutoSize        =   -1  'True
@@ -116,9 +96,9 @@ Begin VB.Form frmAbout
       EndProperty
       ForeColor       =   &H00E0E0E0&
       Height          =   270
-      Left            =   840
+      Left            =   1560
       TabIndex        =   5
-      Top             =   840
+      Top             =   480
       Width           =   810
    End
    Begin VB.Label lblCred 
@@ -139,7 +119,7 @@ Begin VB.Form frmAbout
       Index           =   0
       Left            =   960
       TabIndex        =   3
-      Top             =   2040
+      Top             =   1920
       Width           =   2565
    End
    Begin VB.Label lblCred 
@@ -181,7 +161,7 @@ Begin VB.Form frmAbout
       Index           =   3
       Left            =   960
       TabIndex        =   1
-      Top             =   2640
+      Top             =   2520
       Width           =   2565
    End
    Begin VB.Line Line1 
@@ -190,8 +170,8 @@ Begin VB.Form frmAbout
       Index           =   1
       X1              =   112.686
       X2              =   3944.016
-      Y1              =   2733.262
-      Y2              =   2733.262
+      Y1              =   2567.61
+      Y2              =   2567.61
    End
    Begin VB.Line Line1 
       BorderColor     =   &H00FFFFFF&
@@ -199,8 +179,8 @@ Begin VB.Form frmAbout
       Index           =   0
       X1              =   112.686
       X2              =   3944.016
-      Y1              =   2733.262
-      Y2              =   2733.262
+      Y1              =   2567.61
+      Y2              =   2567.61
    End
    Begin VB.Label lblCred 
       Alignment       =   2  'Center
@@ -208,7 +188,7 @@ Begin VB.Form frmAbout
       Caption         =   "Programado por ^[GS]^"
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   9.75
+         Size            =   9
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -220,7 +200,7 @@ Begin VB.Form frmAbout
       Index           =   2
       Left            =   720
       TabIndex        =   0
-      Top             =   1200
+      Top             =   1080
       Width           =   3075
    End
    Begin VB.Shape Shape1 
@@ -230,10 +210,10 @@ Begin VB.Form frmAbout
       DrawMode        =   9  'Not Mask Pen
       FillColor       =   &H00C0C0FF&
       FillStyle       =   0  'Solid
-      Height          =   2775
+      Height          =   2655
       Left            =   120
       Shape           =   4  'Rounded Rectangle
-      Top             =   1080
+      Top             =   960
       Width           =   4095
    End
 End

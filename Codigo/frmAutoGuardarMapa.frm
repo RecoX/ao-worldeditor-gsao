@@ -2,23 +2,24 @@ VERSION 5.00
 Begin VB.Form frmAutoGuardarMapa 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Guardar Mapa Automaticamente"
-   ClientHeight    =   2205
+   ClientHeight    =   2895
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   5070
+   ClientWidth     =   4695
    Icon            =   "frmAutoGuardarMapa.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   2205
-   ScaleWidth      =   5070
+   Picture         =   "frmAutoGuardarMapa.frx":628A
+   ScaleHeight     =   2895
+   ScaleWidth      =   4695
    StartUpPosition =   2  'CenterScreen
    Begin GSZAOWorldEditor.lvButtons_H cmdAceptar 
       Height          =   495
       Left            =   120
       TabIndex        =   4
-      Top             =   1560
-      Width           =   1695
-      _ExtentX        =   2990
+      Top             =   2160
+      Width           =   1575
+      _ExtentX        =   2778
       _ExtentY        =   873
       Caption         =   "&Aceptar y Aplicar"
       CapAlign        =   2
@@ -39,11 +40,11 @@ Begin VB.Form frmAutoGuardarMapa
    End
    Begin GSZAOWorldEditor.lvButtons_H cmdCerrar 
       Height          =   495
-      Left            =   3480
+      Left            =   3240
       TabIndex        =   3
-      Top             =   1560
-      Width           =   1455
-      _ExtentX        =   2566
+      Top             =   2160
+      Width           =   1335
+      _ExtentX        =   2355
       _ExtentY        =   873
       Caption         =   "&Cerrar"
       CapAlign        =   2
@@ -73,21 +74,21 @@ Begin VB.Form frmAutoGuardarMapa
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      ItemData        =   "frmAutoGuardarMapa.frx":628A
+      ItemData        =   "frmAutoGuardarMapa.frx":160F9
       Left            =   1440
-      List            =   "frmAutoGuardarMapa.frx":62A3
+      List            =   "frmAutoGuardarMapa.frx":16112
       TabIndex        =   1
       Text            =   "10"
-      Top             =   840
+      Top             =   1440
       Width           =   1215
    End
    Begin GSZAOWorldEditor.lvButtons_H cmdDetener 
       Height          =   495
-      Left            =   1920
+      Left            =   1800
       TabIndex        =   5
-      Top             =   1560
-      Width           =   1455
-      _ExtentX        =   2566
+      Top             =   2160
+      Width           =   1335
+      _ExtentX        =   2355
       _ExtentY        =   873
       Caption         =   "&Detener"
       CapAlign        =   2
@@ -111,11 +112,12 @@ Begin VB.Form frmAutoGuardarMapa
       BorderStyle     =   6  'Inside Solid
       Index           =   1
       X1              =   135
-      X2              =   4915
-      Y1              =   1440
-      Y2              =   1440
+      X2              =   4440
+      Y1              =   1920
+      Y2              =   1920
    End
    Begin VB.Label Label3 
+      BackStyle       =   0  'Transparent
       Caption         =   "minutos"
       BeginProperty Font 
          Name            =   "Arial"
@@ -126,10 +128,11 @@ Begin VB.Form frmAutoGuardarMapa
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H00C0E0FF&
       Height          =   255
       Left            =   2760
       TabIndex        =   2
-      Top             =   885
+      Top             =   1560
       Width           =   855
    End
    Begin VB.Label Label2 
@@ -144,20 +147,21 @@ Begin VB.Form frmAutoGuardarMapa
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   855
+      ForeColor       =   &H00000040&
+      Height          =   975
       Left            =   120
       TabIndex        =   0
-      Top             =   120
-      Width           =   4815
+      Top             =   240
+      Width           =   4455
    End
    Begin VB.Line Line1 
       BorderColor     =   &H00FFFFFF&
       BorderWidth     =   2
       Index           =   0
       X1              =   120
-      X2              =   4915
-      Y1              =   1440
-      Y2              =   1440
+      X2              =   4440
+      Y1              =   1920
+      Y2              =   1920
    End
 End
 Attribute VB_Name = "frmAutoGuardarMapa"
